@@ -4,6 +4,7 @@
 \setlength{\textwidth}{440pt}
 \vspace{-8ex}
 \usepackage{listings}
+\usepackage{amsmath}
 \usepackage{color}
 \usepackage{graphicx}
 \usepackage[left=0.70in, right=0.70in, top=0.50in, left=0.70in, headsep=0pt]{geometry}
@@ -75,21 +76,108 @@
       ...
     }
   \end{lstlisting}
- In-order traversal: left, root, right \\
- Pre-order traversal: root, left, right \\ 
- Post-order traversal: left, right, root\\
- If there are n internal nodes in an extended tree, there are n+1 external nodes \\
- \indent Proof by induction: Extended tree binary tree with n internal nodes has n+1 external nodes has 2n+1 total nodes \\
- \indent Let x(n) = number of external nodes given n internal nodes and prove x(n) = n + 1 \\
- \indent Base Case x(0) = 1 a tree with no internal nodes has 1 external node \\
- \indent IH: Assume x(i) = i + 1 for all i $\leq$ n - 1 \\
- \indent IS: let $n_{L}$ and $n_{R}$ be the number of nodes in Left and Right subtrees \\
- \indent x(n) = ($n_{L}$ + 1) + ($n_{R}$ + 1) = (1 + $n_{L}$ + $n_{R}$) + 1 = n + 1 external nodes \\
- \indent so n + 1 (external) + n (internal) = 2n + 1 \\
- \indent Moreover, about 1/2 of nodes of extended Binary Tree are leaf nodes \\
- Threaded Binary Tree: Give null pointers information about where to traverse next \\
- \indent If left-child = null then stores reference to node's inorder predecessor \\
- \indent If right-child = null then stores references to node's inorder successor \\
- \includegraphics[width=\textwidth]{Fig_6}
+  In-order traversal: left, root, right \\
+  Pre-order traversal: root, left, right \\ 
+  Post-order traversal: left, right, root\\
+  If there are n internal nodes in an extended tree, there are n+1 external nodes \\
+  \indent Proof by induction: Extended tree binary tree with n internal nodes has n+1 external nodes has 2n+1 total nodes \\
+  \indent Let x(n) = number of external nodes given n internal nodes and prove x(n) = n + 1 \\
+  \indent Base Case x(0) = 1 a tree with no internal nodes has 1 external node \\
+  \indent IH: Assume x(i) = i + 1 for all i $\leq$ n - 1 \\
+  \indent IS: let $n_{L}$ and $n_{R}$ be the number of nodes in Left and Right subtrees \\
+  \indent x(n) = ($n_{L}$ + 1) + ($n_{R}$ + 1) = (1 + $n_{L}$ + $n_{R}$) + 1 = n + 1 external nodes \\
+  \indent so n + 1 (external) + n (internal) = 2n + 1 \\
+  \indent Moreover, about 1/2 of nodes of extended Binary Tree are leaf nodes \\
+  Threaded Binary Tree: Give null pointers information about where to traverse next \\
+  \indent If left-child = null then stores reference to node's inorder predecessor \\
+  \indent If right-child = null then stores references to node's inorder successor \\
+  \includegraphics[width=\textwidth]{Fig_6}
+  \begin{lstlisting}
+    BinaryTreeNode inOrderSuccessor(BinaryTreeNode v) {
+    BinaryTreeNode u = v.right;
+    if(v.right.isThread) return u;
+    while(!u.left.isThread) u = u.left;
+    return u;
+    }
+  \end{lstlisting}
+  \indent \indent if v's right-child is a thread, then we follow thread. \\
+  \indent Otherwise go through v's right child and iterate through left-child links \\
+  Complete Binary Tree: represented using sequential allocation (array) because no space is wasted \\
+  \indent number of nodes is inbetween $2^{h}$ and $2^{h+1}-1$
+  \begin{lstlisting}
+    leftChild(i): if(2i <= n) then 2i else null;
+    rightChild(i): if (2i + 1 <= n) then 2i + 1 else null;
+    parent(i): if (i >= 2) then [i/2] else null;
+  \end{lstlisting}
+  \newpage
+  \section{Dictionaries}
+  \begin{lstlisting}
+    void insert(Key x, Value v) => if key exists, exception is thrown 
+    void delete(Key x) => if key does not exist, exception thrown 
+    Value find(Key x) => return value associated with key or null if not found
+  \end{lstlisting}
+  Array representation: \\
+  \indent Unsorted array has O(n) search and delete, O(1) insert although we need O(n) to check for duplicates \\
+  \indent Sorted Array has O(logn) search and O(n) insertion and deletion \\
+  Binary Search Tree Representation (left $<$ root $<$ right):
+  \begin{lstlisting}
+    //Recursive
+    Value find(Key x, BinaryNode p) {
+      if (p == null) return null;
+      else if (x < p.key) return find(x, p.left);
+      else if (x > p.key) return find(x, p.right);
+      else return p.val;
+    }
+
+    //Iterative
+    Value find(Key x) {
+      BinaryNode p = root;
+      while(p != null) {
+        if (x < p.key) p = p.left;
+        else if (x > p.key) p = p.right;
+        else return p.value;
+      }
+      return null;
+    }
+  \end{lstlisting}
+  \indent O(n) search for degenerate tree, O(logn) search for balanced tree \\
+  \indent Can use extended BST to give info that target key is inbetween inorder predecessor and inorder successor \\
+  \indent Insert: search for key and if found throw exception else we hit a null and insert there 
+  \begin{lstlisting}
+    BinaryNode insert(Key x, Value v, BinaryNode p) {
+      if (p == null) p = new BinaryNode(x, v, null, null);
+      else if (x < p.key) p.left = insert(x, v, p.left);
+      else if (x > p.key) p.right = insert(x, v, p.right);
+      else throw DuplicateKeyException;
+      return p;
+    }
+  \end{lstlisting}
+  \indent \indent Either tree is empty so return new node or we return the root of the original tree with the added node \\
+  \indent O(n) insert for degenerate tree, O(logn) insert for balanced tree \\
+  \Delete find a replace with inorder successor (aka leftmost on right subtree)
+  \begin{lstlisting} 
+    BinaryNode delete(Key x, BinaryNode p) {
+      if (p == null) throw KeyNotFoundException;
+      else 
+        if (x < p.data)
+          x.left = delete(x, p.left);
+        else if (x > p.data)
+          x.right = delete(x, p.right)
+        else if (p.left == null || p.right == null) 
+          if (p.left == null) return p.right;
+          else return p.left;
+        else 
+          r = findReplacement(p);
+          //copy r's contents to p
+          p.right = delete(r.key, p.right);
+    }
+
+    BinaryNode findReplacement(BinaryNode p) {
+      BinaryNode r = p.right;
+      while(r.left != null) r = r.left;
+      return ;
+    }
+  \end{lstlisting}
+  \indent \indent O(n) deletion for degenerate tree, O(logn) deletion for balanced tree
 \end{document}
 

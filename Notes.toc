@@ -1,2 +1,3 @@
 \contentsline {section}{\numberline {1}Lists}{2}% 
 \contentsline {section}{\numberline {2}Trees}{3}% 
+\contentsline {section}{\numberline {3}Dictionaries}{5}% 
