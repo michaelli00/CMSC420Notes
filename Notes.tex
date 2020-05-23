@@ -154,7 +154,7 @@
   \end{lstlisting}
   \indent \indent Either tree is empty so return new node or we return the root of the original tree with the added node \\
   \indent O(n) insert for degenerate tree, O(logn) insert for balanced tree \\
-  \Delete find a replace with inorder successor (aka leftmost on right subtree)
+  \indent Delete find a replace with inorder successor (aka leftmost on right subtree)
   \begin{lstlisting} 
     BinaryNode delete(Key x, BinaryNode p) {
       if (p == null) throw KeyNotFoundException;
@@ -179,5 +179,90 @@
     }
   \end{lstlisting}
   \indent \indent O(n) deletion for degenerate tree, O(logn) deletion for balanced tree
+  \indent  height of BST on average will be ln(n) \\
+  \indent \indent Proof: for i = 2 to n, insert elements into BST and look at depth of left most node (min value) \\
+  \indent \indent chance that a number is the min is $\frac{1}{i}$ so Expected Height is $\sum_{i=2}^{n} \frac{1}{i}$ $\approx$ ln(n)
+  \section{AVL Trees}
+  Balance Condition: For every node in tree, absolute difference between heights of left and right subtrees is at most 1 \\
+  Worst case height can be shown to be O(logn) using Fibonacci sequence\\
+  \indent $F_{h} \approx \varphi^{h}\sqrt{5}$ where $\varphi = (1 + \sqrt{5})/2$ \\
+  \indent let N(h) denote minimum number of nodes in any AVL tree of height h. \\
+  \indent \indent N(0) = 1, N(1) = 2, N(h) = 1 + $N(h_{L}) + N(h_{R}) = 1 + N(h-1) = N(h-2)$ \\
+  \indent \indent \indent if a given node has height h, one of its subtrees must have height h - 1, and to make it have min \# of nodes, \\
+  \indent \indent \indent the other subtree has height h-2\\
+  \indent Now $N(h) = n \geq c \varphi^{h} \rightarrow h \leq log_{\varphi}n \rightarrow O(logn)$\\
+  \indent Also find method using AVL is O(logn)\\
+  \includegraphics[width=\textwidth]{FibTreeMinNodes}
+  Rotations are used to main tree's balance by modifying relation between two nodes but preserving the tree's inorder properties 
+  \begin{lstlisting}
+    BinaryNode rotateRight(BinaryNode p) {
+      BinaryNode q = p.left;
+      p.left = q.right;
+      q.right = p;
+      return q;   // q is now root
+    }
+    Binary Node rotateLeft(Binary Node p) {
+      BinaryNode q = p.right;
+      p.right = q.left;
+      q.left = p;
+      return q;   // q is now root
+    }
+  \end{lstlisting}
+  \includegraphics[width=\textwidth]{FibTreeRotation}
+  Single rotations work when the imbalance occurs on the outer edges of the tree. Need to use double rotations LR or RL to balance inner trees \\
+  \includegraphics[width=\textwidth]{FibTreeDoubleRotation}
+  Insertion works similar to BST except we update the heights of subtrees and apply rotations to maintain height \\
+  When insertion occurs balance factors of ancestors is altered by $\pm$1\\
+  If a node has a balance factor that violates Balance Property: \\
+  \indent Left-Left substree too deep then rotate right \\
+  \indent Right-Right subtree too deep then rotate left \\
+  \indent Left-Right subtree too deep then rotate left-right \\
+  \indent Right-Left subtree too deep then rotate right-left
+  \begin{lstlisting}
+    int height(AvlNode p) return p == null ? -1 : p.height;
+    void updateHeight(AvlNode p) p.height = 1 + max(height(p.left), height(p.right));
+    int balanceFactor(AvlNode P) return height.(p.right) - height(p.left);
+    AvlNode rotateRight(AvlNode p) {
+      AvlNode q = p.left;
+      p.left = q.right;   // swap inner child
+      q.right = p;        // bring q above p
+      updateHeight(p);
+      updateHeight(q);
+      return q;           // q replaces p
+    }
+    AvlNode rotateLeft(AvlNode p) {... symmetrical to rotateRight ...}
+    AvlNode rotateLeftRight(AvlNode p) {
+      p.left = rotateLeft(p.left);
+      return rotateRight(p);
+    }
+    AvlNode rotateRightLeft(AvlNode p) {... symmetrical to rotateLeftRight ...}
+    AvlNode insert(Key x, Value v, AvlNode p) {
+      if (p == null) p = newAvlNode(x, v, null, null);
+      else if (x < p .key) p.left = insert(x, v, p.left);
+      else if (x > p.key) p.right = insert(x, v, p.right);
+      else throw DuplicateKeyException;
+      return rebalance(p);
+    }
+    AvlNode rebalance(AvlNode p) {
+      if (p == null) return p;
+      if (balanceFactor(p) < -1) {
+        if (height(p.left.left) >= height(p.left.right)) {//left-left heavy
+          p = rotateRight(p);
+        } else {                                          //left-right heavy
+          p = rotateLeftRight(p);
+        }
+      }
+      else if (balanceFactor(p) > 1) {
+        if(height(p.right.right) >= height(p.right.left)) {//right-right heavy
+          p = rotateLeft(p);
+        } else {                                            //right-left heavy
+          p = rotateRightLeft(p);
+        }
+      }
+      updateHeight(p);
+      return p;
+    }
+  \end{lstlisting}
+  Deletion works in a similar manner in that we call normal BST delete and then rotate as necessary. However we need to call rebalance on further ancestors to check balance condition
 \end{document}
 

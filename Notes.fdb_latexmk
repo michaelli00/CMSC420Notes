@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1590185803 "Notes.tex" "Notes.pdf" "Notes" 1590185803
+["pdflatex"] 1590254838 "Notes.tex" "Notes.pdf" "Notes" 1590273073
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -20,6 +20,7 @@
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmtt9.tfm" 1136768653 764 c98a2af25c99b73a368cf7336e255190 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1248133631 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
+  "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1248133631 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1248133631 36281 c355509802a035cadc5f15869451dcee ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
@@ -67,15 +68,18 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1557342064 3277517 23507ed665b4dd9046f0f2a94bbef2be ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1557342086 4259635 562fc36ec496993777a6c428d8bfb811 ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "Notes.aux" 1590185520 288 73aadd51a5a98cbb0319abef4a78e045 "pdflatex"
-  "Notes.tex" 1590185802 7707 df63e51f8d8ee6af3a9e6473fb19782b ""
-  "Notes.toc" 1590185520 160 ffe7b2143df721c47c2640e7062a60c0 "pdflatex"
+  "Notes.aux" 1590254840 383 49e9df57c503c5f081b4fdf948040b21 "pdflatex"
+  "Notes.tex" 1590254837 12057 159df99d189d1002095734848ac61f44 ""
+  "Notes.toc" 1590254840 215 c43a9203c9abfb827f52e93bc54ddd6c "pdflatex"
+  "assets/FibTreeDoubleRotation.png" 1590250392 252921 3d6504c7cbc9a7af25eb1b368ae047fb ""
+  "assets/FibTreeMinNodes.png" 1590247143 48061 eac964f2522b4c4cc03e12030291d01a ""
+  "assets/FibTreeRotation.png" 1590250313 224089 822ab5f60fd75ddfe02672688a30a99b ""
   "assets/Fig_2.png" 1590170344 97932 b3aed01b9e26d15778e2b5d7f6549d54 ""
   "assets/Fig_3.png" 1590169686 55053 bf23a0961d69d41701e53e0d9b8970ad ""
   "assets/Fig_4.png" 1590170209 73164 2c4f5a0dbca3c5098a6aa0c5cf63b120 ""
   "assets/Fig_6.png" 1590176666 62509 ec24df6291286d91e2710843bc602359 ""
   (generated)
-  "Notes.aux"
-  "Notes.toc"
   "Notes.pdf"
+  "Notes.toc"
+  "Notes.aux"
   "Notes.log"

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  22 MAY 2020 18:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 MAY 2020 13:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -325,38 +325,50 @@ File: ./assets/Fig_6.png Graphic file (type png)
 <use ./assets/Fig_6.png>
 Package pdftex.def Info: ./assets/Fig_6.png  used on input line 94.
 (pdftex.def)             Requested size: 513.11745pt x 228.99043pt.
-[3 <./assets/Fig_3.png> <./assets/Fig_4.png>] [4 <./assets/Fig_6.png>]
-! Undefined control sequence.
-<recently read> \Delete 
-                        
-l.157   \Delete
-                find a replace with inorder successor (aka leftmost on right...
+[3 <./assets/Fig_3.png> <./assets/Fig_4.png>] [4 <./assets/Fig_6.png>] [5]
+<./assets/FibTreeMinNodes.png, id=37, 1118.1775pt x 411.5375pt>
+File: ./assets/FibTreeMinNodes.png Graphic file (type png)
+<use ./assets/FibTreeMinNodes.png>
+Package pdftex.def Info: ./assets/FibTreeMinNodes.png  used on input line 195.
+(pdftex.def)             Requested size: 513.11745pt x 188.85742pt.
 
-? 
-[5] [6] (./Notes.aux) ) 
+[6 <./assets/FibTreeMinNodes.png>]
+<./assets/FibTreeRotation.png, id=43, 2196.205pt x 981.6675pt>
+File: ./assets/FibTreeRotation.png Graphic file (type png)
+<use ./assets/FibTreeRotation.png>
+Package pdftex.def Info: ./assets/FibTreeRotation.png  used on input line 211.
+(pdftex.def)             Requested size: 513.11745pt x 229.34378pt.
+<./assets/FibTreeDoubleRotation.png, id=44, 2250.4075pt x 1098.1025pt>
+File: ./assets/FibTreeDoubleRotation.png Graphic file (type png)
+<use ./assets/FibTreeDoubleRotation.png>
+Package pdftex.def Info: ./assets/FibTreeDoubleRotation.png  used on input line
+ 213.
+(pdftex.def)             Requested size: 513.11745pt x 250.38002pt.
+ [7 <./assets/FibTreeRotation.png> <./assets/FibTreeDoubleRotation.png>] [8] (.
+/Notes.aux) ) 
 Here is how much of TeX's memory you used:
- 4348 strings out of 492616
- 58750 string characters out of 6129482
+ 4378 strings out of 492616
+ 59438 string characters out of 6129482
  368041 words of memory out of 5000000
- 8218 multiletter control sequences out of 15000+600000
+ 8245 multiletter control sequences out of 15000+600000
  9182 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,40p,272b,1628s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt
-9.pfb>
-Output written on Notes.pdf (6 pages, 302428 bytes).
+ 41i,6n,40p,272b,1630s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
+.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.p
+fb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
+></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></
+usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
+sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on Notes.pdf (8 pages, 628964 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 90 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
