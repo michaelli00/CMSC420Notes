@@ -264,5 +264,35 @@
     }
   \end{lstlisting}
   Deletion works in a similar manner in that we call normal BST delete and then rotate as necessary. However we need to call rebalance on further ancestors to check balance condition
+  \newpage 
+  \section{2-3 Trees, Red-Black Trees, AA Trees}
+  \subsection{2-3 Trees}
+  All leaves are on the same level \\
+  nodes can either be 2-node (normal binary tree) or 3-node (2 keys b,d and 3 branches A, C, E where A $<$ b $<$ X $<$ d $<$ E)\\
+  \includegraphics[width=\textwidth]{2-3Tree}
+  Recursively defined as: \\
+  \indent empty (null) \\
+  \indent root is 2-node and has two 2-3 subtrees of equal height \\
+  \indent root is 3-node and has three 2-3 subtrees of equal height \\
+  Sparsest 2-3 tree is a complete binary tree \\
+  Height is O(logn) \\
+  Find: recursive descent but when 3-node is reached, compare x with both keys to find which branch to go to\\
+  Insertion: search for key and and insert like in a normal tree. \\
+  \indent if parent is a 2-node, now it is a 3-node with a null subtree \\
+  \indent if parent is 3 node then it becomes 4-node and we have to fix it by splitting the 4-node into two 2-nodes and \\ 
+  \indent prop the middle term up for recursion\\
+  \indent \indent Will continue to recurse up until it reaches the root \\
+  \includegraphics[width=\textwidth]{2-3TreeInsert}
+  Deletion: find and replace target with inorder successor and then delete the leaf\\
+  \indent If parent of leaf is a 3-node then parent becomes a 2-node and done \\
+  \indent If parent is a 2-node then it becomes a 1-node (0 keys, 1 subtree) so we can do \\
+  \indent \indent Adoption: if sibling is a 3-node then adopt a key and a subtree so we have two 2-nodes \\
+  \indent \indent Merge: merge 1-node and 2-node and take a key from parent then recurse up. If root is reached, remove it \\
+  \indent \indent and make a child the root\\
+  \newpage
+  \subsection{Red-Black Trees}
+  Take AVL 3-node and create a 2-node combo by using d, C, E as the right subtree and b, A for left subtree \\
+  \indent Color created right subnode red and all other nodes black, creating a binary tree\\
+  
 \end{document}
 

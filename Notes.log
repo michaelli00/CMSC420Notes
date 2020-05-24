@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 MAY 2020 13:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  24 MAY 2020 10:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -344,31 +344,52 @@ File: ./assets/FibTreeDoubleRotation.png Graphic file (type png)
 Package pdftex.def Info: ./assets/FibTreeDoubleRotation.png  used on input line
  213.
 (pdftex.def)             Requested size: 513.11745pt x 250.38002pt.
- [7 <./assets/FibTreeRotation.png> <./assets/FibTreeDoubleRotation.png>] [8] (.
-/Notes.aux) ) 
+ [7 <./assets/FibTreeRotation.png> <./assets/FibTreeDoubleRotation.png>] [8]
+<./assets/2-3Tree.png, id=54, 2083.785pt x 796.9775pt>
+File: ./assets/2-3Tree.png Graphic file (type png)
+<use ./assets/2-3Tree.png>
+Package pdftex.def Info: ./assets/2-3Tree.png  used on input line 272.
+(pdftex.def)             Requested size: 513.11745pt x 196.2523pt.
+<./assets/2-3TreeInsert.png, id=55, 2559.5625pt x 778.91pt>
+File: ./assets/2-3TreeInsert.png Graphic file (type png)
+<use ./assets/2-3TreeInsert.png>
+Package pdftex.def Info: ./assets/2-3TreeInsert.png  used on input line 285.
+(pdftex.def)             Requested size: 513.11745pt x 156.14767pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--292
+
+ []
+
+[9 <./assets/2-3Tree.png> <./assets/2-3TreeInsert.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 294--296
+
+ []
+
+[10] (./Notes.aux) ) 
 Here is how much of TeX's memory you used:
- 4378 strings out of 492616
- 59438 string characters out of 6129482
+ 4389 strings out of 492616
+ 59703 string characters out of 6129482
  368041 words of memory out of 5000000
- 8245 multiletter control sequences out of 15000+600000
- 9182 words of font info for 34 fonts, out of 8000000 for 9000
+ 8254 multiletter control sequences out of 15000+600000
+ 9489 words of font info for 35 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,6n,40p,272b,1630s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
-i7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
-.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.p
-fb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
-></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></
-usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
-sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on Notes.pdf (8 pages, 628964 bytes).
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
+.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pf
+b>
+Output written on Notes.pdf (10 pages, 839946 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
+ 100 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

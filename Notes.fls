@@ -96,6 +96,8 @@ INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT Notes.toc
 INPUT Notes.toc
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 OUTPUT Notes.toc
 OUTPUT Notes.pdf
 INPUT /usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map
@@ -104,8 +106,6 @@ INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmtt9.tfm
 INPUT ./assets/Fig_2.png
 INPUT ./assets/Fig_2.png
 INPUT ./assets/Fig_2.png
-INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
-INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT ./assets/Fig_3.png
 INPUT ./assets/Fig_3.png
 INPUT ./assets/Fig_3.png
@@ -124,6 +124,13 @@ INPUT ./assets/FibTreeRotation.png
 INPUT ./assets/FibTreeDoubleRotation.png
 INPUT ./assets/FibTreeDoubleRotation.png
 INPUT ./assets/FibTreeDoubleRotation.png
+INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT ./assets/2-3Tree.png
+INPUT ./assets/2-3Tree.png
+INPUT ./assets/2-3Tree.png
+INPUT ./assets/2-3TreeInsert.png
+INPUT ./assets/2-3TreeInsert.png
+INPUT ./assets/2-3TreeInsert.png
 INPUT Notes.aux
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
