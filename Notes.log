@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  24 MAY 2020 10:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  24 MAY 2020 11:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -361,35 +361,68 @@ Underfull \hbox (badness 10000) in paragraph at lines 270--292
  []
 
 [9 <./assets/2-3Tree.png> <./assets/2-3TreeInsert.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 294--296
+<./assets/RBTree.png, id=61, 2272.49pt x 831.105pt>
+File: ./assets/RBTree.png Graphic file (type png)
+<use ./assets/RBTree.png>
+Package pdftex.def Info: ./assets/RBTree.png  used on input line 295.
+(pdftex.def)             Requested size: 513.11745pt x 187.66267pt.
+<./assets/2-3ToRBTree.png, id=62, 1941.2525pt x 505.89pt>
+File: ./assets/2-3ToRBTree.png Graphic file (type png)
+<use ./assets/2-3ToRBTree.png>
+Package pdftex.def Info: ./assets/2-3ToRBTree.png  used on input line 300.
+(pdftex.def)             Requested size: 513.11745pt x 133.72055pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 294--304
 
  []
 
-[10] (./Notes.aux) ) 
+[10 <./assets/RBTree.png> <./assets/2-3ToRBTree.png>]
+<./assets/AATree.png, id=68, 2310.6325pt x 869.2475pt>
+File: ./assets/AATree.png Graphic file (type png)
+<use ./assets/AATree.png>
+Package pdftex.def Info: ./assets/AATree.png  used on input line 307.
+(pdftex.def)             Requested size: 513.11745pt x 193.02562pt.
+<./assets/AASkewSplit.png, id=69, 2511.3825pt x 865.2325pt>
+File: ./assets/AASkewSplit.png Graphic file (type png)
+<use ./assets/AASkewSplit.png>
+Package pdftex.def Info: ./assets/AASkewSplit.png  used on input line 317.
+(pdftex.def)             Requested size: 513.11745pt x 176.7797pt.
+ [11 <./assets/AATree.png> <./assets/AASkewSplit.png>]
+<./assets/InsertionAATree.png, id=75, 1963.335pt x 1128.215pt>
+File: ./assets/InsertionAATree.png Graphic file (type png)
+<use ./assets/InsertionAATree.png>
+Package pdftex.def Info: ./assets/InsertionAATree.png  used on input line 350.
+(pdftex.def)             Requested size: 513.11745pt x 294.86113pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 350--357
+
+ []
+
+[12 <./assets/InsertionAATree.png>] [13] (./Notes.aux) ) 
 Here is how much of TeX's memory you used:
- 4389 strings out of 492616
- 59703 string characters out of 6129482
+ 4454 strings out of 492616
+ 60736 string characters out of 6129482
  368041 words of memory out of 5000000
- 8254 multiletter control sequences out of 15000+600000
+ 8314 multiletter control sequences out of 15000+600000
  9489 words of font info for 35 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,6n,40p,272b,1630s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
-.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pf
-b>
-Output written on Notes.pdf (10 pages, 839946 bytes).
+</usr/local/texlive/201
+9/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on Notes.pdf (13 pages, 1593911 bytes).
 PDF statistics:
- 100 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
+ 120 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

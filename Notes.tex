@@ -292,7 +292,76 @@
   \newpage
   \subsection{Red-Black Trees}
   Take AVL 3-node and create a 2-node combo by using d, C, E as the right subtree and b, A for left subtree \\
-  \indent Color created right subnode red and all other nodes black, creating a binary tree\\
-  
+  \includegraphics[width=\textwidth]{RBTree}
+  \indent Color created right subnode red and all other nodes black, creating a binary search tree\\
+  \indent null pointers are labeled black and if a node is red, then both its children are black \\
+  \indent Every path from a given node to any of its null descendants contains the same number of black nodes\\
+  \indent O(logn) height \\
+  \includegraphics[width=\textwidth]{2-3ToRBTree}
+  \indent Every 2-3 tree corresponds to a red-black tree but converse is not true \\
+  \indent \indent Issue with RB tree doesn't distinguish between L and R children so 3-node can be encoded in 2 different ways\\
+  \indent \indent Also can't convert a node with 2 red children to 2-3 tree which ends up being a 4-node\\
+  \newpage
+  \subsection{AA Trees}
+  Simplified RB tree where red nodes can only appear as right children of black nodes allowing conversion between 2-3 tree and RB trees \\
+  \includegraphics[width=\textwidth]{AATree}
+  \indent Edge between red node and the black parent is called a red edge \\
+  \indent Implementation of AA trees also uses a sentinel node nil where every null pointer is replaced with a pointer to nil\\
+  \indent \indent In this case, nil.left == nil.right == nil so we don't have to keep doing null checks \\
+  \indent Implementation of AA doesn't store colors. Instead stores level of associated node in 2-3 tree \\
+  \indent \indent nil = level 0\\
+  \indent \indent If black, p.level = q.level (child) + 1\\
+  \indent \indent If red, then same level as parent. Now can easily test if node is read by comparing with parent level \\
+  Find method works exactly the same as it does for BST \\
+  Insertion and Deletion require skew(p) and split(p)\\
+  \includegraphics[width=\textwidth]{AASkewSplit}
+  \begin{lstlisting}
+    AANode skew(AANode p) {   
+      if (p.left.level == p.level) {  // red node to our left?
+        AANode q = p.left;            // do right rotation at p
+        p.left = q.right;
+        q.right = p;
+        return q;
+      }
+      else return p;
+    }
+    AANode split(AANode p) {
+      if (p.right.right.level == p.level) {   //right-right red chain?
+        AANode q = p.right;                   // do left rotation at p
+        p.right = q.left;
+        q.left = p;
+        q.level += 1;                         // promote q to higher level
+        return q;
+      }
+      else return p;
+    }
+  \indent skew(p) if p is black and has a red left child, rotate right \\
+  \indent split(p) if p is black and has 2 consecutive red right children, do a left rotation, promoting first red child to next level \\
+  Insertion: insert node like in BST except treat it as a red nodethen work back up tree restructuring as we go. 
+  \begin{lstlisting}
+    AANode insert(Key x, Value v, AANode p) {
+      if (p == nil) p = new AANode(x, v, 1, nil, nil)       //fell out so create new leaf
+      else if (x < p.key) p.left = insert(x, v, p.left);
+      else if (x > p.key) p .right = insert(x, v, p.right);
+      else throw DuplicateKeyException;
+      return split(skew(p));        //restructure (if not needed split and skew return unmodified tree)
+    }
+  \end{lstlisting}
+  \includegraphics[width=\textwidth]{InsertionAATree}
+  \indent If red node inserted as left child then perform skew(p) on parent\\
+  \indent If red node inserted as right child of red node, call split(p) on grandparent and then recurse up to fix any issues \\
+  Deletion: Replace target node with inorder successor then delete leaf and retrace search path to restructure tree \\
+  \indent use updateLevel(p) helper to update level of node p based on children \\
+  \indent \indent since every node has at least 1 black node, ideal level for any node is 1 + min of its children \\
+  \indent \indent if p is updated and right child is red then we need to update p.right.level = p.level\\ 
+  \begin{lstlisting}
+    AANode updateLevel(AANode p) {
+      int idealLevel = 1 + min(p.left.level, p.right.level);
+      if (p.level > idealLevel) {
+        p.level = idealLevel;
+        if(p.right.level > idealLevel) p.right.level = idealLevel;  //is right child a red node?
+      }
+    } 
+  \end{lstlisting}
 \end{document}
 
