@@ -335,8 +335,9 @@
       }
       else return p;
     }
-  \indent skew(p) if p is black and has a red left child, rotate right \\
-  \indent split(p) if p is black and has 2 consecutive red right children, do a left rotation, promoting first red child to next level \\
+  \end{lstlisting}
+  \indent \indent skew(p) if p is black and has a red left child, rotate right \\
+  \indent split(p) if p is black and has right-right chain, do a left rotation \& promote first red child to next level \\
   Insertion: insert node like in BST except treat it as a red nodethen work back up tree restructuring as we go. 
   \begin{lstlisting}
     AANode insert(Key x, Value v, AANode p) {
@@ -362,6 +363,42 @@
         if(p.right.level > idealLevel) p.right.level = idealLevel;  //is right child a red node?
       }
     } 
+  \end{lstlisting}
+  \indent use fixupAfterDelete(p) to make sure any red children are on the right \\
+  \begin{lstlisting}
+    AANode fixupAfterDelete(AANode p) {
+      p = updateLevel(p);
+      p = skew(p);
+      p.right = skew(p.right);
+      p.right.right = skew(p.right.right);
+      p = split(p);
+      p.right = split(p.right);
+      return p;
+    }
+  \end{lstlisting}
+  \indent May need to call up to 3 skew operations (p, p.right, p.right.right) and then 2 splits (p and its right-right grandchild) \\
+  \includegraphics[width=\textwidth]{DeletionAATree}
+  \begin{lstlisting}
+    AANode delete(Key x, AANode p) {
+      if (p == nil) throw KeyNotFoundException;
+      else {
+        if (x < p.key) p.left = delete(x, p.left);
+        else if (x > p.key) p.right = delete(x, p.right);
+        else {
+          if (p.left == nil && p.right == nil) return nil;
+          else if (p.left == nil) {           //no left child
+            AANode r = inOrderSuccessor(p);
+            p.copyContentsFrom(r);
+            p.right = delete(r.key, p.right);
+          } else {                            //no right child
+            AANode r = inOrderPrdecessor(p);
+            p.copyContentsFrom(r);
+            p.left = delete(r.key, p.left);
+          }
+        }
+        return fixupAfterDelete(p0:
+      }
+    }
   \end{lstlisting}
 \end{document}
 

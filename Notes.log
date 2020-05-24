@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  24 MAY 2020 11:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  24 MAY 2020 11:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -391,38 +391,48 @@ Package pdftex.def Info: ./assets/AASkewSplit.png  used on input line 317.
 <./assets/InsertionAATree.png, id=75, 1963.335pt x 1128.215pt>
 File: ./assets/InsertionAATree.png Graphic file (type png)
 <use ./assets/InsertionAATree.png>
-Package pdftex.def Info: ./assets/InsertionAATree.png  used on input line 350.
+Package pdftex.def Info: ./assets/InsertionAATree.png  used on input line 351.
 (pdftex.def)             Requested size: 513.11745pt x 294.86113pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 350--357
+Underfull \hbox (badness 10000) in paragraph at lines 351--358
 
  []
 
-[12 <./assets/InsertionAATree.png>] [13] (./Notes.aux) ) 
+[12 <./assets/InsertionAATree.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 367--368
+
+ []
+
+<./assets/DeletionAATree.png, id=80, 2150.0325pt x 1063.975pt>
+File: ./assets/DeletionAATree.png Graphic file (type png)
+<use ./assets/DeletionAATree.png>
+Package pdftex.def Info: ./assets/DeletionAATree.png  used on input line 380.
+(pdftex.def)             Requested size: 513.11745pt x 253.9143pt.
+[13 <./assets/DeletionAATree.png>] [14] (./Notes.aux) ) 
 Here is how much of TeX's memory you used:
- 4454 strings out of 492616
- 60736 string characters out of 6129482
+ 4431 strings out of 492616
+ 60626 string characters out of 6129482
  368041 words of memory out of 5000000
- 8314 multiletter control sequences out of 15000+600000
+ 8290 multiletter control sequences out of 15000+600000
  9489 words of font info for 35 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,6n,40p,272b,1630s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/201
-9/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on Notes.pdf (13 pages, 1593911 bytes).
+</usr/local/texlive/2019
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/font
+s/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on Notes.pdf (14 pages, 1843545 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 65 compressed objects within 1 object stream
+ 125 PDF objects out of 1000 (max. 8388607)
+ 67 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
