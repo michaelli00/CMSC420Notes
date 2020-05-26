@@ -6,3 +6,8 @@
 \contentsline {subsection}{\numberline {5.1}2-3 Trees}{9}% 
 \contentsline {subsection}{\numberline {5.2}Red-Black Trees}{10}% 
 \contentsline {subsection}{\numberline {5.3}AA Trees}{11}% 
+\contentsline {section}{\numberline {6}Treaps and Skip Lists}{14}% 
+\contentsline {subsection}{\numberline {6.1}Treaps}{14}% 
+\contentsline {subsection}{\numberline {6.2}Skip Lists}{14}% 
+\contentsline {section}{\numberline {7}Splay Trees}{16}% 
+\contentsline {section}{\numberline {8}B-Trees}{18}% 

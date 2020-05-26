@@ -3,6 +3,8 @@
 \setlength{\oddsidemargin}{6pt}
 \setlength{\textwidth}{440pt}
 \vspace{-8ex}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \usepackage{listings}
 \usepackage{amsmath}
 \usepackage{color}
@@ -400,5 +402,130 @@
       }
     }
   \end{lstlisting}
+  \section{Treaps and Skip Lists}
+  \subsection{Treaps}
+  Intution is that if keys are inserted into BST in random order, then height will be $\approx$ O(log(n))\\
+  Insertion: When a node is inserted, assign it a random priority (p.priority) then sort based on this priority\\
+  \indent Now we have to rotate the tree several times to balance it based on p.priority\\
+  \includegraphics[width=\textwidth]{TreapInsertion}
+  Deletion: 3 cases\\
+  \indent node is leaf just remove it\\
+  \indent node has 1 child then replace node with child \\
+  \indent node has 2 children then its priority to $\infty$ and apply rotations to sift down to leaf and remove\\
+  \includegraphics[width=\textwidth]{TreapDeletion}
+  \subsection{Skip Lists}
+  Intution is to skip multiple items at a time to speed up searching \\
+  Skip Lists made up of multiple levels that are built from \\
+  \indent Taking every other node in the linked list and extending it up to a new linked list with 1/2 as many nodes \\
+  \indent Repeat this extension with 1/2 as many terms until no more terms \\
+  \indent head and tail nodes are always lifted and tail has the key value $\infty$ \\
+  \indent proceess will repeat $\ceil[\big]{lg(n)}$ times \\ 
+  To find x, start at highest level of head then scan linearly at level i until we are about to jump to a key value $>$ x\\
+  \includegraphics[width=\textwidth]{SkipListSearch}
+  We can randomize the number of nodes per level by flipping a coin and only stopping at a level if tails occurs\\
+  \indent Now level k is expected to have about $\frac{n}{2^{k}}$ nodes meaning that the number of nodes at level $\ceil[\big]{lg(n)}$ is constant\\
+  Space Analysis: worst case every node has height log(n) so O(nlogn) total. Best each node has height 1 so O(n) total\\
+  \indent Expected case: all n nodes contribute to level 0, n/2 contribute to level 1, n/4 to level 2, etc. so\\
+  \indent \indent $\sum_{i=0}^{h-1}\frac{n}{2^{i}} = n(2 - \frac{1}{2^{h}} \leq 2n = O(n)$\\
+  Search: for $0 \leq i \leq O(logn)$, let $E(i)$ represent the expected number of nodes visited in the skip list at the top i levels of the skip list\\
+  Look at the path going backwards so it will either go up or stay on the current level and go left \\
+  Whenever we arrive at some node of level i, the probability that it contributes to the next higher level is p and 1 - p to stay on same level. Counting the current node we just visited (+1) we have\\
+  \indent $E(i) = 1 + pE(i-1) + (1-p)E(i) \rightarrow E(i) = \frac{1}{p} + E(i-1) = \frac{i}{p}$ and since i $\leq$ O(logn) then search is O(logn)\\
+  Insertion: search for x to find its immediate predecessors at each level then create node x and flip a coin until tails. Letting k denote the number of tosses made, height = min of k + 1 and height of list then link the k+1 lowest predecssors \\
+  Deletion: find the node and keep track of all predecessors at various level of list then unlink the target node at each level (like in standard linked list removal) \\
+  Implementation Notes: skip-list nodes have variable size, containing the key-value pair, variable-sized array of next pointers (p.next[i] points to the next node at level i). Also has 2 sentinel nodes (head and tail where tail.key is $\infty$ to stop search)\\
+  \newpage
+  \section{Splay Trees}
+  Self adjusting tree taht dynamically adjusts its structure according to a dynamically changing set of access probabilities\\
+  \indent nodes that are accessed more frequently are closer to the root \\
+  \indent Binary Search Tree that uses rotations to maintain structure but doesn't need to store balance information \\
+  \indent Whenever a deep node is accessed, the tree will restructure itself so tree is more balanced \\
+  \indent $\Omega(n)$ worst operation but amortized O(logn) \\
+  T.splay(x): searches for key x in a tree T and reorganizes T while rotating x up to the root. If x not found, use preorder predecessor or successor. \\
+  \indent simply rotating the target node up doesn't work because it can leave the tree skewed/unbalanced\\
+  \indent instead take 2 nodes at a time and rotate both \\
+  For node p let parent be q and grandparent be r then \\
+  \indent Zig-zig: if p and q are both right childnre or left children, apply rotation at r then q to bring p to the top\\
+  \indent Zig-zag: if p and q are left-right or right-left children, apply rotation to q then r to bring p to top \\
+  \indent Zig: if p is the child of the root, rotate root of T and make p the new root\\
+  \indent if p is the root of T, we are done\\
+  \includegraphics[width=\textwidth]{SplayTreeZig}
+  \indent Everytime zig-zig or zig-zag is called, the subtree is raised up 1 level so for a long path, these rotations will reduce its height by 1/2\\
+  Find: invoke T.splay(x) which transports x to the root. If root.val != x then throw an error\\
+  Insert(x, v): invoke T.splay(x). If root.key = x then let current root = y. Either \\
+  \indent y $<$ x then all keys in R subtree $>$ x so create a new root (x,v) and add y to L and add R to new root \\
+  \indent y $>$ x then all keys in L $<$ x so create a new root (x,v) and add x to R and add L to new root\\
+  \includegraphics[width=\textwidth]{SplayInsert}
+  Delete: invoke T.splay(x) then if root != x throw error. Else if L is empty return R or if R is empty return L. Otherwise let R' = R.splay(x). This will find the inorder successor y. Since y will have no left subtree (all values in R are $>$ x), make y the new root and link L\\
+  \includegraphics[width=\textwidth]{SplayDelete}
+  \newpage
+  \section{B-Trees}
+  J-ary multiway search trees where each node stores reference to j subtrees $T_{1}, T_{2}, ..., T_{j}$ and has j-1 keys $a_{1} < a_{2} < a_{j-1}$ such that each $T_{i}$ subtree stores nodes whos keys are $> a_{i-1}$ and $< a_{i}$\\ 
+  Achieves balance by constraining width of each node \\
+  For any int m $\geq$ 3, B-tree of order m is a multiway search tree if 
+  \indent root is leaf or has $2 \leq x \leq m$ children \\
+  \indent each node except root has between $\ceil[\Big]{\frac{m}{2}}$ and m children which can be null\\
+  \indent \indent node with j children has j-1 keys\\
+  \indent All leaves are on the same level of the tree\\
+  Height Analysis: as B-Trees grow wider, the height decreases\\
+  B-Tree of order m with n keys has height of at most $(lgn)/\gamma$ where $\gamma$ = lg(m/2)\\
+  Proof: assume m is even and let N(h) = number of nodes in skinniest possible order-m B tree of height h\\
+  \indent Root has $\geq$ 2 childnre that have $\geq$ m/2 children \\
+  \indent \indent therefore 2 nodes at depth 1\\
+  \indent \indent $2(m/2)$ nodes at depth 2\\
+  \indent \indent $2(m/2)^{2}$ nodes at depth 3\\
+  \indent \indent $2(m/2)^{k-1}$ nodes at depth k\\
+  \indent So $N(h) = \sum_{i=1}^{h}2(\frac{m}{2})^{i-1}$\\
+  \indent let c = m/2\\
+  \indent $N(h) = \frac{2(c^{h}-1)}{(c-1)} \approx \frac{2c^{h}}{c} = 2c^{h-1} = 2(\frac{m}{2})^{h-1}$\\
+  \indent Each node has $\geq \frac{m}{2}-1$ keys $\approx \frac{m}{2}$\\
+  \indent $n \geq N(h) \geq 2(\frac{m}{2})^{h} \rightarrow h \leq \frac{lgn}{lg\frac{m}{2}}$\\
+  Node Structure: since B-Tree nodes can hold a variable number of items, every node is allocated max possible size
+  \begin{lstlisting}
+    final int M = m;    \\order of B-tree
+    class BTreeNode {
+      int nChildren;
+      BTreeNode child[M];
+      Key key[M-1];
+      Value value[M-1]; 
+    }
+  \end{lstlisting}
+  Searching: When arriving at an interval node, search through keys\\
+  \indent if x is found then return the corresponding value\\
+  \indent Else determine index i such that $a_{i-1} < x < a_{i}$ note that $(a_{0} = -\infty, a_{j} = \infty)$\\
+  \indent Then recurse into subtree $T_{i}$\\
+  Insertion and Deletion require some restructuring methods (rotation, splitting, and merging)\\
+  Rotation: Node can have between $\ceil[\Big]{m/2}$ and $m$ children, and one less keys. Insertion and deletion might make a node have too many or too few nodes so we fix this imbalance by moving a child into or from one of its siblings, assuming the sibling isn't full\\
+  \includegraphics[width=\textwidth]{BTreeRotations}
+  Node Splitting: node has 1 too many children and key rotation is not available so split node into 2 nodes, one with $m' = \ceil[\Big]{m/2}$ children and the other with $m''= m + 1 - \ceil[\Big]{m/2}$ children\\
+  Since $(m' - 1) + (m'' - 1) = m - 2$, we have one extra key that is doesn't fit into L and R subchildren so it is promoted to parent and then handled up there\\
+  \includegraphics[width=\textwidth]{BTreeNodeSplitting}
+  Proof for Node Splitting:\\
+  If m is even then $\frac{m}{2} \leq m + 1 - \frac{m}{2} = \frac{m}{2} + 1 \leq m$\\
+  If m is odd then $\frac{m+1}{2} \leq m + 1 - \frac{m+1}{2} = \frac{m+1}{2} \leq m$\\
+  Node Merging: Node might have 1 too few children after deletion. If key rotation isn't available, then we know that the sibling must have the minimum number of children $(\ceil[\Big]{m/2})$. Now merge node with the sibling into a node with $m' = (\ceil[\Big]{m/2} - 1) + \ceil[\Big]{m/2} = 2\ceil[\Big]{m/2} - 1$ children\\
+  Note that $\ceil[\Big]{m/2} - 2 + \ceil[\Big]{m/2} = m - 2$ which is one too few so we demote the appropriate key from the parent's node to get desired number of keys\\
+  \includegraphics[width=\textwidth]{BtreeNodeMerge}
+  Lemma: For all $m \geq 2$, $\ceil[\Big]{m/2} \leq 2\ceil[\Big]{m/2} - 1 \leq m$\\
+  If m is even then $\frac{m}{2} \leq m - 1 \leq m$\\
+  if m is odd then $\frac{m+1}{2} \leq m \leq m$\\ \\
+  Insertion: creating nodes is an expensive operation so try to rotate whenever possible. Search for key x and if\\
+  \indent found thrown an exception\\
+  \indent leaf is not at full capacity (fewer than m-1 keys) then we insert key and done\\
+  \indent \indent may involve sliding around but can ignore the cost since m is constant\\
+  \indent otherwise node overflows and check if either sibling is less than full. If so then perform a rotation else perform node split. \\
+  \includegraphics[width=\textwidth]{BTreeInsertion}
+  Deletion: Search for the node to be deleted. Need to find replacement so take largest key in left child or smallest key in right child and move this key up to fill the hole\\
+  \indent if left node has $\geq \ceil[\Big]{m/2} - 1$ keys we are done\\
+  \indent else node will underflow so key rotate if possible else use node merge and recurse in parent\\
+  \includegraphics[width=\textwidth]{BTreeDeletion}
+  B+ Trees: internal nodes only store keys (not values)\\
+  Keys are used solely for locating leaf node containing actual data so it's not necessary that every key in internal node to correspond to a key-value pair\\
+  Each leaf node has a next-leaf pointer, which pointers to the next leaf in sorted order \\
+  Storing only in internal nodes save space and allows increased tree fan out $\rightarrow$ lowers height ofr tree\\
+  Internal nodes are an index to locate actual data which resides at the leaf level\\
+  Now internal nodes with keys $a_{1}, ..., a_{j-1}$, subtree $T_{j}$ has keys x such that $a_{i-1} < x \leq a_{i}$\\
+  Next leaf enables efficient range reporting quries where we can list keys in range $[x_{min}, x_{max}]$\\
+  \indent so we now find the leaf node $x_{min}$ and follow next leaf links until we reach $x_{max}$\\
 \end{document}
 
