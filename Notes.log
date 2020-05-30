@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  25 MAY 2020 23:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  30 MAY 2020 17:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -117,25 +117,34 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_above_shortintertext_sep=\dimen119
 \l_MT_below_shortintertext_sep=\dimen120
 )
+(/usr/local/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/02/04 v3.8 Customized lists
+\labelindent=\skip50
+\enit@outerparindent=\dimen121
+\enit@toks=\toks20
+\enit@inbox=\box29
+\enit@count@id=\count104
+\enitdp@description=\count105
+)
 (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count104
-\lst@gtempboxa=\box29
-\lst@token=\toks20
-\lst@length=\count105
-\lst@currlwidth=\dimen121
-\lst@column=\count106
-\lst@pos=\count107
-\lst@lostspace=\dimen122
-\lst@width=\dimen123
-\lst@newlines=\count108
-\lst@lineno=\count109
-\lst@maxwidth=\dimen124
+\lst@mode=\count106
+\lst@gtempboxa=\box30
+\lst@token=\toks21
+\lst@length=\count107
+\lst@currlwidth=\dimen122
+\lst@column=\count108
+\lst@pos=\count109
+\lst@lostspace=\dimen123
+\lst@width=\dimen124
+\lst@newlines=\count110
+\lst@lineno=\count111
+\lst@maxwidth=\dimen125
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
-\c@lstnumber=\count110
-\lst@skipnumbers=\count111
-\lst@framebox=\box30
+\c@lstnumber=\count112
+\lst@skipnumbers=\count113
+\lst@framebox=\box31
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2019/02/27 1.8b listings configuration
@@ -167,8 +176,8 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 )
-\Gin@req@height=\dimen125
-\Gin@req@width=\dimen126
+\Gin@req@height=\dimen126
+\Gin@req@width=\dimen127
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2018/04/16 v5.8 Page Geometry
@@ -183,18 +192,18 @@ Package ifvtex Info: VTeX not detected.
 (/usr/local/texlive/2019/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count112
-\Gm@cntv=\count113
-\c@Gm@tempcnt=\count114
-\Gm@bindingoffset=\dimen127
-\Gm@wd@mp=\dimen128
-\Gm@odd@mp=\dimen129
-\Gm@even@mp=\dimen130
-\Gm@layoutwidth=\dimen131
-\Gm@layoutheight=\dimen132
-\Gm@layouthoffset=\dimen133
-\Gm@layoutvoffset=\dimen134
-\Gm@dimlist=\toks21
+\Gm@cnth=\count114
+\Gm@cntv=\count115
+\c@Gm@tempcnt=\count116
+\Gm@bindingoffset=\dimen128
+\Gm@wd@mp=\dimen129
+\Gm@odd@mp=\dimen130
+\Gm@even@mp=\dimen131
+\Gm@layoutwidth=\dimen132
+\Gm@layoutheight=\dimen133
+\Gm@layouthoffset=\dimen134
+\Gm@layoutvoffset=\dimen135
+\Gm@dimlist=\toks22
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/02/27 1.8b listings language file
@@ -202,33 +211,33 @@ File: lstlang1.sty 2019/02/27 1.8b listings language file
 (./Notes.aux)
 \openout1 = `Notes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-\c@lstlisting=\count115
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+\c@lstlisting=\count117
 
 (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count116
-\scratchdimen=\dimen135
-\scratchbox=\box31
-\nofMPsegments=\count117
-\nofMParguments=\count118
-\everyMPshowfont=\toks22
-\MPscratchCnt=\count119
-\MPscratchDim=\dimen136
-\MPnumerator=\count120
-\makeMPintoPDFobject=\count121
-\everyMPtoPDFconversion=\toks23
+\scratchcounter=\count118
+\scratchdimen=\dimen136
+\scratchbox=\box32
+\nofMPsegments=\count119
+\nofMParguments=\count120
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count121
+\MPscratchDim=\dimen137
+\MPnumerator=\count122
+\makeMPintoPDFobject=\count123
+\everyMPtoPDFconversion=\toks24
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -317,236 +326,419 @@ e
  [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 54--57
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--57
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 58.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 58.
 <./assets/Fig_2.png, id=11, 1176.395pt x 594.22pt>
 File: ./assets/Fig_2.png Graphic file (type png)
 <use ./assets/Fig_2.png>
-Package pdftex.def Info: ./assets/Fig_2.png  used on input line 58.
+Package pdftex.def Info: ./assets/Fig_2.png  used on input line 68.
 (pdftex.def)             Requested size: 513.11745pt x 259.18178pt.
+ [2 <./assets/Fig_2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 71--74
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--61
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--74
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--61
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
 
  []
 
-[2 <./assets/Fig_2.png>]
-<./assets/Fig_3.png, id=18, 1192.455pt x 477.785pt>
+<./assets/Fig_3.png, id=19, 1192.455pt x 477.785pt>
 File: ./assets/Fig_3.png Graphic file (type png)
 <use ./assets/Fig_3.png>
-Package pdftex.def Info: ./assets/Fig_3.png  used on input line 68.
+Package pdftex.def Info: ./assets/Fig_3.png  used on input line 79.
 (pdftex.def)             Requested size: 513.11745pt x 205.58934pt.
-<./assets/Fig_4.png, id=19, 1184.425pt x 428.60126pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--82
+
+ []
+
+<./assets/Fig_4.png, id=20, 1184.425pt x 428.60126pt>
 File: ./assets/Fig_4.png Graphic file (type png)
 <use ./assets/Fig_4.png>
-Package pdftex.def Info: ./assets/Fig_4.png  used on input line 72.
+Package pdftex.def Info: ./assets/Fig_4.png  used on input line 86.
 (pdftex.def)             Requested size: 513.11745pt x 185.68141pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 63--73
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 63--73
+[3 <./assets/Fig_3.png> <./assets/Fig_4.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 96--102
 
  []
 
-<./assets/Fig_6.png, id=20, 971.63pt x 433.62pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
+
+ []
+
+<./assets/Fig_6.png, id=26, 971.63pt x 433.62pt>
 File: ./assets/Fig_6.png Graphic file (type png)
 <use ./assets/Fig_6.png>
-Package pdftex.def Info: ./assets/Fig_6.png  used on input line 96.
+Package pdftex.def Info: ./assets/Fig_6.png  used on input line 117.
 (pdftex.def)             Requested size: 513.11745pt x 228.99043pt.
-[3 <./assets/Fig_3.png> <./assets/Fig_4.png>] [4 <./assets/Fig_6.png>] [5]
-<./assets/FibTreeMinNodes.png, id=37, 1118.1775pt x 411.5375pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
+
+ []
+
+[4 <./assets/Fig_6.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 215--217
+
+ []
+
+[6]
+<./assets/FibTreeMinNodes.png, id=41, 1118.1775pt x 411.5375pt>
 File: ./assets/FibTreeMinNodes.png Graphic file (type png)
 <use ./assets/FibTreeMinNodes.png>
-Package pdftex.def Info: ./assets/FibTreeMinNodes.png  used on input line 197.
+Package pdftex.def Info: ./assets/FibTreeMinNodes.png  used on input line 236.
 (pdftex.def)             Requested size: 513.11745pt x 188.85742pt.
-
-[6 <./assets/FibTreeMinNodes.png>]
-<./assets/FibTreeRotation.png, id=43, 2196.205pt x 981.6675pt>
+<./assets/FibTreeRotation.png, id=42, 2196.205pt x 981.6675pt>
 File: ./assets/FibTreeRotation.png Graphic file (type png)
 <use ./assets/FibTreeRotation.png>
-Package pdftex.def Info: ./assets/FibTreeRotation.png  used on input line 213.
+Package pdftex.def Info: ./assets/FibTreeRotation.png  used on input line 252.
 (pdftex.def)             Requested size: 513.11745pt x 229.34378pt.
-<./assets/FibTreeDoubleRotation.png, id=44, 2250.4075pt x 1098.1025pt>
+<./assets/FibTreeDoubleRotation.png, id=43, 2250.4075pt x 1098.1025pt>
 File: ./assets/FibTreeDoubleRotation.png Graphic file (type png)
 <use ./assets/FibTreeDoubleRotation.png>
 Package pdftex.def Info: ./assets/FibTreeDoubleRotation.png  used on input line
- 215.
+ 254.
 (pdftex.def)             Requested size: 513.11745pt x 250.38002pt.
- [7 <./assets/FibTreeRotation.png> <./assets/FibTreeDoubleRotation.png>] [8]
-<./assets/2-3Tree.png, id=54, 2083.785pt x 796.9775pt>
+ [7 <./assets/FibTreeMinNodes.png>] [8 <./assets/FibTreeRotation.png> <./assets
+/FibTreeDoubleRotation.png>] [9]
+<./assets/2-3Tree.png, id=57, 2083.785pt x 796.9775pt>
 File: ./assets/2-3Tree.png Graphic file (type png)
 <use ./assets/2-3Tree.png>
-Package pdftex.def Info: ./assets/2-3Tree.png  used on input line 274.
+Package pdftex.def Info: ./assets/2-3Tree.png  used on input line 316.
 (pdftex.def)             Requested size: 513.11745pt x 196.2523pt.
-<./assets/2-3TreeInsert.png, id=55, 2559.5625pt x 778.91pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 323--326
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 323--326
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 328--329
+
+ []
+
+<./assets/2-3TreeInsert.png, id=58, 2559.5625pt x 778.91pt>
 File: ./assets/2-3TreeInsert.png Graphic file (type png)
 <use ./assets/2-3TreeInsert.png>
-Package pdftex.def Info: ./assets/2-3TreeInsert.png  used on input line 287.
+Package pdftex.def Info: ./assets/2-3TreeInsert.png  used on input line 330.
 (pdftex.def)             Requested size: 513.11745pt x 156.14767pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 272--294
-
- []
-
-[9 <./assets/2-3Tree.png> <./assets/2-3TreeInsert.png>]
-<./assets/RBTree.png, id=61, 2272.49pt x 831.105pt>
+<./assets/RBTree.png, id=59, 2272.49pt x 831.105pt>
 File: ./assets/RBTree.png Graphic file (type png)
 <use ./assets/RBTree.png>
-Package pdftex.def Info: ./assets/RBTree.png  used on input line 297.
+Package pdftex.def Info: ./assets/RBTree.png  used on input line 342.
 (pdftex.def)             Requested size: 513.11745pt x 187.66267pt.
-<./assets/2-3ToRBTree.png, id=62, 1941.2525pt x 505.89pt>
+<./assets/2-3ToRBTree.png, id=60, 1941.2525pt x 505.89pt>
 File: ./assets/2-3ToRBTree.png Graphic file (type png)
 <use ./assets/2-3ToRBTree.png>
-Package pdftex.def Info: ./assets/2-3ToRBTree.png  used on input line 302.
+Package pdftex.def Info: ./assets/2-3ToRBTree.png  used on input line 347.
 (pdftex.def)             Requested size: 513.11745pt x 133.72055pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 296--306
-
- []
-
-[10 <./assets/RBTree.png> <./assets/2-3ToRBTree.png>]
-<./assets/AATree.png, id=68, 2310.6325pt x 869.2475pt>
+[10 <./assets/2-3Tree.png> <./assets/2-3TreeInsert.png>] [11 <./assets/RBTree.p
+ng> <./assets/2-3ToRBTree.png>]
+<./assets/AATree.png, id=71, 2310.6325pt x 869.2475pt>
 File: ./assets/AATree.png Graphic file (type png)
 <use ./assets/AATree.png>
-Package pdftex.def Info: ./assets/AATree.png  used on input line 309.
+Package pdftex.def Info: ./assets/AATree.png  used on input line 367.
 (pdftex.def)             Requested size: 513.11745pt x 193.02562pt.
-<./assets/AASkewSplit.png, id=69, 2511.3825pt x 865.2325pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 367--370
+
+ []
+
+<./assets/AASkewSplit.png, id=72, 2511.3825pt x 865.2325pt>
 File: ./assets/AASkewSplit.png Graphic file (type png)
 <use ./assets/AASkewSplit.png>
-Package pdftex.def Info: ./assets/AASkewSplit.png  used on input line 319.
+Package pdftex.def Info: ./assets/AASkewSplit.png  used on input line 395.
 (pdftex.def)             Requested size: 513.11745pt x 176.7797pt.
- [11 <./assets/AATree.png> <./assets/AASkewSplit.png>]
-<./assets/InsertionAATree.png, id=75, 1963.335pt x 1128.215pt>
+[12 <./assets/AATree.png>]
+<./assets/InsertionAATree.png, id=77, 1963.335pt x 1128.215pt>
 File: ./assets/InsertionAATree.png Graphic file (type png)
 <use ./assets/InsertionAATree.png>
-Package pdftex.def Info: ./assets/InsertionAATree.png  used on input line 353.
+Package pdftex.def Info: ./assets/InsertionAATree.png  used on input line 410.
 (pdftex.def)             Requested size: 513.11745pt x 294.86113pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 353--360
-
- []
-
-[12 <./assets/InsertionAATree.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
-
- []
-
-<./assets/DeletionAATree.png, id=80, 2150.0325pt x 1063.975pt>
+ [13 <./assets/AASkewSplit.png> <./assets/InsertionAATree.png>]
+<./assets/DeletionAATree.png, id=84, 2150.0325pt x 1063.975pt>
 File: ./assets/DeletionAATree.png Graphic file (type png)
 <use ./assets/DeletionAATree.png>
-Package pdftex.def Info: ./assets/DeletionAATree.png  used on input line 382.
+Package pdftex.def Info: ./assets/DeletionAATree.png  used on input line 443.
 (pdftex.def)             Requested size: 513.11745pt x 253.9143pt.
-[13 <./assets/DeletionAATree.png>]
-<./assets/TreapInsertion.png, id=86, 2352.79pt x 722.7pt>
+ [14 <./assets/DeletionAATree.png>] [15]
+<./assets/TreapInsertion.png, id=92, 2352.79pt x 722.7pt>
 File: ./assets/TreapInsertion.png Graphic file (type png)
 <use ./assets/TreapInsertion.png>
-Package pdftex.def Info: ./assets/TreapInsertion.png  used on input line 410.
+Package pdftex.def Info: ./assets/TreapInsertion.png  used on input line 472.
 (pdftex.def)             Requested size: 513.11745pt x 157.60503pt.
-<./assets/TreapDeletion.png, id=87, 2346.7675pt x 883.3pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 470--474
+
+ []
+
+<./assets/TreapDeletion.png, id=93, 2346.7675pt x 883.3pt>
 File: ./assets/TreapDeletion.png Graphic file (type png)
 <use ./assets/TreapDeletion.png>
-Package pdftex.def Info: ./assets/TreapDeletion.png  used on input line 415.
+Package pdftex.def Info: ./assets/TreapDeletion.png  used on input line 479.
 (pdftex.def)             Requested size: 513.11745pt x 193.12704pt.
-<./assets/SkipListSearch.png, id=88, 2298.5875pt x 762.85pt>
+[16 <./assets/TreapInsertion.png> <./assets/TreapDeletion.png>]
+<./assets/SkipListSearch.png, id=99, 2298.5875pt x 762.85pt>
 File: ./assets/SkipListSearch.png Graphic file (type png)
 <use ./assets/SkipListSearch.png>
-Package pdftex.def Info: ./assets/SkipListSearch.png  used on input line 424.
+Package pdftex.def Info: ./assets/SkipListSearch.png  used on input line 491.
 (pdftex.def)             Requested size: 513.11745pt x 170.28358pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 417--437
+Underfull \hbox (badness 10000) in paragraph at lines 490--504
 
  []
 
-[14 <./assets/TreapInsertion.png> <./assets/TreapDeletion.png>] [15 <./assets/S
-kipListSearch.png>]
-<./assets/SplayTreeZig.png, id=100, 2358.8125pt x 1025.8325pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 490--504
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 490--504
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 490--504
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 490--504
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 490--504
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 490--504
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 490--504
+
+ []
+
+[17 <./assets/SkipListSearch.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 511--512
+
+ []
+
+<./assets/SplayTreeZig.png, id=106, 2358.8125pt x 1025.8325pt>
 File: ./assets/SplayTreeZig.png Graphic file (type png)
 <use ./assets/SplayTreeZig.png>
-Package pdftex.def Info: ./assets/SplayTreeZig.png  used on input line 452.
+Package pdftex.def Info: ./assets/SplayTreeZig.png  used on input line 525.
 (pdftex.def)             Requested size: 513.11745pt x 223.14807pt.
-<./assets/SplayInsert.png, id=101, 1877.0125pt x 871.255pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 525--529
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 525--529
+
+ []
+
+<./assets/SplayInsert.png, id=107, 1877.0125pt x 871.255pt>
 File: ./assets/SplayInsert.png Graphic file (type png)
 <use ./assets/SplayInsert.png>
-Package pdftex.def Info: ./assets/SplayInsert.png  used on input line 458.
+Package pdftex.def Info: ./assets/SplayInsert.png  used on input line 533.
 (pdftex.def)             Requested size: 513.11745pt x 238.16673pt.
-<./assets/SplayDelete.png, id=102, 2252.415pt x 698.61pt>
+[18 <./assets/SplayTreeZig.png>]
+<./assets/SplayDelete.png, id=112, 2252.415pt x 698.61pt>
 File: ./assets/SplayDelete.png Graphic file (type png)
 <use ./assets/SplayDelete.png>
-Package pdftex.def Info: ./assets/SplayDelete.png  used on input line 460.
+Package pdftex.def Info: ./assets/SplayDelete.png  used on input line 540.
 (pdftex.def)             Requested size: 513.11745pt x 159.14189pt.
- [16 <./assets/SplayTreeZig.png>] [17 <./assets/SplayInsert.png> <./assets/Spla
-yDelete.png>]
-<./assets/BTreeRotations.png, id=112, 2250.4075pt x 889.3225pt>
+ [19 <./assets/SplayInsert.png> <./assets/SplayDelete.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 552--553
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 554--568
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 581--582
+
+ []
+
+<./assets/BTreeRotations.png, id=119, 2250.4075pt x 889.3225pt>
 File: ./assets/BTreeRotations.png Graphic file (type png)
 <use ./assets/BTreeRotations.png>
-Package pdftex.def Info: ./assets/BTreeRotations.png  used on input line 499.
+Package pdftex.def Info: ./assets/BTreeRotations.png  used on input line 585.
 (pdftex.def)             Requested size: 513.11745pt x 202.77577pt.
-<./assets/BTreeNodeSplitting.png, id=113, 2425.06pt x 859.21pt>
+<./assets/BTreeNodeSplitting.png, id=120, 2425.06pt x 859.21pt>
 File: ./assets/BTreeNodeSplitting.png Graphic file (type png)
 <use ./assets/BTreeNodeSplitting.png>
-Package pdftex.def Info: ./assets/BTreeNodeSplitting.png  used on input line 50
-2.
+Package pdftex.def Info: ./assets/BTreeNodeSplitting.png  used on input line 58
+8.
 (pdftex.def)             Requested size: 513.11745pt x 181.80292pt.
-<./assets/BtreeNodeMerge.png, id=114, 2123.935pt x 841.1425pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 583--590
+
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 592--593
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 594--598
+
+ []
+
+<./assets/BtreeNodeMerge.png, id=125, 2123.935pt x 841.1425pt>
 File: ./assets/BtreeNodeMerge.png Graphic file (type png)
 <use ./assets/BtreeNodeMerge.png>
-Package pdftex.def Info: ./assets/BtreeNodeMerge.png  used on input line 508.
+Package pdftex.def Info: ./assets/BtreeNodeMerge.png  used on input line 602.
 (pdftex.def)             Requested size: 513.11745pt x 203.21313pt.
-<./assets/BTreeInsertion.png, id=115, 2507.3675pt x 1501.61pt>
+[21 <./assets/BTreeRotations.png> <./assets/BTreeNodeSplitting.png>]
+<./assets/BTreeInsertion.png, id=131, 2507.3675pt x 1501.61pt>
 File: ./assets/BTreeInsertion.png Graphic file (type png)
 <use ./assets/BTreeInsertion.png>
-Package pdftex.def Info: ./assets/BTreeInsertion.png  used on input line 517.
+Package pdftex.def Info: ./assets/BTreeInsertion.png  used on input line 612.
 (pdftex.def)             Requested size: 513.11745pt x 307.28214pt.
-<./assets/BTreeDeletion.png, id=116, 2549.525pt x 1519.6775pt>
+ [22 <./assets/BtreeNodeMerge.png> <./assets/BTreeInsertion.png>]
+<./assets/BTreeDeletion.png, id=137, 2549.525pt x 1519.6775pt>
 File: ./assets/BTreeDeletion.png Graphic file (type png)
 <use ./assets/BTreeDeletion.png>
-Package pdftex.def Info: ./assets/BTreeDeletion.png  used on input line 521.
+Package pdftex.def Info: ./assets/BTreeDeletion.png  used on input line 619.
 (pdftex.def)             Requested size: 513.11745pt x 305.83156pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 493--530
+Underfull \hbox (badness 10000) in paragraph at lines 619--628
+
+ []
+
+[23 <./assets/BTreeDeletion.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 630--634
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 493--530
+Underfull \hbox (badness 10000) in paragraph at lines 639--640
 
  []
 
-[18] [19 <./assets/BTreeRotations.png> <./assets/BTreeNodeSplitting.png>]
-[20 <./assets/BtreeNodeMerge.png> <./assets/BTreeInsertion.png>] [21 <./assets/
-BTreeDeletion.png>] (./Notes.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 659--660
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--667
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 686--688
+
+ []
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 696--697
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 716--717
+
+ []
+
+<./assets/HashProbe.png, id=146, 2591.6825pt x 1363.0925pt>
+File: ./assets/HashProbe.png Graphic file (type png)
+<use ./assets/HashProbe.png>
+Package pdftex.def Info: ./assets/HashProbe.png  used on input line 723.
+(pdftex.def)             Requested size: 513.11745pt x 269.8682pt.
+<./assets/HashDeletion.png, id=147, 1937.2375pt x 923.45pt>
+File: ./assets/HashDeletion.png Graphic file (type png)
+<use ./assets/HashDeletion.png>
+Package pdftex.def Info: ./assets/HashDeletion.png  used on input line 726.
+(pdftex.def)             Requested size: 513.11745pt x 244.60036pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 722--728
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 722--728
+
+ []
+
+[25 <./assets/HashProbe.png>] [26 <./assets/HashDeletion.png>] (./Notes.aux) ) 
 Here is how much of TeX's memory you used:
- 5050 strings out of 492616
- 72209 string characters out of 6129482
- 380647 words of memory out of 5000000
- 8887 multiletter control sequences out of 15000+600000
- 9489 words of font info for 35 fonts, out of 8000000 for 9000
+ 5368 strings out of 492616
+ 77837 string characters out of 6129482
+ 383144 words of memory out of 5000000
+ 9195 multiletter control sequences out of 15000+600000
+ 9835 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,7n,40p,376b,1630s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2019/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmtt9.pfb>
-Output written on Notes.pdf (21 pages, 3347578 bytes).
+ 41i,7n,40p,425b,1618s stack positions out of 5000i,500n,10000p,200000b,80000s
+<
+/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></
+usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
+sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
+r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
+/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/l
+ocal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
+al/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
+/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
+exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/tex
+live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texliv
+e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
+019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
+19/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on Notes.pdf (26 pages, 3561974 bytes).
 PDF statistics:
- 181 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
+ 206 PDF objects out of 1000 (max. 8388607)
+ 105 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 131 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

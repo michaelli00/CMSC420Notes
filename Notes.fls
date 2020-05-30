@@ -26,6 +26,8 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsbsy.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsbsy.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsopn.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsopn.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
@@ -109,6 +111,8 @@ OUTPUT Notes.pdf
 INPUT /usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmtt9.tfm
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 INPUT ./assets/Fig_2.png
 INPUT ./assets/Fig_2.png
 INPUT ./assets/Fig_2.png
@@ -188,6 +192,13 @@ INPUT ./assets/BTreeInsertion.png
 INPUT ./assets/BTreeDeletion.png
 INPUT ./assets/BTreeDeletion.png
 INPUT ./assets/BTreeDeletion.png
+INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT ./assets/HashProbe.png
+INPUT ./assets/HashProbe.png
+INPUT ./assets/HashProbe.png
+INPUT ./assets/HashDeletion.png
+INPUT ./assets/HashDeletion.png
+INPUT ./assets/HashDeletion.png
 INPUT Notes.aux
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
@@ -202,4 +213,5 @@ INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
+INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb
