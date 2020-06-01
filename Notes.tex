@@ -725,5 +725,382 @@
   Deletition can be tricky since if we delete a node in the probe sequence, we cannot find the latter elements in that probe sequence. To resolve this, we create a special value called \textit{deleted} meaning that that slot is available for insertion but search method can continue searching the probe sequence until it finds the target element or reaches an empty cell \\
   \includegraphics[width=\textwidth]{HashDeletion}
   However, this solution makes can make the search path extremely long (even if the load factor is low). Another possible solution is to bring up the latter elements of the probe sequence up after deleting an element, but that makes deletion take longer.\\
+  \newpage
+  \section{Extended BST and Scapegoat Trees}
+  \subsection{Extended BST}
+  Key are in external nodes and internal nodes have splitters with the property that all external nodes $x \leq s$ on left and $x > s$ on right\\
+  \includegraphics[width=\textwidth]{ExtendedBST}
+  Find(Key x, Node P): initial call find(x, root) then 
+  \begin{itemize}[noitemsep]
+    \item if $x \leq p.key$ recurse on p.left
+    \item else recurse of p.right
+    \item once at external node u, test if $x = u.key$ \\
+  \end{itemize}
+  Insert(Key x, Value v, Node p): returns reference to root of updated subtree where x was inserted. Initial call insert(x, v, root) then
+  \begin{itemize}
+    \item if $x \leq p.key$ then recurse on p.left
+    \item else recurse on p.right
+    \item if empty tree craete external node with x and return it
+    \item otherwise create an external node with x and an internal to split x and p.key with the value min(x, p.key)
+  \end{itemize}
+  \includegraphics[width=\textwidth]{ExtendedBSTInsert}
+  \newpage
+  Delete(Key x, Node p): returns the root of the updated subtree from which x is deleted. Initial call delete(x, root) then
+  \begin{itemize}
+    \item traverse through left or right subtree accordingly
+    \item if x is root, delete the external node
+    \item otherwise delete the external node and its parent and return a reference to the other child of parent \\
+  \end{itemize}
+  \includegraphics[width=\textwidth]{ExtendedBSTDeletion}
+  Expected height is O(logn) so dictionary operations are expected to take O(logn)
+  \subsection{Scapegoat Tree}
+  Do not rely on rotations. Instead rebuild subtrees with poor balance. Nodes only contain key, value, left, and right and height will always be O(logn)\\
+  Scapegoat Tree nodes have to store 2 values: n (number of keys in the tree) and m (upper bound size of tree)
+  \begin{itemize}[noitemsep]
+    \item Whenever we insert a key, we increment both n and m
+    \item Whenever we delete a key, we only decrement n and do not change m
+    \item This means that $m \leq n$
+    \item Whenever $m > 2n$ that means number of deletes exceeds number of nodes in subtree so we rebuild it \\
+  \end{itemize}
+  Rebuild: Perform inorder traversal over all nodes in the scapegoat subtree rooted at p with k nodes and stored result in an array. Then recursively extract mins from the array. This will take O(k)
+  \begin{lstlisting}
+    BinaryNode buildSubtree(Key[] A, int i, int k) {
+      if (k == 0) return null
+      else {
+        int m = ceiling(k/2);
+        BinaryNode p = new BinaryNode(A[i+m]);
+        p.left = buildSubtree(A, i, m);
+        p.right = buildSubtree(A, i+m+1, k-m-1);
+        return p;
+      }
+    }
+  \end{lstlisting}
+  Find(Key x): Exactly the same as BST find. Height of tree will never exceed $\log_{3/2}n$ so run time is guaranteed to be O(logn)\\ \\
+  Deletion(Key x): Standard BST delete but when $m > 2n$ rebuild entire tree and set $m = n$\\ \\
+  \newpage
+  Insertion: Standard BST insert but need to 
+  \begin{itemize}[noitemsep]
+    \item monitor the depth of the inserted node. If depth $> \log_{3/2}m$ that means one of the nodes in its search path is unbalanced
+    \item Traverse up through search path and if at any point $\frac{size(u.child)}{size(u)} > \frac{2}{3}$ then we rebuild u
+    \item Intuition is that this subtree has twice as many nodes as siblings so we should trigger a rebuild\\
+  \end{itemize}
+  \includegraphics[width=\textwidth]{ScapegoatInsertion}
+  Proof that if the depth of a node p is $> log_{3/2}n$ then p has an ancestor (possibly p itself) that is a scapegoat candidate
+  \begin{itemize}[noitemsep]
+    \item Proof by contradiction: assume that all nodes in the path have $size(u.child) \leq \frac{2}{3} size(u)$
+    \item since the root has n nodes, we have $size(p) \geq (\frac{2}{3}^{k})n$ for the inserted node p
+    \item since size(p) $\geq 1$ we have $1 \geq (\frac{2}{3}^{k})n \rightarrow k \leq log_{3/2}n$ which is a contradiction since p's depth $ > log_{3/2}n$ \\ 
+  \end{itemize}
+  Calculating size(u): we need to find the size of both of u's children (u' and u'') so now size(u) = 1 + u' + u''. However, cost of counting process can be accounted for in the rebuilding process (we have to count these nodes anyways)\\
+  Alternate idea of counting: store size value in nodes so that
+  \begin{center}
+    size(u) = (u == null ? 0 : size(u.left) + size(u.right));
+  \end{center}
+  Height can also be updated with this idea with
+\begin{center}
+  height(u) = (u == null ? 0 : 1 + max(height(u.left), height(u.right)))
+  \end{center}
+  \newpage
+  \section{Geometric Data Structures}
+  Goal is to store large datasets of geometric objects(points, lines, shapes) in order to answer queries on them. These queries don't focus on exact matches and instead focus on "close to", "contained with", or "overlapping with"\\ \\
+  Nearest Neighbor Search: store set of points so giveen a query point q it is possible to find the closest point of the set to q\\
+  Range Searching: store set of points so that given a query region R (e.g. circle) it is possible to count all points of set that are in R\\
+  Point Location: store subdivision of space into disjoint regions so that given a query point q, it is possible to determine which region has q efficiently\\
+  Intersection Searching: store collection of geometric objects so that given a query of objects R of the same type, report all objects in set that intersect with R\\
+  Ray shooting: store collection of objects so that given an query ray, ran determine whether ray hits any object in set, and which it hits first\\
+  \includegraphics[width=\textwidth]{GeometricQueries}
+  Point Representation: Can represent as 2d array with n points of d dimension
+  \begin{center}
+    float[][] p = new float[n][d]
+  \end{center}
+  Can also represent using a Point class
+  \begin{lstlisting}
+    public class Point {
+      private float[] coord;    // coordinate storage
+      public Point(int dim) { ... } // constructor
+
+      public int getDim {return coord.length} //dimension of point
+      public float get(int i) {return coord[i]}
+
+      public boolean equals(Point p) { ... }
+      public float distanceTo(Point p) { ... }
+    }
+  \end{lstlisting}
+  \newpage
+  \noindent Point quadtree: Generalizing for a 2d coordinate plane, each node has 4 children (NW, NE, SW, SE). Traverse through tree based on coordinate x and y comparison. This creates rectangle regions called cells that can be recursively split. Can be extended to generalize points with d dimensions using $2^{d}$ child nodes but that takes up a lot of space\\
+  \includegraphics[width=\textwidth]{PointQuadtree}
+  Point kd-trees: represent multi-dimensional points with using a binary tree. Whenever a new point is inserted into a node, we split the cell by a splitting line (0 to d-1). Cutting dimension is chosen by alternating among possible axes at each new level of the tree. 
+  \begin{lstlisting}
+    class KDNode {
+      Point point;    // splitting point
+      int cutDim;     // cutting dimension
+      KDNode left;
+      KDNode right;
+
+      KDNode(Point point, int cutDim) {
+        this.point = point;
+        this.cutDim = cutDim;
+        left = right = null;
+      }
+
+      boolean inLeftSubTree(Point x) {  // is in left subtree
+        return x[cutDim] < point[cutDim]
+      }
+    }
+  \end{lstlisting}
+  \includegraphics[width=\textwidth]{PointKDTree}
+  Insertion into kd-tree: Same as BST. When we create a node containing the point, we assign its cutting dimension. Initial call root = insert(x, root, 0).
+  \begin{lstlisting}
+    KDNode insert(Point x, KDNode p, int cutDim) {
+      if (p == null) p = new KDNode(x, cutDim);
+      else if (p.point.equals(x)) throw Exception("duplicate point");
+      else if (p.inLeftSubtree(x)) p.left = insert(x, p.left, (p.getDim + 1) \% x.getDim());
+      else p.right = insert(x, p.right, (p.cutDim + 1) \% x.getDim());
+      return p;
+    }
+  \end{lstlisting}
+  \includegraphics[width=\textwidth]{KDInsertion}
+  \newpage
+  Deletion in kd-tree: Issue with finding a replacement point since each adjacent level of tree has different cutDim value. Need to use an auxiliary meethod findMin()\\
+  findMin(p, cutDim): if the node we are testing has the same cutDim value, then we recurse on left side. Otherwise we have to use another auxiliary method minAlongDim() which returns whicever point p1 or p2 is the smallest among coordinate cuttDim.
+  \begin{lstlisting}
+    Point findMin(KDNode p, int i) {
+      if (p == null) return null;
+      if (p.cutDim == i) {
+        if (p.left == null) return p.point;
+        else return findMin(p.left, i);
+      } else {
+        Point q = minAlongDim(p.point, findMin(p.left, i), i);
+        return minAlongDim(q, findMin(p.right, i), i);
+      }
+    }
+
+    Point minAlongDim(Point p1, Point p2, int i) {
+      if (p2 == null || p1[i] <= p2[i]) return p1;
+      else return p2;
+    }
+  \end{lstlisting}
+  \includegraphics[width=\textwidth]{KDTreeFindMin}
+  \newpage
+  Another issue of deletion for kd-tree is that if the deleted node has a single child, we can't just bring that child subtree up since it has a different cutDim parity. Solution is to use findMin() to get the smallest x-coordinate or smallest y-coordinate in the right subtree. If the right subtree is empty then we find the min on the left subtree and and move the left subtree to the right subtree, setting the left-child pointer to null. Issue with finding the max on the left subtree is that if another point has the same coordinate value, it messes up the invariant (left subtree has points $<$ and right subtree has points $\geq$)
+  \begin{lstlisting}
+    KDNode delete(Point x, KDNode p) {
+      if (p == null) throw Eception("point DNE");
+      else if (p.point.equals(x)) {
+        if (p.right != null) {
+          p.point = findMin(p.right, p.cutDim);
+          p.right = delete(p.point, p.right)
+        } else if (p.left != null) {
+          p.point = findMin(p.left, p.cutDim);
+          p.right = delete(p.point, p.left);
+          p.left = null;
+        } else if (p.inLeftSubTree(x)) p.left = delete(x, p.left);
+        else p.right = delete(x, p.right);
+        return p;
+      }
+    }
+  \end{lstlisting}
+  \includegraphics[width=\textwidth]{KDTreeDeletion}
+  \newpage
+  \noindent Analysis: Storage O(n). We treat the number of dimensions d as a constant so O(dn) = O(n)\\
+  Height is O(logn). Since we chose replacement nodes in a biased way height can mutate to be $O(\sqrt{n})$
+  We can build a kd-tree by choosing the splitting point to be the median according to x-coordinates. Then we split each partition using their medians according to y-coordinates. Keep recursing until done and height will be O(logn). Building takes O(nlogn)\\ \\
+  Range Queries: find how many points lie in a given region R. Use a kd-tree to store points. We will need a class for storing multi-dimensional rectangles which consists 2 points (low and high). A point q lies within the rectangle if $low[i] \leq q[i] \leq high[i]$.\\
+  Notable methods:\\ 
+  boolean contains(Point q): returns true iff point q is contained within this rectangle\\
+  boolean contains(Rectangle c): returns true iff this rectangle contains rectangle c. Have to test containment on all intervals defining each of the rectangles' sides:
+  \begin{center}
+    $[c.low[i],c.high[i]] \in [low[i], high[i]]$, for all $0 \leq i \leq d - 1$
+  \end{center}
+  boolean isDisjointFrom(Rectangle c): returns true iff rectangle c is disjoint from this rectangle. Have to test whether any of the defining intervals are disjoint
+  \begin{center}
+    $r.high[i] < c.low[i] or r.low[i] > c.high[i]$, for any $0 \leq i \leq d-1$
+  \end{center}
+  float distanceTo(Point q): returns minimum Euclidean distance from q to any point on rectangle. Computed by computing distance from coordinate q[i] to rectangle's ith defining interval
+  \begin{center}
+    $\sqrt{\sum_{i=0}^{d-1}(distance(q[i], [low[i], high[i]]))^{2}}$
+  \end{center}
+  \includegraphics[width=\textwidth]{RangeQueriesMethods}
+  \newpage
+  Rectangle leftPart(int cd, Point s): Given a rectangle r and a splitting point s, we want to cut the rectangle into two sub-rectangles by a line that passes through the splitting point. leftPart returns a rectangle whose low point is the same as r.low and whose high point is the same as r.high, except that the cd-th coordinate is set to s[cd].
+  \includegraphics[width=\textwidth]{RangeQueriesLeftPart}
+  Answering Range Query: assume that each node p has a member p.size indicating the number of points lying within the tree. This can be easily updated as points are inserted and deleted. \\
+  The rangeCount(r, p, cell) function operates recursively, returning a count of the number of points that lie in range r. Initial call is rangeCount(r, root, boundingBox) where boundingBox bounds the entire kd-tree. If the 
+  \begin{itemize}[noitemsep]
+    \item if we fall out of tree there is nothing to count
+    \item if the current node's cell is disjoint from the query range, return 0
+    \item if query range completely contains cell, return p.size
+    \item if the range partially overlaps the cell, apply function recursively to each of our two children
+  \end{itemize}
+  \includegraphics[width=\textwidth]{RangeCount}
+  \newpage
+  \begin{lstlisting}
+    int rangeCount(Rectangle r, KDNode p, Rectangle cell) {
+      if (p == null) return 0;
+      else if (r.isDisjointFrom(cell)) return 0;
+      else if (r.contains(cell)) return p.size;
+      else {
+        int count = 0;
+        if (r.contains(p.point)) count++;
+        count += rangeCount(r, p.left, cell.leftPart(p.cutDim, p.point));
+        count += rangeCount(r, p.right, cell.rightPart(p.cutDim, p.point));
+        return count;
+      }
+    }
+  \end{lstlisting}
+  \includegraphics[width=\textwidth]{RangeSearchExample}
+  Range Queries can be answered in $O(\sqrt{n})$ time \\
+  A node is processed (both children visited) iff the call overlaps the range without being contained within the range (stabbed by the query). To bound total number of nodes processed in search, we count the total number of nodes whose cells are stabbed by the query rectangle. \\
+  Given any balanced kd-tree with n points, any vertical or horizontal line stabs $O(\sqrt{n})$ cells of the tree. \\
+  Since the tree is balanced, its height is O(logn) $\approx$ lgn\\
+  Consider only stabbing using vertical or horizontal lines instead of rectangles. When processing a node, the line will stab one of the two children. This means when alternating between x and y, at most two of the possible four grandchildren of each node is stabbed.\\
+  Since we have an exponentially increasing number, total sum is dominated by the last term
+  \begin{center}
+    $2^{h/2} \approx 2^{(lgn)/2} = \sqrt{n}$
+  \end{center}
+  For the rectangle case, there are 4 sides to the rectangle so $O(4\sqrt{n})$\\
+  \includegraphics[width=\textwidth]{RangeQueryProof}
+  Nearest-Neighbor Queries: given a set of points P storedi n a kd-tree and a query point q, return the point of P closest to q. Assume that distances are measured using Euclidea distances.
+  \begin{center}
+    $dist(p,q) = \sqrt{(p_{1}-q_{1})^{2} + ... + (p_{d}-q_{d})^{2}}$
+  \end{center}
+  May need to visit every leaf that overlaps with the range. However, number of nodes overlapping the range is usually much smaller than the total number of nodes in the tree. \\
+  \includegraphics[width=\textwidth]{NearestNeighborExample}
+  Another approach would be to find the leaf node of the kd-tree that contains q and then search this and its neighboring cells in the kd-tree. However, there might be an issue that the nearest neighbor may actually be very far away. 
+  Three things to consider for range and nearest neighbor processing:
+  \begin{itemize}[noitemsep]
+    \item Partial results: store the intermediate results of query and update results as query proceeds
+    \item Traversal order: visit the subtree first that is more likely to be relevant
+    \item Pruning: Don't visit any subtree that is irrelevant
+  \end{itemize}
+  How Nearest-neighbor Code works:
+  \begin{itemize}[noitemsep]
+    \item If p is null so just return bestDist
+    \item Compute the distance from p.point to q, and update bestDist as necessary
+    \item either recurse of leftPart or rightPart accordingly
+  \end{itemize}
+  \newpage
+  \begin{lstlisting}
+    float nearNeighbor(Point q, KDNode p, Rectangle cell, float bestDist) {
+      if (p != null) {
+        float thisDist = q.distanceTo(p.point);
+        bestDist = Math.min(this.Dist, bestDist);
+
+        int cd = p.cutDim;
+        Rectangle leftCell = cell.leftPart(cd, p.point);
+        Rectangle rightCell = cell.rightPart(cd, p.point);
+
+        if (q[cd] < p.point[cd]) {
+          bestDist = nearNeighbor(q, p.left, leftCell, bestDist);
+          if (rightCell.distanceTo(q) < bestDist) bestDist = nearNeighbor(q, p.right, rightCell, bestDist);
+        } else {
+          bestDist = nearNeighbor(q, p.right, rightCell, bestDist);
+          if (leftCell.distanceTo(q) < bestDist) bestDist = nearNeighbor(q, p.left, leftCell, bestDist);
+        }
+      }
+      return bestDist;
+    }
+  \end{lstlisting}
+  Worst case is we need to visit every node but this is typically not the case. Usually $O(2^{d} + logn)$ where d is the dimension of the space. Intuition is that we need to visit some set of nodes in the neighborhood and require logn to descend tree
+  \newpage
+  \section{Memory Management}
+  2 principles to dynamic memory allocation. 
+  \begin{itemize}[noitemsep]
+  \item Stack where arguments and local variables are pushed onto when a procedure is called. These are popped when a procedure returns. 
+  \item Heap where objects are allocated and deallocated, fragmenting the heap into pieces.
+  \end{itemize}
+  Issues with memory allocation:
+  \begin{itemize}[noitemsep]
+    \item Explicit deallocation (languages like C) are a burden for programmers. Blocks of memory may be leaked (inaccessible and has not be deallocated). Another issue of aliasing where two pointers refer to the same block of memory leading to the issue of when one pointer is released, the other still references that chunk of memory
+    \item Implicit deallocation (Languages like Java) the system determines which objects are no longer accessible using garbage collection but put a burden on the memory allocation system
+  \end{itemize}
+  Explicit Allocation/Deallocation: one case where explicit deallocation is easy to handle: when all objects being allocated are of the same size (array). Very easy to allocate a contiguous space in heap and blocks are linked together. However for objects of varying sizes, we can run into an issue of external fragmentation, essentially wasting space\\ 
+  Explicit allocation works in that when allocating a block, we search through the list of available blocks of memory that is large enough. There are two strategies to this:
+  \begin{itemize}
+    \item First-fit: search available blocks sequentially until find a large enough space
+    \item Best-fit: search all available blocks and insert into smallest block large enough
+  \end{itemize}
+  Best-fit usually performs worse than first-fit (first-fit is faster to execute and best-fit tends to produce a large amount of fragmentation by selecting blocks taht are barely larger than the request size, leaving tiny residual blocks). One possible solution to reduce fragmentation is just make the requested block take up all the available space, keeping the list of available blocks free of tiny fragments and speeding up search time. However this creates internal fragmentation.\\
+  When deallocating a block, we should merge available space to create large blocks of free space (this is called merging) but there's an issue of figuring out how to efficiently merge.\\ \\
+  For each allocated blocks we record its size, inUse, and prevInUse \\
+  For each available block we store these blocks in a doubly-linked circular list (avail) and has size, inUse, prevInUse, prev , next, and size2. \\ \\
+  Allocation: to allocate a block, search through linked list of available blocks until find one of sufficient size. If the size pretty much fits, remove the block from the list of available blocks, updating linkage and prevInUse as necessary. If desired allocation is much smaller than the block chosen, split the block into two smaller blocks and relink as necessary.\\
+  \includegraphics[width=\textwidth]{MemoryAllocation}
+  \newpage
+  \begin{lstlisting}
+    (void *) alloc(int b) {
+      b += 1;       // extra space for system overhead
+      p = search available space list for block of size at least b;
+      if (p == null) throw Exception("Too small");
+      if (p.size - b < TOO\_SMALL) {
+        avail.unlink(p);
+        q = p;
+      } else {
+        p.size -=b;
+        *(p + p.size - 1) = p.size;   // set new block's size2 field
+        q = p + p.size;
+        q.size = b;
+        q.prevInUse = 0;
+      }
+      q.inUse = 1;
+      (q + q.size).prevInUse = 1;
+      return q + 1;   //offset link to avoid header
+    }
+  \end{lstlisting}
+  \newpage
+  Deallocation: to deallocate we check if the next block or preceding blocks are avaliable. For the next block we can find it's first word and check its inUse field. For the preceding block we just use the prevInUse field. \\
+  If the prev block isn't in use, we use the size value stored in the last word to find the header values appropriately. If either of these blocks is available, merge the two blocks and update header value appropriately. If both are available, we need to delete one of these blocks from available space list. If both are in-use, we link current block to list of available blocks.\\
+  There are four cases to consider for deallocation
+  \begin{itemize}[noitemsep]
+    \item If the following block q is available, merge with p. Update p's size and move q's record in the available space list to p using move(p,q), copying q's previous and next fields to p and appropriately update the entries in the available space list that point to q. Otherwise add p to available space list
+    \item If preceding block isn't in use, merge this block with p and unlink p from the available space list
+  \end{itemize}
+  \begin{lstlisting}
+    void dealloc(void* p) {
+      p--;      // back up to the header;
+      q = p + p.size;   // pointer to following block
+      if (!q.inUse) {
+        p.size += q.size;
+        avail.move(q, p);
+      } else avail.insert(p)
+
+      p.inUsee = 0;
+      *(p + p.size = 1) = p.size;
+
+      if (!p.prevInUse) {
+        q = p - *(p-1);
+        q.size += p.size;
+        *(q + q.size - 1) = q.size;
+        avail.unlink(p);
+        (q + q.size).prevInUse = 0;
+      }
+    }
+  \end{lstlisting}
+  \includegraphics[width=\textwidth]{MemoryDeallocation}
+  Analysis: typically methods achieve utilization of around 2/3 storage before failing to satisfy a request so in general allocate a heap of at last 10 times size of largest block to be allocated\\ \\
+  Buddy System: Long sequences of allocations and deallocations of objects of varius sizes tends to result in highly fragmented space. We can minimize this by limiting the possible sizes of blocks and their positions using well-structured allocation. Because block sizes are limited, internal fragmentation becomes an issue. \\
+  Start with a block of memory whose size is a power of 2 and then hierarchically subdivide each block into blocks of equal sizes.
+  \begin{itemize}[noitemsep]
+    \item Sizes of all blocks are powers of 2. A request is artificially rounded up to the next power of 2
+    \item Blocks of size $2^{k}$ start at memory addresses that are multiples of $2^{k}$
+  \end{itemize}
+  \includegraphics[width=\textwidth]{BuddySystem}
+  For every block, there is exactly 1 other block with which this block can be merged (called the buddy)
+  \begin{center}
+    \[
+      buddy_{k}(x) = \left\{
+        \begin{array}{ll}
+          x + 2^{k} & \quad if 2^{k+1} divides x \\
+          x - 2^{k} & \quad Otherwise
+        \end{array}
+    \right.
+  \]
+  \end{center}
+  Maintain an array of linked lists, one for the available block list for each size group\\
+  Allocation will work in that we will allocate a block of size $2^{k}$. If size doesn't fit then we use the smallest available block of the largest size, remove it from the available space list, and recursively split it into subblocks until we get the desired size.\\
+  \includegraphics[width=\textwidth]{BuddySystemInsertion}
+  Deallocation: we first mark this block as being available then we check to see if its buddy is available and merge if so. Recursively continue until we find that the buddy is allocated\\
+  \includegraphics[width=\textwidth]{BuddySystemDeletion}
+  Can use other number systems for buddy system (e.g. Fibonacci numbers)
 \end{document}
 

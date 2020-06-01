@@ -12,3 +12,8 @@
 \contentsline {section}{\numberline {7}Splay Trees}{18}% 
 \contentsline {section}{\numberline {8}B-Trees}{20}% 
 \contentsline {section}{\numberline {9}Hashing}{24}% 
+\contentsline {section}{\numberline {10}Extended BST and Scapegoat Trees}{27}% 
+\contentsline {subsection}{\numberline {10.1}Extended BST}{27}% 
+\contentsline {subsection}{\numberline {10.2}Scapegoat Tree}{28}% 
+\contentsline {section}{\numberline {11}Geometric Data Structures}{30}% 
+\contentsline {section}{\numberline {12}Memory Management}{40}% 
