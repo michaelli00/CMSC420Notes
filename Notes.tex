@@ -11,6 +11,14 @@
 \usepackage{color}
 \usepackage{graphicx}
 \usepackage[left=0.70in, right=0.70in, top=0.50in, left=0.70in, headsep=0pt]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
 \graphicspath{ {./assets/} }
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -37,7 +45,6 @@
 \title{CMSC420 Advanced Data Structures}
 \date{}
 \begin{document} 
-  \author{Michael Li}
   \title{CMSC420 Advanced Data Structures}
   \maketitle
   \tableofcontents
@@ -58,32 +65,44 @@
   \item Stack(push, pop): on on end of the list
   \item Queue(enqueue, dequeue): insert at tail (end) and remove from head (start)
   \item Deque(combo stack and queue): can isnert and remove from either ends of list
-  \item Multilist: multiple lists combined 1 aggregate structure (e.g. ArrayList)
+  \item Multilist: multiple lists combined into one aggregate structure (e.g. ArrayList)
   \item Sparse Matrix: create 2n linked lists for each row and col
     \setlist{nolistsep}
     \begin{itemize}[noitemsep]
       \item Each entry stores a row index, col index, value, next row ptr, and next col ptr
     \end{itemize}
   \end{itemize}
-  \includegraphics[width=\textwidth]{Fig_2}
+  \begin{center}
+    \includegraphics[scale=0.3]{Fig_2}
+  \end{center}
+  \subsection{Proof Amortized Cost}
+  \textbf{Theorem:} When doubling array size for reallocation, amortized cost of list operation is $O(1)$.\\ \\
+  \textbf{Proof:} Assume we are using a stack (can be proven for other ADT). Let $n$ be the current size of the array. Each time we push an element, we store an additional 4 tokens into a bank. Once the array is full, we reallocate an array of size $2n$ which requires intializing the array and copying elements (this will take $2n$). Last time we reallocated was when we transitioned from an array of size $n/2$ to $n$ so we must have performed at least $n - n/2 = n/2$ insertions. Now we have $4(n/2) = 2n$ from the extra tokens we stored. \\
+  If we had instead added an additional $c$ spaces when we reallocated, there would be an issue when the table size becomes too large since reallocation would take a greater magnitude than the savings we collect.\\
+  If we had instead raised the size of the array by a power, this works but we end up wasting a lot of space.
   \newpage
   \noindent\section{Trees}
   Free Tree: connected, undirected graph with no cycles (like MST)\\ \\
-  Root Tree: each non-leaf node has $\geq$ 1 children and a single parent (except root)\\
+  Root Tree: each non-leaf node has $\geq$ 1 children and a single parent (except root)
   \setlist{nolistsep}
   \begin{itemize}[noitemsep]
   \item Aborescence = out-tree \quad Anti-arborescence = in-tree 
   \item Depth = max \# of edges of path from root to a node \\
   \end{itemize}
-  One way to represent a tree is to have a pointer to first child and then a pointer to next sibling \\ \\
-  \includegraphics[width=\textwidth]{Fig_3}
+  \subsection{Tree Representation}
+  Binary representation of a rooted tree: nodes have a pointer to first child and another pointer to next sibling
+  \begin{center}
+    \includegraphics[scale=0.3]{Fig_3}
+  \end{center}
   Binary Tree: rooted, ordered tree where each non-leaf node has 2 possible children (left, right)
   \setlist{nolistsep}
   \begin{itemize}[noitemsep]
   \item Full Tree: All nodes either have 0 children or 2 children
-  \item Can make full binary tree by extending tree by adding external nodes to replace all empty subtrees
+  \item Can make any binary tree a full binary tree by extending tree by adding external nodes to replace all empty subtrees
   \end{itemize}
-  \includegraphics[width=\textwidth]{Fig_4}
+  \begin{center}
+  \includegraphics[scale=0.4]{Fig_4}
+  \end{center}
   \begin{lstlisting}
     class BinaryTreeNode<E> {
       private E entry;
@@ -92,29 +111,34 @@
       ...
     }
   \end{lstlisting}
-  \newpage
-  \noindent In-order traversal: left, root, right \\
+  In-order traversal: left, root, right \\
   Pre-order traversal: root, left, right \\ 
-  Post-order traversal: left, right, root\\ \\
-  If there are n internal nodes in an extended tree, there are n+1 external nodes
-  \setlist{nolistsep}
-  \begin{itemize}
+  Post-order traversal: left, right, root\\
+  \newpage
+  \subsection{Extended Binary Trees}
+  If there are $n$ internal nodes, there are $n + 1$ external nodes. Quasi proof by noticing that we will essentially replace every leaf with 1 internal and 2 external nodes.\\  \\
+  \textbf{Theorem: }If there are n internal nodes in an extended tree, there are n+1 external nodes\\ \\
+  \textbf{Proof: } 
+  \begin{itemize}[noitemsep]
   \item Proof by induction: Extended tree binary tree with n internal nodes has n+1 external nodes has 2n+1 total nodes
   \item Let x(n) = number of external nodes given n internal nodes and prove x(n) = n + 1
   \item Base Case x(0) = 1 a tree with no internal nodes has 1 external node
   \item IH: Assume x(i) = i + 1 for all i $\leq$ n - 1
   \item IS: let $n_{L}$ and $n_{R}$ be the number of nodes in Left and Right subtrees
-  \item x(n) = ($n_{L}$ + 1) + ($n_{R}$ + 1) = (1 + $n_{L}$ + $n_{R}$) + 1 = n + 1 external nodes
-  \item so n + 1 (external) + n (internal) = 2n + 1
-  \item Moreover, about 1/2 of nodes of extended Binary Tree are leaf nodes \\
+  \item $x(n) = x(n_{L}) + x(n_{R}) = (n_{L} + 1) + (n_{R} + 1) = (1 + n_{L} + n_{R}) + 1 = n + 1$ external nodes
+  \item so $n + 1$ (external) + $n$ (internal) = $2n + 1$
+  \item Moreover, about 1/2 of nodes of extended Binary Tree are leaf nodes
   \end{itemize}
-  Threaded Binary Tree: Give null pointers information about where to traverse next
+  \subsection{Threaded Binary Trees}
+  Give null pointers information about where to traverse next
   \setlist{nolistsep}
   \begin{itemize}
   \item If left-child = null then stores reference to node's inorder predecessor
   \item If right-child = null then stores references to node's inorder successor
   \end{itemize}
-  \includegraphics[width=\textwidth]{Fig_6}
+  \begin{center}
+  \includegraphics[scale=0.3]{Fig_6}
+  \end{center}
   \begin{lstlisting}
     BinaryTreeNode inOrderSuccessor(BinaryTreeNode v) {
       BinaryTreeNode u = v.right;
@@ -123,11 +147,13 @@
       return u;
     }
   \end{lstlisting}
+  To find the inorder successor of a node:
   \begin{itemize}[noitemsep]
   \item If v's right-child is a thread, then we follow thread.
-  \item Otherwise go through v's right child and iterate through left-child links until we find the last node before the thread\\
+  \item Otherwise go through v's right child and iterate through left-child links until we find the last node before the thread
   \end{itemize}
-  Complete Binary Tree: represented using sequential allocation (array) because no space is wasted 
+  \subsection{Complete Binary Tree}
+  Represented using sequential allocation (array) because no space is wasted
   \begin{itemize}[noitemsep]
   \item number of nodes is inbetween $2^{h}$ and $2^{h+1}-1$
   \end{itemize}

@@ -1,0 +1,24 @@
+\BOOKMARK [1][-]{section.1}{Lists}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Proof Amortized Cost}{section.1}% 2
+\BOOKMARK [1][-]{section.2}{Trees}{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Tree Representation}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Extended Binary Trees}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.3}{Threaded Binary Trees}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.4}{Complete Binary Tree}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Dictionaries}{}% 8
+\BOOKMARK [1][-]{section.4}{AVL Trees}{}% 9
+\BOOKMARK [1][-]{section.5}{2-3 Trees, Red-Black Trees, AA Trees}{}% 10
+\BOOKMARK [2][-]{subsection.5.1}{2-3 Trees}{section.5}% 11
+\BOOKMARK [2][-]{subsection.5.2}{Red-Black Trees}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.3}{AA Trees}{section.5}% 13
+\BOOKMARK [1][-]{section.6}{Treaps and Skip Lists}{}% 14
+\BOOKMARK [2][-]{subsection.6.1}{Treaps}{section.6}% 15
+\BOOKMARK [2][-]{subsection.6.2}{Skip Lists}{section.6}% 16
+\BOOKMARK [1][-]{section.7}{Splay Trees}{}% 17
+\BOOKMARK [1][-]{section.8}{B-Trees}{}% 18
+\BOOKMARK [1][-]{section.9}{Hashing}{}% 19
+\BOOKMARK [1][-]{section.10}{Extended BST and Scapegoat Trees}{}% 20
+\BOOKMARK [2][-]{subsection.10.1}{Extended BST}{section.10}% 21
+\BOOKMARK [2][-]{subsection.10.2}{Scapegoat Tree}{section.10}% 22
+\BOOKMARK [1][-]{section.11}{Geometric Data Structures}{}% 23
+\BOOKMARK [1][-]{section.12}{Memory Management}{}% 24
