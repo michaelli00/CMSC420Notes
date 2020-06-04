@@ -17,7 +17,7 @@
 \contentsline {subsection}{\numberline {5.3}AA Trees}{13}{subsection.5.3}% 
 \contentsline {section}{\numberline {6}Treaps and Skip Lists}{16}{section.6}% 
 \contentsline {subsection}{\numberline {6.1}Treaps}{16}{subsection.6.1}% 
-\contentsline {subsection}{\numberline {6.2}Skip Lists}{17}{subsection.6.2}% 
+\contentsline {subsection}{\numberline {6.2}Skip Lists}{16}{subsection.6.2}% 
 \contentsline {section}{\numberline {7}Splay Trees}{18}{section.7}% 
 \contentsline {section}{\numberline {8}B-Trees}{20}{section.8}% 
 \contentsline {section}{\numberline {9}Hashing}{24}{section.9}% 

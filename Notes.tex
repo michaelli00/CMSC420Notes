@@ -539,40 +539,48 @@
   \newpage
   \section{Treaps and Skip Lists}
   \subsection{Treaps}
-  Intuition is that if keys are inserted into BST in random order, then height will be $\approx$ O(log(n))\\ \\
-  Insertion: Insert node based on key value then assign it a random priority (p.priority) and sort based on this priority by rotating the tree several times to balance it based on p.priority\\
-  \includegraphics[width=\textwidth]{TreapInsertion}
-  Deletion: 3 cases
+  Intuition is that if keys are inserted into BST in random order, then height will be $\approx$ O(log(n)). We can model this random order by using random priority numbers\\ \\
+  \textbf{Insertion: }Insert node based on key value then assign it a random priority (p.priority) and then rotate the tree to balance it based on p.priority
+  \begin{center}
+  \includegraphics[scale=0.2]{TreapInsertion}
+  \end{center}
+  \textbf{Deletion: }3 cases
   \begin{itemize}[noitemsep]
   \item node is leaf just remove it
   \item node has 1 child then replace node with child
   \item node has 2 children then set its priority to $\infty$ and apply rotations to sift down to leaf and remove
   \end{itemize}
-  \includegraphics[width=\textwidth]{TreapDeletion}
-  \newpage
+  \begin{center}
+  \includegraphics[scale=0.2]{TreapDeletion}
+  \end{center}
   \subsection{Skip Lists}
-  Intution is to skip multiple items at a time to speed up searching \\
+  Intution is to skip multiple items at a time to speed up searching for linked list\\
   Skip Lists made up of multiple levels that are built from
   \begin{itemize}[noitemsep]
   \item Taking every other node in the linked list and extending it up to a new linked list with 1/2 as many nodes
   \item Repeat this extension with 1/2 as many terms until no more terms 
-  \item and tail nodes are always lifted and tail has the key value $\infty$
-  \item proceess will repeat $\ceil[\big]{lg(n)}$ times
+  \item Head and tail nodes are always lifted and tail has the key value $\infty$
+  \item Height will be $\ceil[\big]{lg(n)}$ 
   \end{itemize}
-  Search: start at highest level of head then scan linearly at level i until we are about to jump to a key value $>$ x then step down one level\\
-  \includegraphics[width=\textwidth]{SkipListSearch}
+  \textbf{Search: }start at highest level of head then scan linearly at level i until we are about to jump to a key value $>$ x then step down one level
+  \begin{center}
+  \includegraphics[scale=0.2]{SkipListSearch}
+  \end{center}
+  Issue with this deterministic skip list is that when we insert or remove a node, we need to change the heights of all subsequent nodes\\
   We can randomize the number of nodes per level by flipping a coin and only stopping at a level if tails occurs\\
   Now level k is expected to have about $\frac{n}{2^{k}}$ nodes meaning that the number of nodes at level $\ceil[\big]{lg(n)}$ is constant\\ \\
-  Space Analysis: worst case every node has height log(n) so O(nlogn) total. Best each node has height 1 so O(n) total\\
-  Expected Case Space: all n nodes contribute to level 0, n/2 contribute to level 1, n/4 to level 2, etc. so\\ \\
-  $\sum_{i=0}^{h-1}\frac{n}{2^{i}} = n(2 - \frac{1}{2^{h}}) \leq 2n = O(n)$\\ \\
-  Search Expected Runtime: for $0 \leq i \leq O(logn)$, let $E(i)$ represent the expected number of nodes visited in the skip list at the top i levels of the skip list\\
+  \textbf{Space Analysis: }worst case every node has height log(n) so O(nlogn) total. Best each node has height 1 so O(n) total\\
+  \textbf{Expected Case Space: }all n nodes contribute to level 0, n/2 contribute to level 1, n/4 to level 2, etc. so\
+  \begin{center}
+  $\sum_{i=0}^{h-1}\frac{n}{2^{i}} = n(2 - \frac{1}{2^{h}}) \leq 2n = O(n)$
+  \end{center}
+  \textbf{Search Expected Runtime: }for $0 \leq i \leq O(logn)$, let $E(i)$ represent the expected number of nodes visited in the skip list at the top i levels of the skip list\\
   Look at the path going backwards so it will either go up or stay on the current level and go left \\
-  Whenever we arrive at some node of level i, the probability that it contributes to the next higher level is 1/2 and 1 - 1/2 to stay on same level. Counting the current node we just visited (+1) we have\\ \\
+  Whenever we arrive at some node of level i, the probability that it contributes to the next higher level is 1/2 and 1/2 to stay on same level. Counting the current node we just visited (+1) we have\\ \\
   $E(i) = 1 + \frac{1}{2}E(i-1) + \frac{1}{2}E(i) \rightarrow E(i) = 2 + E(i-1) = 2i$ by recurrence analysis and since i $\leq$ O(logn) then search is O(logn)\\ \\
-  Insertion: search for x to find its immediate predecessors at each level then create node x and flip a coin until tails. Letting k denote the number of tosses made, height = min of k + 1 and height of list then link the k+1 lowest predecssors \\ \\
-  Deletion: find the node and keep track of all predecessors at various level of list then unlink the target node at each level (like in standard linked list removal) \\ \\
-  Implementation Notes: skip-list nodes have variable size, containing the key-value pair, variable-sized array of next pointers (p.next[i] points to the next node at level i). Also has 2 sentinel nodes (head and tail where tail.key is $\infty$ to stop search)\\
+  \textbf{Insertion: }search for x to find its immediate predecessors at each level then create node x and flip a coin until tails. Letting k denote the number of tosses made, height = min of k + 1 and height of list then link the k+1 lowest predecssors \\ \\
+  \textbf{Deletion: }find the node and keep track of all predecessors at various level of list then unlink the target node at each level (like in standard linked list removal) \\ \\
+  \textbf{Implementation Notes: }skip-list nodes have variable size, containing the key-value pair, variable-sized array of next pointers (p.next[i] points to the next node at level i). Also has 2 sentinel nodes (head and tail where tail.key is $\infty$ to stop search)\\
   \newpage
   \section{Splay Trees}
   Self adjusting tree that dynamically adjusts its structure according to a dynamically changing set of access probabilities
