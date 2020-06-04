@@ -6,19 +6,23 @@
 \contentsline {subsection}{\numberline {2.3}Threaded Binary Trees}{4}{subsection.2.3}% 
 \contentsline {subsection}{\numberline {2.4}Complete Binary Tree}{4}{subsection.2.4}% 
 \contentsline {section}{\numberline {3}Dictionaries}{5}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Array Representation}{5}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Binary Search Tree Representation}{5}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Analysis of BST}{6}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.4}Random Insertions and Deletions on BST}{6}{subsection.3.4}% 
 \contentsline {section}{\numberline {4}AVL Trees}{7}{section.4}% 
-\contentsline {section}{\numberline {5}2-3 Trees, Red-Black Trees, AA Trees}{10}{section.5}% 
-\contentsline {subsection}{\numberline {5.1}2-3 Trees}{10}{subsection.5.1}% 
-\contentsline {subsection}{\numberline {5.2}Red-Black Trees}{11}{subsection.5.2}% 
-\contentsline {subsection}{\numberline {5.3}AA Trees}{12}{subsection.5.3}% 
-\contentsline {section}{\numberline {6}Treaps and Skip Lists}{16}{section.6}% 
-\contentsline {subsection}{\numberline {6.1}Treaps}{16}{subsection.6.1}% 
-\contentsline {subsection}{\numberline {6.2}Skip Lists}{17}{subsection.6.2}% 
-\contentsline {section}{\numberline {7}Splay Trees}{18}{section.7}% 
-\contentsline {section}{\numberline {8}B-Trees}{20}{section.8}% 
-\contentsline {section}{\numberline {9}Hashing}{24}{section.9}% 
-\contentsline {section}{\numberline {10}Extended BST and Scapegoat Trees}{27}{section.10}% 
-\contentsline {subsection}{\numberline {10.1}Extended BST}{27}{subsection.10.1}% 
-\contentsline {subsection}{\numberline {10.2}Scapegoat Tree}{28}{subsection.10.2}% 
-\contentsline {section}{\numberline {11}Geometric Data Structures}{30}{section.11}% 
-\contentsline {section}{\numberline {12}Memory Management}{40}{section.12}% 
+\contentsline {section}{\numberline {5}2-3 Trees, Red-Black Trees, AA Trees}{11}{section.5}% 
+\contentsline {subsection}{\numberline {5.1}2-3 Trees}{11}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {5.2}Red-Black Trees}{12}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.3}AA Trees}{13}{subsection.5.3}% 
+\contentsline {section}{\numberline {6}Treaps and Skip Lists}{17}{section.6}% 
+\contentsline {subsection}{\numberline {6.1}Treaps}{17}{subsection.6.1}% 
+\contentsline {subsection}{\numberline {6.2}Skip Lists}{18}{subsection.6.2}% 
+\contentsline {section}{\numberline {7}Splay Trees}{19}{section.7}% 
+\contentsline {section}{\numberline {8}B-Trees}{21}{section.8}% 
+\contentsline {section}{\numberline {9}Hashing}{25}{section.9}% 
+\contentsline {section}{\numberline {10}Extended BST and Scapegoat Trees}{28}{section.10}% 
+\contentsline {subsection}{\numberline {10.1}Extended BST}{28}{subsection.10.1}% 
+\contentsline {subsection}{\numberline {10.2}Scapegoat Tree}{29}{subsection.10.2}% 
+\contentsline {section}{\numberline {11}Geometric Data Structures}{31}{section.11}% 
+\contentsline {section}{\numberline {12}Memory Management}{41}{section.12}% 

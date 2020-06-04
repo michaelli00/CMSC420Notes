@@ -169,12 +169,14 @@
     void delete(Key x) // if key does not exist, exception thrown 
     Value find(Key x) // return value associated with key or null if not found
   \end{lstlisting}
-  Array representation: 
+  \subsection{Array Representation}
   \begin{itemize}[noitemsep]
-  \item Unsorted array has O(n) search and delete, O(1) insert although we need O(n) to check for duplicates
-  \item Sorted Array has O(logn) search and O(n) insertion and deletion\\ 
+  \item Unsorted Array has O(n) search and delete, O(n) because we need to check for duplicates
+  \item Sorted Array has O(logn) search and O(n) insertion and deletion because when we modify the array we need to shift elements
   \end{itemize}
-  Binary Search Tree Representation (left $<$ root $<$ right):
+  \subsection{Binary Search Tree Representation}
+  Search: O(n) for degenerate tree, O(logn) for balanced tree \\
+  Can use extended BST to give info about how the target key is inbetween its inorder predecessor and inorder successor
   \begin{lstlisting}
     //Recursive
     Value find(Key x, BinaryNode p) {
@@ -195,11 +197,11 @@
       return null;
     }
   \end{lstlisting}
-  \begin{itemize}[noitemsep]
-  \item O(n) search for degenerate tree, O(logn) search for balanced tree
-  \item Can use extended BST to give info that target key is inbetween inorder predecessor and inorder successor\\
-  \end{itemize}
   Insert: search for key and if found throw exception else we hit a null and insert there 
+  \begin{itemize}[noitemsep]
+  \item Either tree is empty so return new node or we return the root of the original tree with the added node
+  \item O(n) insert for degenerate tree, O(logn) insert for balanced tree
+  \end{itemize}
   \begin{lstlisting}
     BinaryNode insert(Key x, Value v, BinaryNode p) {
       if (p == null) p = new BinaryNode(x, v, null, null);
@@ -209,12 +211,13 @@
       return p;
     }
   \end{lstlisting}
-  \begin{itemize}[noitemsep]
-  \item Either tree is empty so return new node or we return the root of the original tree with the added node
-  \item O(n) insert for degenerate tree, O(logn) insert for balanced tree \\
-  \end{itemize}
   \newpage
-  \noindent Delete find a replace with inorder successor (aka leftmost on right subtree)
+  \noindent Delete: 
+  \begin{itemize}[noitemsep]
+    \item if target node is a leaf, remove it
+    \item if target node only has 1 child, replace it with the child
+    \item else replace target node with inorder successor (aka leftmost on right subtree). End the delete the replacement node
+  \end{itemize} 
   \begin{lstlisting} 
     BinaryNode delete(Key x, BinaryNode p) {
       if (p == null) throw KeyNotFoundException;
@@ -238,28 +241,34 @@
       return ;
     }
   \end{lstlisting}
+  \subsection{Analysis of BST}
   O(n) deletion for degenerate tree, O(logn) deletion for balanced tree\\ \\
-  height of BST on average will be ln(n). Proof: 
+  \textbf{Theorem: } Height of BST on average will be ln(n). \\ \\
+  \textbf{Proof: } 
   \begin{itemize}[noitemsep]
   \item for i = 2 to n, insert elements into BST and look at depth of left most node (min value)
   \item chance that a number is the min is $\frac{1}{i}$ so Expected Height is $\sum_{i=2}^{n} \frac{1}{i}$ $\approx$ ln(n)
   \end{itemize}
+  \subsection{Random Insertions and Deletions on BST}
+  Because the replacement node will always be the inorder successor, if we repeatedly add and remove random elements from a BST, this biased choice will eventually bring the height of the tree to $O(\sqrt{n})$\\
+  This bias can be handled by randomly selecting the replacement node as the inorder successor or the inorder predecessor
   \newpage
   \section{AVL Trees}
-  Balance Condition: For every node in tree, absolute difference between heights of left and right subtrees is at most 1 \\
+  \textbf{AVL Balance Condition: }For every node in tree, absolute difference between heights of left and right subtrees is at most 1. A node's balance factor is determined by
+  \begin{center}
+    balance(v) = height(v.right) - height(v.left)
+  \end{center}
   Worst case height can be shown to be O(logn) using Fibonacci sequence
   \begin{itemize}[noitemsep]
   \item $F_{h} \approx \varphi^{h}\sqrt{5}$ where $\varphi = (1 + \sqrt{5})/2$ 
-  \item let N(h) denote minimum number of nodes in any AVL tree of height h.
+  \item let N(h) denote minimum number of nodes in any AVL tree of height h. So 1 child will have height h-1 and the other will have height h-2
   \item N(0) = 1, N(1) = 2, N(h) = 1 + $N(h_{L}) + N(h_{R}) = 1 + N(h-1) + N(h-2)$
-    \begin{itemize}[noitemsep]
-    \item if a given node has height h, one of its subtrees must have height h - 1 to make it have min \# of nodes,
-    \item the other subtree has height h-2 to make it as small as possible
-    \end{itemize}
-  \item Now $N(h) = n \geq c \varphi^{h} \rightarrow h \leq log_{\varphi}n \rightarrow O(logn)$
+  \item Now $N(h) = n \geq c \varphi^{h} \rightarrow h \leq log_{\varphi}n \rightarrow h = O(logn)$
   \item Also find method using AVL is O(logn)
   \end{itemize}
-  \includegraphics[width=\textwidth]{FibTreeMinNodes}
+  \begin{center}
+  \includegraphics[scale=0.3]{FibTreeMinNodes}
+  \end{center}
   Rotations are used to main tree's balance by modifying relation between two nodes but preserving the tree's inorder properties 
   \begin{lstlisting}
     BinaryNode rotateRight(BinaryNode p) {
@@ -275,18 +284,29 @@
       return q;   // q is now root
     }
   \end{lstlisting}
-  \includegraphics[width=\textwidth]{FibTreeRotation}
+  \begin{center}
+  \includegraphics[scale=0.15]{FibTreeRotation}
+  \end{center}
+  \newpage
   Single rotations work when the imbalance occurs on the outer edges of the tree. Need to use double rotations LR or RL to balance inner trees \\
-  \includegraphics[width=\textwidth]{FibTreeDoubleRotation}
+  \begin{center}
+  \includegraphics[scale=0.15]{FibTreeDoubleRotation}
+  \end{center}
   Insertion works similar to BST except we update the heights of subtrees and apply rotations to maintain height \\
   When insertion occurs balance factors of ancestors is altered by $\pm$1\\
   If a node has a balance factor that violates Balance Property:
   \begin{itemize}[noitemsep]
-  \item Left-Left substree too deep then rotate right 
-  \item Right-Right subtree too deep then rotate left
-  \item Left-Right subtree too deep then rotate left-right
-  \item Right-Left subtree too deep then rotate right-left
+  \item Left-Left substree too deep then rotate right on unbalanced node
+  \item Right-Right subtree too deep then rotate left on unbalanced node
+  \item Left-Right subtree too deep then rotate left-right (left child of unbalanced node then unbalanced node)
+  \item Right-Left subtree too deep then rotate right-left (right child of unbalanced node then unbalanced node)
   \end{itemize}
+  \begin{center}
+  \includegraphics[scale=0.4]{AVLSingleRotationInsertion}
+  \end{center}
+  \begin{center}
+  \includegraphics[scale=0.4]{AVLDoubleRotationInsertion}
+  \end{center}
   \newpage
   \begin{lstlisting}
     int height(AvlNode p) return p == null ? -1 : p.height;
@@ -316,14 +336,14 @@
     AvlNode rebalance(AvlNode p) {
       if (p == null) return p;
       if (balanceFactor(p) < -1) {
-        if (height(p.left.left) >= height(p.left.right)) {//left-left heavy
+        if (height(p.left.left) > height(p.left.right)) {//left-left heavy
           p = rotateRight(p);
         } else {                                          //left-right heavy
           p = rotateLeftRight(p);
         }
       }
       else if (balanceFactor(p) > 1) {
-        if(height(p.right.right) >= height(p.right.left)) {//right-right heavy
+        if(height(p.right.right) > height(p.right.left)) {//right-right heavy
           p = rotateLeft(p);
         } else {                                            //right-left heavy
           p = rotateRightLeft(p);
@@ -333,7 +353,15 @@
       return p;
     }
   \end{lstlisting}
+  \newpage
   Deletion works in a similar manner in that we call normal BST delete and then rotate as necessary. However we need to call rebalance on further ancestors to check balance condition (e.g. if one of the inner subtrees is too tall, we need to call a double rotation)
+  \begin{center}
+  \includegraphics[scale=0.4]{AVLSingleRotationDeletion}
+  \end{center}
+  \begin{center}
+  \includegraphics[scale=0.4]{AVLDoubleRotationDeletion}
+  \end{center}
+  Note that node d dropped one level so we need to call balance check on c. In this case deletion can end up calling a cascade of O(logn) rebalancing operations
   \newpage 
   \section{2-3 Trees, Red-Black Trees, AA Trees}
   \subsection{2-3 Trees}
