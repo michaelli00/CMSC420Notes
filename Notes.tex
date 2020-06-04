@@ -365,9 +365,11 @@
   \newpage 
   \section{2-3 Trees, Red-Black Trees, AA Trees}
   \subsection{2-3 Trees}
-  nodes can either be 2-node (normal binary tree) or 3-node (2 keys b,d and 3 branches A, C, E where A $<$ b $<$ X $<$ d $<$ E)\\
-  All leaves are on the same level \\
-  \includegraphics[width=\textwidth]{2-3Tree}
+  Nodes can either be 2-node (normal binary tree) or 3-node (2 keys b,d and 3 branches A, C, E where A $<$ b $<$ X $<$ d $<$ E)
+  Important thing to note is that all leaves are on the same level
+  \begin{center}
+  \includegraphics[scale=0.2]{2-3Tree}
+  \end{center}
   Recursively defined as:
   \begin{itemize}[noitemsep]
   \item empty (null)
@@ -375,36 +377,44 @@
   \item root is 3-node and has three 2-3 subtrees of equal height
   \end{itemize}
   Sparsest 2-3 tree is a complete binary tree \\ \\
-  Find: recursive descent but when 3-node is reached, compare x with both keys to find which branch to go to\\ \\
-  Insertion: search for key and and insert like in a normal tree.
+  \textbf{Find: }recursive descent but when 3-node is reached, compare x with both keys to find which branch to go to\\ \\
+  \textbf{Insertion: }search for key and and insert like in a normal tree.
   \begin{itemize}[noitemsep]
-  \item if parent is a 2-node, now it is a 3-node with a null subtree
-  \item if parent is 3 node then it becomes 4-node and we have to fix it by splitting the 4-node into two 2-nodes and prop the middle term up for recursion and will continue to recurse up until it reaches the root \\
+  \item if parent is a 2-node, now it is a 3-node with an added null subtree
+  \item if parent is 3-node then it becomes 4-node (3 keys and 4 subtrees) and we have to fix it by splitting the 4-node into two 2-nodes and prop the middle key up for recursion and will continue to recurse up until it reaches  a 2-tree or the root
   \end{itemize}
-  \includegraphics[width=\textwidth]{2-3TreeInsert}
-  Deletion: find and replace target with inorder successor and then delete the leaf
+  \begin{center}
+  \includegraphics[scale=0.2]{2-3TreeInsert}
+  \end{center}
+  \newpage
+  \textbf{Deletion: }find and replace target with inorder successor and then delete the leaf
   \begin{itemize}[noitemsep]
   \item If parent of leaf is a 3-node then parent becomes a 2-node and done
   \item If parent is a 2-node then it becomes a 1-node (0 keys, 1 subtree) so we can do
     \begin{itemize}[noitemsep]
-      \item Adoption: if sibling is a 3-node then adopt a key and a subtree so we have two 2-nodes
-      \item Merge: merge 1-node and 2-node and take a key from parent then recurse up. If root is reached, remove it and make a child the root
+      \item \textbf{Adoption: }if sibling is a 3-node then adopt a key and a subtree so we have two 2-nodes (this ends up being a rotation on the parent)
+      \item \textbf{Merge: }merge 1-node and sibling 2-node and take a key from parent then recurse up. If root is reached and ends up being a 1-node, remove it and make its child the new root
     \end{itemize}
   \end{itemize}
+  \begin{center}
+    \includegraphics[scale=0.5]{2-3TreeAdoptAndMerge}
+  \end{center}
   \subsection{Red-Black Trees}
-  Take a 3-node and create a 2-node combo by using d, C, E as the right subtree and b, A for left subtree \\
-  \includegraphics[width=\textwidth]{RBTree}
-  Created right subnode is red and all other nodes black, creating a binary search tree\\
-  Null pointers are labeled black and if a node is red, then both its children are black \\
-  Every path from a given node to any of its null descendants contains the same number of black nodes\\
-  O(logn) height \\
-  \includegraphics[width=\textwidth]{2-3ToRBTree}
-  Every 2-3 tree corresponds to a red-black tree but converse is not true
+  Take a 3-node and create a 2-node combo by using d, C, E as the right subtree and b, A for left subtree
+  \begin{center}
+  \includegraphics[scale=0.2]{RBTree}
+  \end{center}
+  Created right subnode is labeled red and all other nodes black, creating a binary search tree\\
+  Null pointers are labeled black and if a node is red, then both its children must be black \\
+  Every path from a given node to any of its null descendants contains the same number of black nodes\\ \\
+  \textbf{Theorem: }Every 2-3 tree corresponds to a red-black tree but converse is not true
   \begin{itemize}[noitemsep]
   \item Issue with RB tree doesn't distinguish between L and R children so 3-node can be encoded in 2 different ways
   \item Also can't convert a node with 2 red children to 2-3 tree which ends up being a 4-node
   \end{itemize}
-  \newpage
+  \begin{center}
+  \includegraphics[scale=0.15]{2-3ToRBTree}
+  \end{center}
   \subsection{AA Trees}
   Simplified RB tree where red nodes can only appear as right children of black nodes allowing conversion between 2-3 tree and RB trees \\
   Edge between red node and the black parent is called a red edge \\
@@ -418,13 +428,16 @@
   \item If black, p.level = q.level (child) + 1
   \item If red, then same level as parent. Now can easily test if node is read by comparing with parent level
   \end{itemize}
-  \includegraphics[width=\textwidth]{AATree}
-  Find method works exactly the same as it does for BST \\ \\
+  \begin{center}
+  \includegraphics[scale=0.20]{AATree}
+  \end{center}
+  \textbf{Find: }works exactly the same as it does for BST \\ \\
   Insertion and Deletion require skew(p) and split(p)
   \begin{itemize}[noitemsep]
-  \item skew(p) if p is black and has a red left child, rotate right
-  \item split(p) if p is black and has right-right chain, do a left rotation \& promote first red child to next level
+    \item \textbf{skew(p)} if p has a red left child, rotate right so red child is on right side
+    \item \textbf{split(p)} if p has a red right-right chain, do a left rotation \& promote first red child to next level
   \end{itemize}
+  Important thing to note is that p can either be black or red. If it is red we may need to recurse up to maintain AA tree invariant
   \begin{lstlisting}
     AANode skew(AANode p) {   
       if (p.left.level == p.level) {  // red node to our left?
@@ -446,8 +459,10 @@
       else return p;
     }
   \end{lstlisting}
-  \includegraphics[width=\textwidth]{AASkewSplit}
-  Insertion: insert node like in BST except treat it as a red node then work back up tree restructuring as we go. 
+  \begin{center}
+  \includegraphics[scale=0.15]{AASkewSplit}
+  \end{center}
+  \textbf{Insertion: }insert node like in BST except treat it as a red node then work back up tree restructuring as we go.
   \begin{itemize}[noitemsep]
   \item If red node inserted as left child then perform skew(p) on parent
   \item If red node inserted as right child of red node, call split(p) on grandparent and then recurse up to fix any issues
@@ -461,10 +476,12 @@
       return split(skew(p));        //restructure (if not needed split and skew return unmodified tree)
     }
   \end{lstlisting}
-  \includegraphics[width=\textwidth]{InsertionAATree}
-  Deletion: Replace target node with inorder successor then delete leaf and retrace search path to restructure tree
+  \begin{center}
+  \includegraphics[scale=0.2]{InsertionAATree}
+  \end{center}
+  \textbf{Deletion: }Replace target node with inorder successor then delete leaf and retrace search path to restructure tree
   \begin{itemize}[noitemsep]
-  \item use updateLevel(p) helper to update level of node p based on children
+    \item use \textbf{updateLevel(p)} helper to update level of node p based on children (we need to update p.level to child.level which has been decreased)
     \begin{itemize}[noitemsep]
       \item since every node has at least 1 black node, ideal level for any node is 1 + min of its children 
       \item if p is updated and right child is red then we need to update p.right.level = p.level
@@ -479,7 +496,7 @@
       }
     } 
   \end{lstlisting}
-  Use fixupAfterDelete(p) to make sure any red children are on the right
+  Use \textbf{fixupAfterDelete(p)} to make sure any red children are on the right
   \begin{itemize}[noitemsep]
   \item May need to call up to 3 skew operations (p, p.right, p.right.right) and then 2 splits (p and its right-right grandchild). The example below shows how there might be a 2 level gap between a parent and a child, which could end up necessitating 3 skew operations which then require 2 splits to fix
   \end{itemize}
@@ -494,8 +511,9 @@
       return p;
     }
   \end{lstlisting}
-  \includegraphics[width=\textwidth]{DeletionAATree}
-  \newpage
+  \begin{center}
+  \includegraphics[scale=0.2]{DeletionAATree}
+  \end{center}
   \begin{lstlisting}
     AANode delete(Key x, AANode p) {
       if (p == nil) throw KeyNotFoundException;

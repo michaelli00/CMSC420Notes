@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1591238754 "Notes.tex" "Notes.pdf" "Notes" 1591238765
+["pdflatex"] 1591284720 "Notes.tex" "Notes.pdf" "Notes" 1591284729
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -81,12 +81,13 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1557342064 3277517 23507ed665b4dd9046f0f2a94bbef2be ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1557342086 4259635 562fc36ec496993777a6c428d8bfb811 ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "Notes.aux" 1591238764 4031 8881afe4c8bf567ee922412a878a9d28 "pdflatex"
-  "Notes.out" 1591238764 1698 d2a5a5772aa8dbbfb2b0db2b2166976a "pdflatex"
-  "Notes.tex" 1591238689 67634 8f7a297162b7ac2987299216f67d8614 ""
-  "Notes.toc" 1591238764 2249 48acb5f876f503c6c6fe0a4e84e23804 "pdflatex"
+  "Notes.aux" 1591284729 4031 72c726188391263e483b091450e94492 "pdflatex"
+  "Notes.out" 1591284729 1698 d2a5a5772aa8dbbfb2b0db2b2166976a "pdflatex"
+  "Notes.tex" 1591284709 68394 5b319bbf4422773979a358a52381446e ""
+  "Notes.toc" 1591284729 2249 3a35bbefa1d66d9e7d8dc4d40332cea0 "pdflatex"
   "assets/2-3ToRBTree.png" 1590330250 115552 e3001850a9dc014e16f7e8b807282539 ""
   "assets/2-3Tree.png" 1590276514 166095 f5dc548a12adacadcec1c45b47ff0bf5 ""
+  "assets/2-3TreeAdoptAndMerge.png" 1591281597 175350 44e8a0705cf014ce5d4780d43f2f1611 ""
   "assets/2-3TreeInsert.png" 1590288599 173841 246b7da081e66269c93c5301778a6421 ""
   "assets/AASkewSplit.png" 1590331365 259468 302b486c5bb9bce6c295ddc45ac63fdc ""
   "assets/AATree.png" 1590330793 228025 37314e16e00bf775dc27c3d614d24ada ""
@@ -139,8 +140,8 @@
   "assets/TreapDeletion.png" 1590355218 256412 d7c1f087683dd7dc1345480e397c9366 ""
   "assets/TreapInsertion.png" 1590355033 254953 0a46529754cec8fb501dfbf8b37e9bc1 ""
   (generated)
-  "Notes.aux"
-  "Notes.out"
-  "Notes.log"
-  "Notes.toc"
   "Notes.pdf"
+  "Notes.aux"
+  "Notes.log"
+  "Notes.out"
+  "Notes.toc"
