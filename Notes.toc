@@ -20,7 +20,8 @@
 \contentsline {subsection}{\numberline {6.2}Skip Lists}{16}{subsection.6.2}% 
 \contentsline {section}{\numberline {7}Splay Trees}{18}{section.7}% 
 \contentsline {section}{\numberline {8}B-Trees}{20}{section.8}% 
-\contentsline {section}{\numberline {9}Hashing}{24}{section.9}% 
+\contentsline {section}{\numberline {9}Hashing}{23}{section.9}% 
+\contentsline {subsection}{\numberline {9.1}Handling Collisions}{23}{subsection.9.1}% 
 \contentsline {section}{\numberline {10}Extended BST and Scapegoat Trees}{27}{section.10}% 
 \contentsline {subsection}{\numberline {10.1}Extended BST}{27}{subsection.10.1}% 
 \contentsline {subsection}{\numberline {10.2}Scapegoat Tree}{28}{subsection.10.2}% 

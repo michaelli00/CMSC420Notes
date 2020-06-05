@@ -590,28 +590,32 @@
   \item Whenever a deep node is accessed, the tree will restructure itself so tree is more balanced 
   \item $\Omega(n)$ worst operation but amortized O(logn) \\
   \end{itemize}
-  T.splay(x): searches for key x in a tree T and reorganizes T while rotating x up to the root. If x not found, use preorder predecessor or successor.
+  \textbf{T.splay(x): }searches for key x in a tree T and reorganizes T while rotating x up to the root. If x not found, then use the last node before falling out the tree which will be the inorder predecessor or successor.
   \begin{itemize}[noitemsep]
   \item simply rotating the target node up doesn't work because it can leave the tree skewed/unbalanced
   \item instead take 2 nodes at a time and rotate both
   \end{itemize}
   For node p let parent be q and grandparent be r then
   \begin{itemize}[noitemsep]
-  \item Zig-zig: if p and q are both right childnre or left children, apply rotation at r then q to bring p to the top
+  \item Zig-zig: if p and q are both right children or left children, apply rotation at r then q to bring p to the top
   \item Zig-zag: if p and q are left-right or right-left children, apply rotation to q then r to bring p to top 
   \item Zig: if p is the child of the root, rotate root of T and make p the new root
   \item if p is the root of T, we are done
   \end{itemize}
-  \includegraphics[width=\textwidth]{SplayTreeZig}
+  \begin{center}
+  \includegraphics[scale=0.20]{SplayTreeZig}
+  \end{center}
   Everytime zig-zig or zig-zag is called, the subtree is raised up 1 level so for a long path, these rotations will reduce its height by 1/2\\ \\
-  Find: invoke T.splay(x) which transports x to the root. If root.val != x then throw an error\\ \\
-  Insert(x, v): invoke T.splay(x). Let current root = y. Either
+  \textbf{Find: }invoke T.splay(x) which transports x to the root. If root.val != x then throw an error\\ \\
+  \textbf{Insert(x, v): }invoke T.splay(x). Let current root = y. Either
   \begin{itemize}[noitemsep]
   \item y $<$ x then all keys in R subtree $>$ x so create a new root (x,v) and add y to L and add R to new root
   \item y $>$ x then all keys in L $<$ x so create a new root (x,v) and add y to R and add L to new root
   \end{itemize}
-  \includegraphics[width=\textwidth]{SplayInsert}
-  Delete: invoke T.splay(x) then if root != x throw error. Else 
+  \begin{center}
+  \includegraphics[scale=0.15]{SplayInsert}
+  \end{center}
+  \textbf{Delete: }invoke T.splay(x) then if root != x throw error. Else 
   \begin{itemize}[noitemsep]
   \item if L is empty return R
   \item if R is empty return L 
@@ -631,9 +635,9 @@
   \end{itemize}
   \item All leaves are on the same level of the tree \\
   \end{itemize}
-  Height Analysis: as B-Trees grow wider, the height decreases\\
-  B-Tree of order m with n keys has height of at most $(lgn)/\gamma$ where $\gamma$ = lg(m/2)\\
-  Proof: assume m is even and let N(h) = number of nodes in skinniest possible order-m B tree of height h\\
+  \textbf{Height Analysis: }as B-Trees grow wider, the height decreases\\
+  \textbf{Theorem: }B-Tree of order m with n keys has height of at most $(lgn)/\gamma$ where $\gamma$ = lg(m/2)\\
+  \textbf{Proof: }assume m is even and let N(h) = number of nodes in skinniest possible order-m B tree of height h\\
   \indent Root has $\geq$ 2 children that have $\geq$ m/2 children \\
   \indent \indent therefore 2 nodes at depth 1\\
   \indent \indent $2(m/2)$ nodes at depth 2\\
@@ -644,7 +648,7 @@
   \indent $N(h) = \frac{2(c^{h}-1)}{(c-1)} \approx \frac{2c^{h}}{c} = 2c^{h-1} = 2(\frac{m}{2})^{h-1}$\\
   \indent Each node has $\geq \frac{m}{2}-1$ keys $\approx \frac{m}{2}$\\
   \indent $n \geq N(h) \geq 2(\frac{m}{2})^{h} \rightarrow h \leq \frac{lgn}{lg\frac{m}{2}}$\\ \\
-  Node Structure: since B-Tree nodes can hold a variable number of items, every node is allocated max possible size
+  \textbf{Node Structure: }since B-Tree nodes can hold a variable number of items, every node is allocated max possible size but not all of the space allocated may be used
   \begin{lstlisting}
     final int M = m;    \\order of B-tree
     class BTreeNode {
@@ -654,33 +658,39 @@
       Value value[M-1]; 
     }
   \end{lstlisting}
-  Searching: When arriving at an interval node, search through keys
+  \textbf{Searching: }When arriving at an interval node, search through keys
   \begin{itemize}[noitemsep]
   \item if x is found then return the corresponding value
   \item Else determine index i such that $a_{i-1} < x < a_{i}$ note that $(a_{0} = -\infty, a_{j} = \infty)$
   \item Then recurse into subtree $T_{i}$\\
   \end{itemize}
-  Insertion and Deletion require some restructuring methods (rotation, splitting, and merging)\\ \\
-  Rotation: Node can have between $\ceil[\Big]{m/2}$ and $m$ children, and one less keys. Insertion and deletion might make a node have too many or too few nodes so we fix this imbalance by moving a child into or from one of its siblings, assuming the sibling isn't full\\
-  \includegraphics[width=\textwidth]{BTreeRotations}
-  Node Splitting: node has 1 too many children (m + 1 children and m keys) and key rotation is not available so split node into 2 nodes, one with $m' = \ceil[\Big]{m/2}$ children and the other with $m''= m + 1 - \ceil[\Big]{m/2}$ children\\
-  Since $(m' - 1) + (m'' - 1) = m - 1$, we have one extra key that is doesn't fit into L and R subchildren so it is promoted to parent and then handled up there\\
-  \includegraphics[width=\textwidth]{BTreeNodeSplitting}
+  Insertion and Deletion require some restructuring methods (rotation, splitting, and merging)\\
+  \textbf{Rotation (Adoption): }Node can have between $\ceil[\Big]{m/2}$ and $m$ children, and one less keys. Insertion and deletion might make a node have too many or too few nodes so we fix this imbalance by moving a child into or from one of its siblings and rotate a key from parent, assuming can give a child\\
+  \begin{center}
+  \includegraphics[scale=0.10]{BTreeRotations}
+  \end{center}
+  \textbf{Node Splitting: }node has 1 too many children (m + 1 children and m keys) and key rotation is not available so split node into 2 nodes, one with $m' = \ceil[\Big]{m/2}$ children and the other with $m''= m + 1 - \ceil[\Big]{m/2}$ children\\
+  Since $(m' - 1) + (m'' - 1) = m - 1$, we have one extra key that is doesn't fit into L and R subchildren so it is promoted to parent and then handled up there
+  \begin{center}
+  \includegraphics[scale=0.15]{BTreeNodeSplitting}
+  \end{center}
   Proof for Node Splitting:
   \begin{itemize}[noitemsep]
   \item If m is even then $\frac{m}{2} \leq m + 1 - \frac{m}{2} = \frac{m}{2} + 1 \leq m$
   \item If m is odd then $\frac{m+1}{2} \leq m + 1 - \frac{m+1}{2} = \frac{m+1}{2} \leq m$ \\
   \end{itemize}
-  Node Merging: Node might have 1 too few children ($\ceil[\Big]{m/2} - 1$ nodes and one less keys) after deletion. If key rotation isn't available, then we know that the sibling must have the minimum number of children $(\ceil[\Big]{m/2})$. Now merge node with the sibling into a node with $m' = (\ceil[\Big]{m/2} - 1) + \ceil[\Big]{m/2} = 2\ceil[\Big]{m/2} - 1$ children\\
-  Note that $\ceil[\Big]{m/2} - 2 + \ceil[\Big]{m/2} = m' - 2$ which is one too few so we demote the appropriate key from the parent's node to get desired number of keys. \\
+  \textbf{Node Merging: }Node might have 1 too few children ($\ceil{m/2} - 1$ nodes and one less keys) after deletion. If key rotation isn't available, then we know that the sibling must have the minimum number of children $(\ceil[\Big]{m/2})$. Now merge node with the sibling into a node with $m' = (\ceil[\Big]{m/2} - 1) + \ceil[\Big]{m/2} = 2\ceil[\Big]{m/2} - 1$ children\\
+  Note that $\ceil{m/2} - 2 + \ceil{m/2} - 1 = m' - 2$ which is one too few keys so we demote the appropriate key from the parent's node to get desired number of keys. \\
   Since the parent lost a key and a node, recurse up to parent\\ \\
-  Lemma: For all $m \geq 2$, $\ceil[\Big]{m/2} \leq 2\ceil[\Big]{m/2} - 1 \leq m$
+  Proof for Node Merging: For all $m \geq 2$, $\ceil{m/2} \leq 2\ceil{m/2} - 1 \leq m$
   \begin{itemize}[noitemsep]
   \item If m is even then $\frac{m}{2} \leq m - 1 \leq m$
   \item If m is odd then $\frac{m+1}{2} \leq m \leq m$
   \end{itemize}
-  \includegraphics[width=\textwidth]{BtreeNodeMerge}
-  Insertion: creating nodes is an expensive operation so try to rotate whenever possible. Search for key x and if
+  \begin{center}
+  \includegraphics[scale=0.15]{BtreeNodeMerge}
+  \end{center}
+  \textbf{Insertion: }creating nodes is an expensive operation so try to rotate whenever possible. Search for key x and if
   \begin{itemize}[noitemsep]
   \item found thrown an exception
   \item leaf is not at full capacity (fewer than m-1 keys) then we insert key and done
@@ -689,26 +699,29 @@
     \end{itemize}
   \item otherwise node overflows and check if either sibling is less than full. If so then perform a rotation else perform node split. 
   \end{itemize}
-  \includegraphics[width=\textwidth]{BTreeInsertion}
-  \newpage
-  Deletion: Search for the node to be deleted. Need to find replacement so take largest key in left child or smallest key in right child and move this key up to fill the hole
+  \begin{center}
+  \includegraphics[scale=0.15]{BTreeInsertion}
+  \end{center}
+  \textbf{Deletion: }Search for the node to be deleted. Need to find replacement so take largest key in left child or smallest key in right child and move this key up to fill the hole
   \begin{itemize}[noitemsep]
-  \item if left node has $\geq \ceil[\Big]{m/2} - 1$ keys we are done
+  \item if left node has $\geq \ceil{m/2} - 1$ keys we are done
   \item else node will underflow so key rotate if possible else use node merge and recurse in parent
   \end{itemize}
-  \includegraphics[width=\textwidth]{BTreeDeletion}
-  B+ Trees: internal nodes only store keys (not values)\\
+  \begin{center}
+  \includegraphics[scale=0.15]{BTreeDeletion}
+  \end{center}
+  \textbf{B+ Trees: }internal nodes only store keys (not values)\\
   Keys are used solely for locating leaf node containing actual data so it's not necessary that every key in internal node to correspond to a key-value pair\\
   Each leaf node has a next-leaf pointer, which pointers to the next leaf in sorted order \\
-  Storing only in internal nodes save space and allows increased tree fan out $\rightarrow$ lowers height ofr tree\\
+  Storing only keys in internal nodes save space and allows increased tree fan out $\rightarrow$ lowers height of tree\\
   Internal nodes are an index to locate actual data which resides at the leaf level\\
   Now internal nodes with keys $a_{1}, ..., a_{j-1}$, subtree $T_{j}$ has keys x such that $a_{i-1} < x \leq a_{i}$\\
-  Next leaf enables efficient range reporting quries where we can list keys in range $[x_{min}, x_{max}]$\\
+  Next leaf enables efficient range reporting queries where we can list keys in range $[x_{min}, x_{max}]$\\
   \indent so we now find the leaf node $x_{min}$ and follow next leaf links until we reach $x_{max}$\\
   \newpage
   \section{Hashing}
   Supports O(1) dictionary operations but cannot perform search operations like range queries (finding keys x such that $x_{1} \leq x \leq x_{2}$) or nearest-neighbor queries (find key closest to a given key x)\\
-  Given a table of size m > n and a hash function h(x), we use h(x) to map a key to a random index $[0...m-1]$ \\
+  Given a table of size m $>$ n and a hash function h(x), we use h(x) to map a key to a random index $[0...m-1]$ \\
   Possible issue of collisions where 2 keys land in the same index after hashing\\ \\
   Good hash function:
   \begin{itemize}[noitemsep]
@@ -721,29 +734,30 @@
   \end{itemize}
   Types of hasing:
   \begin{itemize}[noitemsep]
-  \item Division Hashing: $h(x) = x mod m$
+    \item \textbf{Division Hashing: }$h(x) = x \mod m$
     \begin{itemize}[noitemsep]
       \item Fails 2nd rule (issue with clusters)
     \end{itemize}
-  \item Multiplicative Hashing: $h(x) = (ax) mod m$
+  \item \textbf{Multiplicative Hashing: }$h(x) = (ax) \mod m$
   \begin{itemize}
     \item Where a is a large prime number
   \end{itemize}
-  \item Linear Hashing: $h(x) = (ax + b) mod m$
+\item \textbf{Linear Hashing: }$h(x) = (ax + b) \mod m$
   \begin{itemize}
       \item Enhances Multiplicative hashing with added constant
   \end{itemize}
-  \item Polynomial Hashing: $h(x_{0}, ..., x_{n}) = (\sum_{i=0}^{k-1}c_{i}p^{i}) mod m$
+\item \textbf{Polynomial Hashing: }$h(x_{0}, ..., x_{n}) = (\sum_{i=0}^{k-1}c_{i}p^{i}) \mod m$
     \begin{itemize}
       \item Useful for keys that have a sequence of objects (strings or coordinates)
       \item Can use Horner's Rule to make summation faster $c_{0} + c_{1}p + c_{2}p^{2} + c_{3}p^{3} = ((c_{3}p + c_{2})p + c_{1})p + c_{0}$ \\
     \end{itemize}
   \end{itemize}
-  Universal Hashing: hash function is selected from large class of functions so probability of collision between 2 fixed keys is about 1/m\\
+  \textbf{Universal Hashing: }hash function is selected from large class of functions so probability of collision between 2 fixed keys is about 1/m\\
   Consider a large prime $p$ and two random integers $a \in \{1, 2, ..., p-1\}$ and $b \in \{0, 1, ..., p-1\}$ \\
-  Use a linear has function $h_{a,b}(x) = ((ax + b) mod p mod m$. As a and b vary, they will define a family of functions.\\
-  Let $H_{p}$ denote the class of hash functions that arise from all possible combos of a and b. If we consider any two integers x and y such that $0 \leq y < x < p$ then the probability $h_{a,b}(y) = h_{a,b}(x)$ is 1/m\\ \\
-  Handling Collisions Separate Chaining: have each index be a linked list and store collisions by adding to these linked lists.
+  Use a linear has function $h_{a,b}(x) = ((ax + b) \mod p \mod m$. As a and b vary, they will define a family of functions.\\ \\
+  \textbf{Theorem: }Let $H_{p}$ denote the class of hash functions that arise from all possible combos of a and b. If we consider any two integers x and y such that $0 \leq y < x < p$ then the probability $h_{a,b}(y) = h_{a,b}(x)$ is 1/m
+  \subsection{Handling Collisions}
+  \textbf{Separate Chaining: }have each index be a linked list and store collisions by adding to these linked lists.
     \begin{itemize}[noitemsep]
     \item We define the load factor $\lambda = n/m$ and expect each list to have about $\lambda$ elements
     \item If we are successful in finding the desired element, it'll take about $1 + \frac{\lambda}{2}$ (about halfway). Otherwise failure will take $1 + \lambda$. Additional 1 is for null checks

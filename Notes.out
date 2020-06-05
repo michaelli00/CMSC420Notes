@@ -21,8 +21,9 @@
 \BOOKMARK [1][-]{section.7}{Splay Trees}{}% 21
 \BOOKMARK [1][-]{section.8}{B-Trees}{}% 22
 \BOOKMARK [1][-]{section.9}{Hashing}{}% 23
-\BOOKMARK [1][-]{section.10}{Extended BST and Scapegoat Trees}{}% 24
-\BOOKMARK [2][-]{subsection.10.1}{Extended BST}{section.10}% 25
-\BOOKMARK [2][-]{subsection.10.2}{Scapegoat Tree}{section.10}% 26
-\BOOKMARK [1][-]{section.11}{Geometric Data Structures}{}% 27
-\BOOKMARK [1][-]{section.12}{Memory Management}{}% 28
+\BOOKMARK [2][-]{subsection.9.1}{Handling Collisions}{section.9}% 24
+\BOOKMARK [1][-]{section.10}{Extended BST and Scapegoat Trees}{}% 25
+\BOOKMARK [2][-]{subsection.10.1}{Extended BST}{section.10}% 26
+\BOOKMARK [2][-]{subsection.10.2}{Scapegoat Tree}{section.10}% 27
+\BOOKMARK [1][-]{section.11}{Geometric Data Structures}{}% 28
+\BOOKMARK [1][-]{section.12}{Memory Management}{}% 29
