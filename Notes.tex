@@ -764,12 +764,12 @@
     \item Insertion and deletion will take about constant time so all dictionary operations will take $O(1 + \lambda)$
     \item Drawback of we need to use additional storage to store pointers to linked lists
     \end{itemize}
-  Controlling Load Factor and Rehashing: we want to maintain a few invariants
+  \textbf{Controlling Load Factor and Rehashing: }we want to maintain a few invariants
   \begin{center} 
     $0 < \lambda_{min} < \lambda_{max} < 1$ \quad $\lambda_{min} \leq \lambda \leq \lambda_{max}$ \quad $n \leq \lambda_{max}m$ \quad $m \leq n/\lambda_{min}$
   \end{center}
   We don't want too large of a table or too small of a table so the optimal load factor is $\lambda_{0} = (\lambda_{max} + \lambda_{min}) / 2$\\
-  If load factor is too big ($n > lambda_{max}m$) or too small ($n < \lambda_{min}m$) then we rehash with a larger table
+  If load factor is too big ($n > \lambda_{max}m$) or too small ($n < \lambda_{min}m$) then we rehash with a larger table
   \begin{itemize}
     \item Allocate a table of size $m' = \ceil{n/\lambda_{0}}$
     \item generate new hash function $h'$ using new table size
@@ -777,86 +777,105 @@
     \item remove old table
     \item New load factor ($n/m'$) $\approx \lambda_{0}$ so we have restored optimal load factor
   \end{itemize}
-  Amortized cost of rehashing is still good since we only rehash every so often \\ \\
-  Open Addressing: To know which table entries have values and which are empty we store a special value \textit{empty}. Now whenever we insert an element and its hashed index is already occupied we probe around nearby entries until we find an empty slot. The secondary search involves a function $f$ so now the probe sequence is
+  Amortized cost of rehashing is still good since we only rehash every so often \\ 
+  \textbf{Open Addressing: }To know which table entries have values and which are empty we store a special value \textit{empty}. Now whenever we insert an element and its hashed index is already occupied we probe around nearby entries until we find an empty slot. The secondary search involves a function $f$ so now the probe sequence is
   \begin{center}
-    $(h(x) + f(1)) mod m, (h(x) + f(2)) mod m, ...$
+    $(h(x) + f(1)) \mod m, (h(x) + f(2)) \mod m, \ldots$
   \end{center}
   \newpage
-  Linear Probing: probe function is $f(i) = i$ and we search sequential locations until we find an empty slot
+  \noindent \textbf{Linear Probing: }probe function is $f(i) = i$ and we search sequential locations until we find an empty slot
   \begin{itemize}[noitemsep]
     \item good for low load ($<75\%$)factor. As load factor approaches 1, becomes very bad
     \item Issue with secondary clustering (when keys has to different locations but collision-resolution results in new collisions)
     \item Successful search expected cost: $(\frac{1}{2}(1 + \frac{1}{1 - \lambda}))$ \quad Unsuccessful serach expected cost: $(\frac{1}{2}(1 + (\frac{1}{1 - \lambda})^{2}))$ \\
   \end{itemize}
-  Quadratic Probing: Avoids secondary clustering by using a nonlinear probing function, scattering subsequent probes. Example Code:
+  \textbf{Quadratic Probing: }Avoids secondary clustering by using a nonlinear probing function, scattering subsequent probes. \\
+  Note that $i^{2} = (i-1)^{2} + 2i - 1$ so we can just increment by $2i - 1$. Example Code:
   \begin{lstlisting}
     Value find(Key x) {
       int c = h(x);
       int i = 0;
       while ((table[c].key != empty) && (table[c].key != x)){
         c += 2*(++i) - 1;
-        c = c \% m
+        c = c mod m
       }
       return table[c].value;
     }
   \end{lstlisting}
-  Quadratic Probing has a potential issue of skipping potential slots due to growth factor. However if m is prime, we can guarantee that $\ceil{m/2}$ probe sequences are distinct. Proof:\\
-  Contradiction: assume $0 \leq i < j \leq \ceil{m/2}$ then \\
-  $h(x) + i^{2} \equiv h(y) + j^{2} \iff i^{2} \equiv j^{2} \equiv i^{2} - j^{2} \equiv 0 \iff (i-j)(i+j) \equiv 0 mod m$ but its impossible since m is prime\\
-  Other cool properties:
+  Quadratic Probing has a potential issue of skipping potential slots due to growth factor. \\
+  \textbf{Theorem: }If m is prime, we can guarantee that $\ceil{m/2}$ probe sequences are distinct.\\
+  \textbf{Proof by Contradiction: }assume $0 \leq i < j \leq \ceil{m/2}$ then \\
+  $h(x) + i^{2} \equiv h(y) + j^{2} \iff i^{2} \equiv j^{2} \equiv i^{2} - j^{2} \equiv 0 \iff (i-j)(i+j) \equiv 0 \mod m$ but its impossible since m is prime\\
+  \textbf{Other cool properties:}
   \begin{itemize}[noitemsep]
     \item if $m = 4k + 3$ and is prime, then quadratic probe will work for all table entries before repeating
     \item if m is a power of 2 and the increment factor is $\frac{1}{2}(i^{2} + i)$ then we can probe every table entry before repeating \\
   \end{itemize}
-  Double Hashing: use a hash function to figure out the probe sequence $f(i) = i*g(x)$. Now
+  \textbf{Double Hashing: }use a hash function to figure out the probe sequence $f(i) = i*g(x)$. Now
   \begin{center} 
     $h(x) + g(x), h(x) + 2g(x), h(x) + 3g(x), ...$
   \end{center}
-  To ensure that there are no cycles, $m$ and $g(x)$ must be relatively prime\\
-  \includegraphics[width=\textwidth]{HashProbe}
-  Successful search expected cost: $(\frac{1}{\lambda}\ln(\frac{1}{1 - \lambda}))$ \quad Unsuccessful serach expected cost: $(\frac{1}{1 - \lambda})$ \\ \\
-  Deletition can be tricky since if we delete a node in the probe sequence, we cannot find the latter elements in that probe sequence. To resolve this, we create a special value called \textit{deleted} meaning that that slot is available for insertion but search method can continue searching the probe sequence until it finds the target element or reaches an empty cell \\
-  \includegraphics[width=\textwidth]{HashDeletion}
+  To ensure that there are no cycles, $m$ and $g(x)$ must be relatively prime
+  \begin{center}
+  \includegraphics[scale=0.15]{HashProbe}
+  \end{center}
+  Successful search expected cost: $(\frac{1}{\lambda}\ln(\frac{1}{1 - \lambda}))$ \quad Unsuccessful search expected cost: $(\frac{1}{1 - \lambda})$ \\ \\
+  \newpage
+  \noindent \textbf{Deletion: }can be tricky since if we delete a node in the probe sequence, we cannot find the latter elements in that probe sequence. To resolve this, we create a special value called \textit{deleted} meaning that that slot is available for insertion but search method can continue searching the probe sequence until it finds the target element or reaches an empty cell
+  \begin{center}
+  \includegraphics[scale=0.15]{HashDeletion}
+  \end{center}
   However, this solution makes can make the search path extremely long (even if the load factor is low). Another possible solution is to bring up the latter elements of the probe sequence up after deleting an element, but that makes deletion take longer.\\
   \newpage
   \section{Extended BST and Scapegoat Trees}
   \subsection{Extended BST}
-  Key are in external nodes and internal nodes have splitters with the property that all external nodes $x \leq s$ on left and $x > s$ on right\\
-  \includegraphics[width=\textwidth]{ExtendedBST}
-  Find(Key x, Node P): initial call find(x, root) then 
+  Key are in external nodes and internal nodes have splitters with the property that all external nodes $x \leq s$ on left and $x > s$ on right
+  \begin{center}
+  \includegraphics[scale=0.15]{ExtendedBST}
+  \end{center}
+  \textbf{Use of Extended BST: } can be used to partition a 2D plane (creating a partition tree). Splitters represent lines where left subtree is on one partition and the right subtree in on the other partition. The data represent points on the plane
+  \begin{center}
+    \includegraphics{PartitionTree}
+  \end{center}
+  \textbf{Find(Key x, Node P): }initial call find(x, root) then 
   \begin{itemize}[noitemsep]
     \item if $x \leq p.key$ recurse on p.left
     \item else recurse of p.right
-    \item once at external node u, test if $x = u.key$ \\
+    \item once at external node u, test if $x = u.key$
+    \item note that it doesn't matter if an internal node has the target key value since all the data are in the external nodes \\
   \end{itemize}
-  Insert(Key x, Value v, Node p): returns reference to root of updated subtree where x was inserted. Initial call insert(x, v, root) then
+  \newpage
+  \noindent \textbf{Insert(Key x, Value v, Node p): }returns reference to root of updated subtree where x was inserted. Initial call insert(x, v, root) then
   \begin{itemize}
     \item if $x \leq p.key$ then recurse on p.left
     \item else recurse on p.right
-    \item if empty tree craete external node with x and return it
+    \item if empty tree create external node with x and return it
     \item otherwise create an external node with x and an internal to split x and p.key with the value min(x, p.key)
   \end{itemize}
-  \includegraphics[width=\textwidth]{ExtendedBSTInsert}
-  \newpage
-  Delete(Key x, Node p): returns the root of the updated subtree from which x is deleted. Initial call delete(x, root) then
+  \begin{center}
+  \includegraphics[scale=0.3]{ExtendedBSTInsert}
+  \end{center}
+  \textbf{Delete(Key x, Node p): }returns the root of the updated subtree from which x is deleted. Initial call delete(x, root) then
   \begin{itemize}
     \item traverse through left or right subtree accordingly
-    \item if x is root, delete the external node
-    \item otherwise delete the external node and its parent and return a reference to the other child of parent \\
+    \item if x is root, delete the external node and return null
+    \item otherwise delete the external node and its parent (internal node) and return a reference to the other child of parent (external node)\\
   \end{itemize}
-  \includegraphics[width=\textwidth]{ExtendedBSTDeletion}
+  \begin{center}
+    \includegraphics[scale=0.35]{ExtendedBSTDeletion}
+  \end{center}
   Expected height is O(logn) so dictionary operations are expected to take O(logn)
+  \newpage
   \subsection{Scapegoat Tree}
   Do not rely on rotations. Instead rebuild subtrees with poor balance. Nodes only contain key, value, left, and right and height will always be O(logn)\\
-  Scapegoat Tree nodes have to store 2 values: n (number of keys in the tree) and m (upper bound size of tree)
+  Scapegoat Tree also store 2 values: n (number of keys in the tree) and m (upper bound size of tree)
   \begin{itemize}[noitemsep]
     \item Whenever we insert a key, we increment both n and m
     \item Whenever we delete a key, we only decrement n and do not change m
-    \item This means that $m \leq n$
+    \item This means that $m \geq n$
     \item Whenever $m > 2n$ that means number of deletes exceeds number of nodes in subtree so we rebuild it \\
   \end{itemize}
-  Rebuild: Perform inorder traversal over all nodes in the scapegoat subtree rooted at p with k nodes and stored result in an array. Then recursively extract mins from the array. This will take O(k)
+  \textbf{Rebuild: }Perform inorder traversal over all nodes in the scapegoat subtree rooted at p with k nodes and stored result in an array. Then recursively extract medians from the array. This will take O(k)
   \begin{lstlisting}
     BinaryNode buildSubtree(Key[] A, int i, int k) {
       if (k == 0) return null
@@ -869,23 +888,25 @@
       }
     }
   \end{lstlisting}
-  Find(Key x): Exactly the same as BST find. Height of tree will never exceed $\log_{3/2}n$ so run time is guaranteed to be O(logn)\\ \\
-  Deletion(Key x): Standard BST delete but when $m > 2n$ rebuild entire tree and set $m = n$\\ \\
-  \newpage
-  Insertion: Standard BST insert but need to 
+  \textbf{Find(Key x): }Exactly the same as BST find. Height of tree will never exceed $\log_{3/2}n$ so run time is guaranteed to be O(logn)\\ \\
+  \textbf{Deletion(Key x): }Standard BST delete but when $m > 2n$ rebuild entire tree and set $m = n$\\ \\
+  \textbf{Insertion: }Standard BST insert but need to 
   \begin{itemize}[noitemsep]
     \item monitor the depth of the inserted node. If depth $> \log_{3/2}m$ that means one of the nodes in its search path is unbalanced
     \item Traverse up through search path and if at any point $\frac{size(u.child)}{size(u)} > \frac{2}{3}$ then we rebuild u
-    \item Intuition is that this subtree has twice as many nodes as siblings so we should trigger a rebuild\\
+    \item Intuition is that this subtree has twice as many nodes as its sibling so we should trigger a rebuild\\
   \end{itemize}
-  \includegraphics[width=\textwidth]{ScapegoatInsertion}
-  Proof that if the depth of a node p is $> log_{3/2}n$ then p has an ancestor (possibly p itself) that is a scapegoat candidate
+  \begin{center}
+  \includegraphics[scale=0.15]{ScapegoatInsertion}
+  \end{center}
+  \textbf{Lemma: } Given a BST, if there exists a node p such that depth(p) $> log_{3/2}n$, then p has an ancestor (possibly p itself) that is a scapegoat candidate\\
+  \textbf{Proof: }
   \begin{itemize}[noitemsep]
-    \item Proof by contradiction: assume that all nodes in the path have $size(u.child) \leq \frac{2}{3} size(u)$
-    \item since the root has n nodes, we have $size(p) \geq (\frac{2}{3}^{k})n$ for the inserted node p
-    \item since size(p) $\geq 1$ we have $1 \geq (\frac{2}{3}^{k})n \rightarrow k \leq log_{3/2}n$ which is a contradiction since p's depth $ > log_{3/2}n$ \\ 
+    \item Proof by contradiction: assume that all nodes in the path have size(u.child)$\leq \frac{2}{3} size(u)$
+    \item since the root has n nodes, we have size(p) $\geq (\frac{2}{3})^{k}n$ for the inserted node p. 
+    \item since size(p) $\geq 1$ we have $1 \leq (\frac{2}{3})^{k}n \rightarrow k \leq log_{3/2}n$ which is a contradiction since p's depth $ > log_{3/2}n$ \\ 
   \end{itemize}
-  Calculating size(u): we need to find the size of both of u's children (u' and u'') so now size(u) = 1 + u' + u''. However, cost of counting process can be accounted for in the rebuilding process (we have to count these nodes anyways)\\
+  \textbf{Calculating size(u): }we need to find the size of both of u's children (u' and u'') so now size(u) = 1 + u' + u''. However, cost of counting process can be accounted for in the rebuilding process (we have to count these nodes anyways)\\
   Alternate idea of counting: store size value in nodes so that
   \begin{center}
     size(u) = (u == null ? 0 : size(u.left) + size(u.right));

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  4 JUN 2020 19:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  5 JUN 2020 12:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -794,255 +794,262 @@ Underfull \hbox (badness 10000) in paragraph at lines 755--759
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 780--782
-
- []
-
-[23] [24]
+[23]
 Underfull \hbox (badness 10000) in paragraph at lines 790--791
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 810--811
+Underfull \hbox (badness 10000) in paragraph at lines 812--813
 
  []
 
-<./assets/HashProbe.png, id=540, 2591.6825pt x 1363.0925pt>
+<./assets/HashProbe.png, id=536, 2591.6825pt x 1363.0925pt>
 File: ./assets/HashProbe.png Graphic file (type png)
 <use ./assets/HashProbe.png>
-Package pdftex.def Info: ./assets/HashProbe.png  used on input line 817.
-(pdftex.def)             Requested size: 513.11745pt x 269.8682pt.
-<./assets/HashDeletion.png, id=541, 1937.2375pt x 923.45pt>
+Package pdftex.def Info: ./assets/HashProbe.png  used on input line 820.
+(pdftex.def)             Requested size: 388.7356pt x 204.45505pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 822--823
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 822--823
+
+ []
+
+[24 <./assets/HashProbe.png>]
+<./assets/HashDeletion.png, id=553, 1937.2375pt x 923.45pt>
 File: ./assets/HashDeletion.png Graphic file (type png)
 <use ./assets/HashDeletion.png>
-Package pdftex.def Info: ./assets/HashDeletion.png  used on input line 820.
-(pdftex.def)             Requested size: 513.11745pt x 244.60036pt.
+Package pdftex.def Info: ./assets/HashDeletion.png  used on input line 826.
+(pdftex.def)             Requested size: 290.57309pt x 138.51152pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 816--822
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 816--822
+Underfull \hbox (badness 10000) in paragraph at lines 828--829
 
  []
 
-[25 <./assets/HashProbe.png>] [26 <./assets/HashDeletion.png>]
-<./assets/ExtendedBST.png, id=564, 2575.6225pt x 917.4275pt>
+[25 <./assets/HashDeletion.png>]
+<./assets/ExtendedBST.png, id=560, 2575.6225pt x 917.4275pt>
 File: ./assets/ExtendedBST.png Graphic file (type png)
 <use ./assets/ExtendedBST.png>
-Package pdftex.def Info: ./assets/ExtendedBST.png  used on input line 826.
-(pdftex.def)             Requested size: 513.11745pt x 182.76831pt.
+Package pdftex.def Info: ./assets/ExtendedBST.png  used on input line 834.
+(pdftex.def)             Requested size: 386.3267pt x 137.60818pt.
+<./assets/PartitionTree.png, id=561, 394.47375pt x 165.61874pt>
+File: ./assets/PartitionTree.png Graphic file (type png)
+<use ./assets/PartitionTree.png>
+Package pdftex.def Info: ./assets/PartitionTree.png  used on input line 838.
+(pdftex.def)             Requested size: 394.47278pt x 165.61833pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 831--832
+Underfull \hbox (badness 10000) in paragraph at lines 845--846
 
  []
 
-<./assets/ExtendedBSTInsert.png, id=565, 1734.48pt x 638.385pt>
+[26 <./assets/ExtendedBST.png> <./assets/PartitionTree.png>]
+<./assets/ExtendedBSTInsert.png, id=568, 1734.48pt x 638.385pt>
 File: ./assets/ExtendedBSTInsert.png Graphic file (type png)
 <use ./assets/ExtendedBSTInsert.png>
-Package pdftex.def Info: ./assets/ExtendedBSTInsert.png  used on input line 840
+Package pdftex.def Info: ./assets/ExtendedBSTInsert.png  used on input line 856
 .
-(pdftex.def)             Requested size: 513.11745pt x 188.85768pt.
-[27 <./assets/ExtendedBST.png> <./assets/ExtendedBSTInsert.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 846--847
+(pdftex.def)             Requested size: 520.34802pt x 191.51697pt.
+
+Overfull \hbox (7.23058pt too wide) in paragraph at lines 856--857
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 862--863
 
  []
 
-<./assets/ExtendedBSTDeletion.png, id=572, 1359.0775pt x 451.6875pt>
+<./assets/ExtendedBSTDeletion.png, id=569, 1359.0775pt x 451.6875pt>
 File: ./assets/ExtendedBSTDeletion.png Graphic file (type png)
 <use ./assets/ExtendedBSTDeletion.png>
 Package pdftex.def Info: ./assets/ExtendedBSTDeletion.png  used on input line 8
-48.
-(pdftex.def)             Requested size: 513.11745pt x 170.53339pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 857--858
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 872--874
+65.
+(pdftex.def)             Requested size: 475.68427pt x 158.09299pt.
+[27 <./assets/ExtendedBSTInsert.png> <./assets/ExtendedBSTDeletion.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 876--877
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 872--874
+Underfull \hbox (badness 10000) in paragraph at lines 891--894
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 872--874
+Underfull \hbox (badness 10000) in paragraph at lines 891--894
 
  []
 
-[28 <./assets/ExtendedBSTDeletion.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 879--880
+
+Underfull \hbox (badness 10000) in paragraph at lines 897--898
 
  []
 
-<./assets/ScapegoatInsertion.png, id=589, 2565.585pt x 1067.99pt>
+<./assets/ScapegoatInsertion.png, id=576, 2565.585pt x 1067.99pt>
 File: ./assets/ScapegoatInsertion.png Graphic file (type png)
 <use ./assets/ScapegoatInsertion.png>
-Package pdftex.def Info: ./assets/ScapegoatInsertion.png  used on input line 88
-1.
-(pdftex.def)             Requested size: 513.11745pt x 213.59422pt.
+Package pdftex.def Info: ./assets/ScapegoatInsertion.png  used on input line 90
+0.
+(pdftex.def)             Requested size: 384.82115pt x 160.19159pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 886--887
+Underfull \hbox (badness 10000) in paragraph at lines 907--908
 
  []
 
-[29 <./assets/ScapegoatInsertion.png>]
-<./assets/GeometricQueries.png, id=595, 2607.7425pt x 867.24pt>
+[28 <./assets/ScapegoatInsertion.png>] [29]
+<./assets/GeometricQueries.png, id=597, 2607.7425pt x 867.24pt>
 File: ./assets/GeometricQueries.png Graphic file (type png)
 <use ./assets/GeometricQueries.png>
-Package pdftex.def Info: ./assets/GeometricQueries.png  used on input line 905.
+Package pdftex.def Info: ./assets/GeometricQueries.png  used on input line 926.
 
 (pdftex.def)             Requested size: 513.11745pt x 170.63953pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 899--907
+Underfull \hbox (badness 10000) in paragraph at lines 920--928
 
  []
 
 [30 <./assets/GeometricQueries.png>]
-<./assets/PointQuadtree.png, id=612, 2001.4775pt x 941.5175pt>
+<./assets/PointQuadtree.png, id=614, 2001.4775pt x 941.5175pt>
 File: ./assets/PointQuadtree.png Graphic file (type png)
 <use ./assets/PointQuadtree.png>
-Package pdftex.def Info: ./assets/PointQuadtree.png  used on input line 925.
+Package pdftex.def Info: ./assets/PointQuadtree.png  used on input line 946.
 (pdftex.def)             Requested size: 513.11745pt x 241.36958pt.
-<./assets/PointKDTree.png, id=613, 895.345pt x 467.7475pt>
+<./assets/PointKDTree.png, id=615, 895.345pt x 467.7475pt>
 File: ./assets/PointKDTree.png Graphic file (type png)
 <use ./assets/PointKDTree.png>
-Package pdftex.def Info: ./assets/PointKDTree.png  used on input line 945.
+Package pdftex.def Info: ./assets/PointKDTree.png  used on input line 966.
 (pdftex.def)             Requested size: 513.11745pt x 268.06769pt.
  [31 <./assets/PointQuadtree.png>]
-<./assets/KDInsertion.png, id=637, 937.5025pt x 351.3125pt>
+<./assets/KDInsertion.png, id=639, 937.5025pt x 351.3125pt>
 File: ./assets/KDInsertion.png Graphic file (type png)
 <use ./assets/KDInsertion.png>
-Package pdftex.def Info: ./assets/KDInsertion.png  used on input line 956.
+Package pdftex.def Info: ./assets/KDInsertion.png  used on input line 977.
 (pdftex.def)             Requested size: 513.11745pt x 192.27899pt.
  [32 <./assets/PointKDTree.png> <./assets/KDInsertion.png>]
-<./assets/KDTreeFindMin.png, id=652, 1043.9pt x 411.5375pt>
+<./assets/KDTreeFindMin.png, id=654, 1043.9pt x 411.5375pt>
 File: ./assets/KDTreeFindMin.png Graphic file (type png)
 <use ./assets/KDTreeFindMin.png>
-Package pdftex.def Info: ./assets/KDTreeFindMin.png  used on input line 977.
+Package pdftex.def Info: ./assets/KDTreeFindMin.png  used on input line 998.
 (pdftex.def)             Requested size: 513.11745pt x 202.28937pt.
  [33 <./assets/KDTreeFindMin.png>]
-<./assets/KDTreeDeletion.png, id=675, 1047.915pt x 712.6625pt>
+<./assets/KDTreeDeletion.png, id=677, 1047.915pt x 712.6625pt>
 File: ./assets/KDTreeDeletion.png Graphic file (type png)
 <use ./assets/KDTreeDeletion.png>
-Package pdftex.def Info: ./assets/KDTreeDeletion.png  used on input line 997.
+Package pdftex.def Info: ./assets/KDTreeDeletion.png  used on input line 1018.
 (pdftex.def)             Requested size: 513.11745pt x 348.96844pt.
  [34 <./assets/KDTreeDeletion.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 999--1006
+Underfull \hbox (badness 10000) in paragraph at lines 1020--1027
 
  []
 
-<./assets/RangeQueriesMethods.png, id=697, 943.525pt x 224.84pt>
+<./assets/RangeQueriesMethods.png, id=699, 943.525pt x 224.84pt>
 File: ./assets/RangeQueriesMethods.png Graphic file (type png)
 <use ./assets/RangeQueriesMethods.png>
 Package pdftex.def Info: ./assets/RangeQueriesMethods.png  used on input line 1
-017.
+038.
 (pdftex.def)             Requested size: 513.11745pt x 122.27634pt.
 [35 <./assets/RangeQueriesMethods.png>]
-<./assets/RangeQueriesLeftPart.png, id=703, 650.43pt x 303.1325pt>
+<./assets/RangeQueriesLeftPart.png, id=705, 650.43pt x 303.1325pt>
 File: ./assets/RangeQueriesLeftPart.png Graphic file (type png)
 <use ./assets/RangeQueriesLeftPart.png>
 Package pdftex.def Info: ./assets/RangeQueriesLeftPart.png  used on input line 
-1020.
+1041.
 (pdftex.def)             Requested size: 513.11745pt x 239.15752pt.
-<./assets/RangeCount.png, id=704, 921.4425pt x 329.23pt>
+<./assets/RangeCount.png, id=706, 921.4425pt x 329.23pt>
 File: ./assets/RangeCount.png Graphic file (type png)
 <use ./assets/RangeCount.png>
-Package pdftex.def Info: ./assets/RangeCount.png  used on input line 1029.
+Package pdftex.def Info: ./assets/RangeCount.png  used on input line 1050.
 (pdftex.def)             Requested size: 513.11745pt x 183.33266pt.
  [36 <./assets/RangeQueriesLeftPart.png> <./assets/RangeCount.png>]
-<./assets/RangeSearchExample.png, id=711, 1013.7875pt x 439.6425pt>
+<./assets/RangeSearchExample.png, id=713, 1013.7875pt x 439.6425pt>
 File: ./assets/RangeSearchExample.png Graphic file (type png)
 <use ./assets/RangeSearchExample.png>
 Package pdftex.def Info: ./assets/RangeSearchExample.png  used on input line 10
-45.
+66.
 (pdftex.def)             Requested size: 513.11745pt x 222.52419pt.
-<./assets/RangeQueryProof.png, id=712, 1019.81pt x 301.125pt>
+<./assets/RangeQueryProof.png, id=714, 1019.81pt x 301.125pt>
 File: ./assets/RangeQueryProof.png Graphic file (type png)
 <use ./assets/RangeQueryProof.png>
-Package pdftex.def Info: ./assets/RangeQueryProof.png  used on input line 1056.
+Package pdftex.def Info: ./assets/RangeQueryProof.png  used on input line 1077.
 
 (pdftex.def)             Requested size: 513.11745pt x 151.51784pt.
  [37 <./assets/RangeSearchExample.png>]
-<./assets/NearestNeighborExample.png, id=732, 716.6775pt x 397.485pt>
+<./assets/NearestNeighborExample.png, id=734, 716.6775pt x 397.485pt>
 File: ./assets/NearestNeighborExample.png Graphic file (type png)
 <use ./assets/NearestNeighborExample.png>
 Package pdftex.def Info: ./assets/NearestNeighborExample.png  used on input lin
-e 1062.
+e 1083.
 (pdftex.def)             Requested size: 513.11745pt x 284.60597pt.
  [38 <./assets/RangeQueryProof.png> <./assets/NearestNeighborExample.png>] [39]
-<./assets/MemoryAllocation.png, id=763, 1001.7425pt x 377.41pt>
+<./assets/MemoryAllocation.png, id=765, 1001.7425pt x 377.41pt>
 File: ./assets/MemoryAllocation.png Graphic file (type png)
 <use ./assets/MemoryAllocation.png>
-Package pdftex.def Info: ./assets/MemoryAllocation.png  used on input line 1122
+Package pdftex.def Info: ./assets/MemoryAllocation.png  used on input line 1143
 .
 (pdftex.def)             Requested size: 513.11745pt x 193.32884pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1117--1123
+Underfull \hbox (badness 10000) in paragraph at lines 1138--1144
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1117--1123
+Underfull \hbox (badness 10000) in paragraph at lines 1138--1144
 
  []
 
 [40 <./assets/MemoryAllocation.png>] [41]
-<./assets/MemoryDeallocation.png, id=792, 927.465pt x 584.1825pt>
+<./assets/MemoryDeallocation.png, id=794, 927.465pt x 584.1825pt>
 File: ./assets/MemoryDeallocation.png Graphic file (type png)
 <use ./assets/MemoryDeallocation.png>
 Package pdftex.def Info: ./assets/MemoryDeallocation.png  used on input line 11
-73.
+94.
 (pdftex.def)             Requested size: 513.11745pt x 323.20001pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1173--1177
+Underfull \hbox (badness 10000) in paragraph at lines 1194--1198
 
  []
 
 [42]
-<./assets/BuddySystem.png, id=818, 533.995pt x 377.41pt>
+<./assets/BuddySystem.png, id=820, 533.995pt x 377.41pt>
 File: ./assets/BuddySystem.png Graphic file (type png)
 <use ./assets/BuddySystem.png>
-Package pdftex.def Info: ./assets/BuddySystem.png  used on input line 1181.
+Package pdftex.def Info: ./assets/BuddySystem.png  used on input line 1202.
 (pdftex.def)             Requested size: 513.11745pt x 362.68956pt.
  [43 <./assets/MemoryDeallocation.png>]
-<./assets/BuddySystemInsertion.png, id=825, 907.39pt x 509.905pt>
+<./assets/BuddySystemInsertion.png, id=827, 907.39pt x 509.905pt>
 File: ./assets/BuddySystemInsertion.png Graphic file (type png)
 <use ./assets/BuddySystemInsertion.png>
 Package pdftex.def Info: ./assets/BuddySystemInsertion.png  used on input line 
-1195.
+1216.
 (pdftex.def)             Requested size: 513.11745pt x 288.34583pt.
-<./assets/BuddySystemDeletion.png, id=826, 893.3375pt x 580.1675pt>
+<./assets/BuddySystemDeletion.png, id=828, 893.3375pt x 580.1675pt>
 File: ./assets/BuddySystemDeletion.png Graphic file (type png)
 <use ./assets/BuddySystemDeletion.png>
 Package pdftex.def Info: ./assets/BuddySystemDeletion.png  used on input line 1
-197.
+218.
 (pdftex.def)             Requested size: 513.11745pt x 333.23961pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1199.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1220.
  [44 <./assets/BuddySystem.png>]
 [45 <./assets/BuddySystemInsertion.png> <./assets/BuddySystemDeletion.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1199.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1220.
 
 (./Notes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1199.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1199.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1220.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1220.
 
 Package rerunfilecheck Info: File `Notes.out' has not changed.
 (rerunfilecheck)             Checksum: 3638756BFFC982B5FB5BE4C84295E65D;1767.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1199.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1220.
  ) 
 Here is how much of TeX's memory you used:
- 9511 strings out of 492616
- 142095 string characters out of 6129482
+ 9517 strings out of 492616
+ 142243 string characters out of 6129482
  471202 words of memory out of 5000000
- 12848 multiletter control sequences out of 15000+600000
+ 12853 multiletter control sequences out of 15000+600000
  9835 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  33i,7n,40p,649b,1170s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1060,10 +1067,10 @@ ive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
 ve/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
 /2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/
 2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on Notes.pdf (45 pages, 5358515 bytes).
+Output written on Notes.pdf (45 pages, 5398414 bytes).
 PDF statistics:
- 981 PDF objects out of 1000 (max. 8388607)
+ 983 PDF objects out of 1000 (max. 8388607)
  803 compressed objects within 9 object streams
  447 named destinations out of 1000 (max. 500000)
- 503 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 508 words of extra memory for PDF output out of 10000 (max. 10000000)
 

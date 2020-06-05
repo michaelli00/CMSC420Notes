@@ -22,8 +22,8 @@
 \contentsline {section}{\numberline {8}B-Trees}{20}{section.8}% 
 \contentsline {section}{\numberline {9}Hashing}{23}{section.9}% 
 \contentsline {subsection}{\numberline {9.1}Handling Collisions}{23}{subsection.9.1}% 
-\contentsline {section}{\numberline {10}Extended BST and Scapegoat Trees}{27}{section.10}% 
-\contentsline {subsection}{\numberline {10.1}Extended BST}{27}{subsection.10.1}% 
+\contentsline {section}{\numberline {10}Extended BST and Scapegoat Trees}{26}{section.10}% 
+\contentsline {subsection}{\numberline {10.1}Extended BST}{26}{subsection.10.1}% 
 \contentsline {subsection}{\numberline {10.2}Scapegoat Tree}{28}{subsection.10.2}% 
 \contentsline {section}{\numberline {11}Geometric Data Structures}{30}{section.11}% 
 \contentsline {section}{\numberline {12}Memory Management}{40}{section.12}% 
