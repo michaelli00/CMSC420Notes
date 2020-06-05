@@ -918,11 +918,11 @@
   \newpage
   \section{Geometric Data Structures}
   Goal is to store large datasets of geometric objects(points, lines, shapes) in order to answer queries on them. These queries don't focus on exact matches and instead focus on "close to", "contained with", or "overlapping with"\\ \\
-  Nearest Neighbor Search: store set of points so giveen a query point q it is possible to find the closest point of the set to q\\
-  Range Searching: store set of points so that given a query region R (e.g. circle) it is possible to count all points of set that are in R\\
-  Point Location: store subdivision of space into disjoint regions so that given a query point q, it is possible to determine which region has q efficiently\\
-  Intersection Searching: store collection of geometric objects so that given a query of objects R of the same type, report all objects in set that intersect with R\\
-  Ray shooting: store collection of objects so that given an query ray, ran determine whether ray hits any object in set, and which it hits first\\
+  \textbf{Nearest Neighbor Search: }store set of points so given a query point q it is possible to find the closest point of the set to q\\
+  \textbf{Range Searching: }store set of points so that given a query region R (e.g. circle) it is possible to count all points of set that are in R\\
+  \textbf{Point Location: }store subdivision of space into disjoint regions so that given a query point q, it is possible to determine which region has q efficiently\\
+  \textbf{Intersection Searching: }store collection of geometric objects so that given a query of objects R of the same type, report all objects in set that intersect with R\\
+  \textbf{Ray shooting: }store collection of objects so that given an query ray, ran determine whether ray hits any object in set, and which it hits first\\
   \includegraphics[width=\textwidth]{GeometricQueries}
   Point Representation: Can represent as 2d array with n points of d dimension
   \begin{center}
@@ -942,9 +942,11 @@
     }
   \end{lstlisting}
   \newpage
-  \noindent Point quadtree: Generalizing for a 2d coordinate plane, each node has 4 children (NW, NE, SW, SE). Traverse through tree based on coordinate x and y comparison. This creates rectangle regions called cells that can be recursively split. Can be extended to generalize points with d dimensions using $2^{d}$ child nodes but that takes up a lot of space\\
-  \includegraphics[width=\textwidth]{PointQuadtree}
-  Point kd-trees: represent multi-dimensional points with using a binary tree. Whenever a new point is inserted into a node, we split the cell by a splitting line (0 to d-1). Cutting dimension is chosen by alternating among possible axes at each new level of the tree. 
+  \noindent \textbf{Point quadtree: }Generalizing for a 2d coordinate plane, each node has 4 children (NW, NE, SW, SE). Traverse through tree based on coordinate x and y comparison. This creates rectangle regions called cells that can be recursively split. Can be extended to generalize points with d dimensions using $2^{d}$ child nodes but that takes up a lot of space
+  \begin{center}
+  \includegraphics[scale=0.2]{PointQuadtree}
+  \end{center}
+  \textbf{Point kd-trees: }represent multi-dimensional points with using a binary tree. Whenever a new point is inserted into a node, we split the cell by a splitting line (0 to d-1). Cutting dimension is chosen by alternating among possible axes at each new level of the tree. 
   \begin{lstlisting}
     class KDNode {
       Point point;    // splitting point
@@ -963,8 +965,10 @@
       }
     }
   \end{lstlisting}
-  \includegraphics[width=\textwidth]{PointKDTree}
-  Insertion into kd-tree: Same as BST. When we create a node containing the point, we assign its cutting dimension. Initial call root = insert(x, root, 0).
+  \begin{center}
+  \includegraphics[scale=0.4]{PointKDTree}
+  \end{center}
+  \textbf{Insertion into kd-tree: } same as BST. When we create a node containing the point, we assign its cutting dimension. Initial call root = insert(x, root, 0).
   \begin{lstlisting}
     KDNode insert(Point x, KDNode p, int cutDim) {
       if (p == null) p = new KDNode(x, cutDim);
@@ -974,9 +978,10 @@
       return p;
     }
   \end{lstlisting}
-  \includegraphics[width=\textwidth]{KDInsertion}
-  \newpage
-  Deletion in kd-tree: Issue with finding a replacement point since each adjacent level of tree has different cutDim value. Need to use an auxiliary meethod findMin()\\
+  \begin{center}
+  \includegraphics[scale=0.4]{KDInsertion}
+  \end{center}
+  \textbf{Deletion in kd-tree: }Issue with finding a replacement point since each adjacent level of tree has different cutDim value. Need to use an auxiliary meethod findMin()\\
   findMin(p, cutDim): if the node we are testing has the same cutDim value, then we recurse on left side. Otherwise we have to use another auxiliary method minAlongDim() which returns whicever point p1 or p2 is the smallest among coordinate cuttDim.
   \begin{lstlisting}
     Point findMin(KDNode p, int i) {
@@ -989,15 +994,16 @@
         return minAlongDim(q, findMin(p.right, i), i);
       }
     }
-
     Point minAlongDim(Point p1, Point p2, int i) {
       if (p2 == null || p1[i] <= p2[i]) return p1;
       else return p2;
     }
   \end{lstlisting}
-  \includegraphics[width=\textwidth]{KDTreeFindMin}
+  \begin{center}
+  \includegraphics[scale=0.33]{KDTreeFindMin}
+  \end{center}
   \newpage
-  Another issue of deletion for kd-tree is that if the deleted node has a single child, we can't just bring that child subtree up since it has a different cutDim parity. Solution is to use findMin() to get the smallest x-coordinate or smallest y-coordinate in the right subtree. If the right subtree is empty then we find the min on the left subtree and and move the left subtree to the right subtree, setting the left-child pointer to null. Issue with finding the max on the left subtree is that if another point has the same coordinate value, it messes up the invariant (left subtree has points $<$ and right subtree has points $\geq$)
+  \noindent Another issue of deletion for kd-tree is that if the deleted node has a single child, we can't just bring that child subtree up since it has a different cutDim parity. Solution is to use findMin() to get the smallest x-coordinate or smallest y-coordinate in the right subtree. If the right subtree is empty then we find the min on the left subtree and and move the left subtree to the right subtree, setting the left-child pointer to null. Issue with finding the max on the left subtree is that if another point has the same coordinate value, it messes up the invariant (left subtree has points $<$ and right subtree has points $\geq$)
   \begin{lstlisting}
     KDNode delete(Point x, KDNode p) {
       if (p == null) throw Eception("point DNE");
@@ -1015,13 +1021,18 @@
       }
     }
   \end{lstlisting}
-  \includegraphics[width=\textwidth]{KDTreeDeletion}
-  \newpage
-  \noindent Analysis: Storage O(n). We treat the number of dimensions d as a constant so O(dn) = O(n)\\
-  Height is O(logn). Since we chose replacement nodes in a biased way height can mutate to be $O(\sqrt{n})$
+  Deletion may require several recursive calls since, unlike the regular BST, the replacement node might still have 2 children
+  \begin{center}
+  \includegraphics[scale=0.4]{KDTreeDeletion}
+  \end{center}
+  \textbf{Analysis: }Storage O(n). We treat the number of dimensions d as a constant so O(dn) = O(n)\\
+  Height is O(logn). Since we chose replacement nodes in a biased way height can mutate to be $O(\sqrt{n})$.\\
   We can build a kd-tree by choosing the splitting point to be the median according to x-coordinates. Then we split each partition using their medians according to y-coordinates. Keep recursing until done and height will be O(logn). Building takes O(nlogn)\\ \\
-  Range Queries: find how many points lie in a given region R. Use a kd-tree to store points. We will need a class for storing multi-dimensional rectangles which consists 2 points (low and high). A point q lies within the rectangle if $low[i] \leq q[i] \leq high[i]$.\\
-  Notable methods:\\ 
+  \subsection{Range Queries} 
+  find how many points lie in a given region R. Use a kd-tree to store points. \\
+  We will need a class for storing multi-dimensional rectangles which consists 2 points (low and high). \\
+  A point q lies within the rectangle if $low[i] \leq q[i] \leq high[i]$ for each dimension.\\ \\
+  \textbf{Notable methods:}\\ 
   boolean contains(Point q): returns true iff point q is contained within this rectangle\\
   boolean contains(Rectangle c): returns true iff this rectangle contains rectangle c. Have to test containment on all intervals defining each of the rectangles' sides:
   \begin{center}
@@ -1029,17 +1040,21 @@
   \end{center}
   boolean isDisjointFrom(Rectangle c): returns true iff rectangle c is disjoint from this rectangle. Have to test whether any of the defining intervals are disjoint
   \begin{center}
-    $r.high[i] < c.low[i] or r.low[i] > c.high[i]$, for any $0 \leq i \leq d-1$
+    $r.high[i] < c.low[i]$ or $r.low[i] > c.high[i]$, for any $0 \leq i \leq d-1$
   \end{center}
   float distanceTo(Point q): returns minimum Euclidean distance from q to any point on rectangle. Computed by computing distance from coordinate q[i] to rectangle's ith defining interval
   \begin{center}
     $\sqrt{\sum_{i=0}^{d-1}(distance(q[i], [low[i], high[i]]))^{2}}$
   \end{center}
-  \includegraphics[width=\textwidth]{RangeQueriesMethods}
-  \newpage
+  \begin{center}
+  \includegraphics[scale=0.4]{RangeQueriesMethods}
+  \end{center}
   Rectangle leftPart(int cd, Point s): Given a rectangle r and a splitting point s, we want to cut the rectangle into two sub-rectangles by a line that passes through the splitting point. leftPart returns a rectangle whose low point is the same as r.low and whose high point is the same as r.high, except that the cd-th coordinate is set to s[cd].
-  \includegraphics[width=\textwidth]{RangeQueriesLeftPart}
-  Answering Range Query: assume that each node p has a member p.size indicating the number of points lying within the tree. This can be easily updated as points are inserted and deleted. \\
+  \begin{center}
+    \includegraphics[scale=0.4]{RangeQueriesLeftPart}
+  \end{center}
+  \newpage
+  \noindent \textbf{Answering Range Query: }assume that each node p has a member p.size indicating the number of points lying within the tree. This can be easily updated as points are inserted and deleted. \\
   The rangeCount(r, p, cell) function operates recursively, returning a count of the number of points that lie in range r. Initial call is rangeCount(r, root, boundingBox) where boundingBox bounds the entire kd-tree. If the 
   \begin{itemize}[noitemsep]
     \item if we fall out of tree there is nothing to count
@@ -1047,8 +1062,9 @@
     \item if query range completely contains cell, return p.size
     \item if the range partially overlaps the cell, apply function recursively to each of our two children
   \end{itemize}
-  \includegraphics[width=\textwidth]{RangeCount}
-  \newpage
+  \begin{center}
+  \includegraphics[scale=0.4]{RangeCount}
+  \end{center}
   \begin{lstlisting}
     int rangeCount(Rectangle r, KDNode p, Rectangle cell) {
       if (p == null) return 0;
@@ -1063,25 +1079,33 @@
       }
     }
   \end{lstlisting}
-  \includegraphics[width=\textwidth]{RangeSearchExample}
-  Range Queries can be answered in $O(\sqrt{n})$ time \\
+  \begin{center}
+  \includegraphics[scale=0.4]{RangeSearchExample}
+  \end{center}
+  \textbf{Analysis of query time: }\\
+  \textbf{Theorem: }Range Queries can be answered in $O(\sqrt{n})$ time \\ \\
   A node is processed (both children visited) iff the call overlaps the range without being contained within the range (stabbed by the query). To bound total number of nodes processed in search, we count the total number of nodes whose cells are stabbed by the query rectangle. \\
-  Given any balanced kd-tree with n points, any vertical or horizontal line stabs $O(\sqrt{n})$ cells of the tree. \\
-  Since the tree is balanced, its height is O(logn) $\approx$ lgn\\
-  Consider only stabbing using vertical or horizontal lines instead of rectangles. When processing a node, the line will stab one of the two children. This means when alternating between x and y, at most two of the possible four grandchildren of each node is stabbed.\\
+  \textbf{Lemma: }Given any balanced kd-tree with n points, any vertical or horizontal line stabs $O(\sqrt{n})$ cells of the tree. \\
+  \textbf{Proof: }Since the tree is balanced, its height is O(logn) $\approx$ lgn\\
+  Consider only stabbing using vertical or horizontal lines instead of rectangles. Say the processed node's cutting dimension is x. This means when it is stabbed by a vertical line, either its left child or right child will be stabbed, but not both. If instead the node was stabbed by a horizontal line, then both of its children will be cut. Since we are alternating between splitting on left and right, this means that after descending two levels in the tree, we stab at most two of the possible four grandchildren of each node is stabbed.\\
   Since we have an exponentially increasing number, total sum is dominated by the last term
   \begin{center}
     $2^{h/2} \approx 2^{(lgn)/2} = \sqrt{n}$
   \end{center}
-  For the rectangle case, there are 4 sides to the rectangle so $O(4\sqrt{n})$\\
-  \includegraphics[width=\textwidth]{RangeQueryProof}
-  Nearest-Neighbor Queries: given a set of points P storedi n a kd-tree and a query point q, return the point of P closest to q. Assume that distances are measured using Euclidea distances.
+  For the rectangle case, there are 4 sides to the rectangle so $O(4\sqrt{n})$
+  \begin{center}
+  \includegraphics[scale=0.4]{RangeQueryProof}
+  \end{center}
+  \subsection{Nearest-Neighbor Queries: }
+  Given a set of points P storedi n a kd-tree and a query point q, return the point of P closest to q. Assume that distances are measured using Euclidea distances.
   \begin{center}
     $dist(p,q) = \sqrt{(p_{1}-q_{1})^{2} + ... + (p_{d}-q_{d})^{2}}$
   \end{center}
-  May need to visit every leaf that overlaps with the range. However, number of nodes overlapping the range is usually much smaller than the total number of nodes in the tree. \\
-  \includegraphics[width=\textwidth]{NearestNeighborExample}
-  Another approach would be to find the leaf node of the kd-tree that contains q and then search this and its neighboring cells in the kd-tree. However, there might be an issue that the nearest neighbor may actually be very far away. 
+  Need to visit every leaf that overlaps with the range since they are valid candidates. However, number of nodes overlapping the range is usually much smaller than the total number of nodes in the tree. \\
+  \begin{center}
+  \includegraphics[scale=0.4]{NearestNeighborExample}
+  \end{center}
+  Another approach would be to find the leaf node of the kd-tree that contains q and then search this and its neighboring cells in the kd-tree. However, there might be an issue that the nearest neighbor may actually be very far away. \\ \\
   Three things to consider for range and nearest neighbor processing:
   \begin{itemize}[noitemsep]
     \item Partial results: store the intermediate results of query and update results as query proceeds
@@ -1093,8 +1117,8 @@
     \item If p is null so just return bestDist
     \item Compute the distance from p.point to q, and update bestDist as necessary
     \item either recurse of leftPart or rightPart accordingly
+    \item check bestDistance with the distance of q to the other side not tested and if distance is $>$ bestDistance then we are done otherwise recurse down
   \end{itemize}
-  \newpage
   \begin{lstlisting}
     float nearNeighbor(Point q, KDNode p, Rectangle cell, float bestDist) {
       if (p != null) {
@@ -1117,6 +1141,9 @@
     }
   \end{lstlisting}
   Worst case is we need to visit every node but this is typically not the case. Usually $O(2^{d} + logn)$ where d is the dimension of the space. Intuition is that we need to visit some set of nodes in the neighborhood and require logn to descend tree
+  \begin{center}
+  \includegraphics{NearestNeighborQuery}
+  \end{center}
   \newpage
   \section{Memory Management}
   2 principles to dynamic memory allocation. 

@@ -26,4 +26,6 @@
 \BOOKMARK [2][-]{subsection.10.1}{Extended BST}{section.10}% 26
 \BOOKMARK [2][-]{subsection.10.2}{Scapegoat Tree}{section.10}% 27
 \BOOKMARK [1][-]{section.11}{Geometric Data Structures}{}% 28
-\BOOKMARK [1][-]{section.12}{Memory Management}{}% 29
+\BOOKMARK [2][-]{subsection.11.1}{Range Queries}{section.11}% 29
+\BOOKMARK [2][-]{subsection.11.2}{Nearest-Neighbor Queries: }{section.11}% 30
+\BOOKMARK [1][-]{section.12}{Memory Management}{}% 31

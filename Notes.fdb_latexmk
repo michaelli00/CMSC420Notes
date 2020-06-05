@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1591376018 "Notes.tex" "Notes.pdf" "Notes" 1591376027
+["pdflatex"] 1591399211 "Notes.tex" "Notes.pdf" "Notes" 1591399222
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -81,10 +81,10 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1557342064 3277517 23507ed665b4dd9046f0f2a94bbef2be ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1557342086 4259635 562fc36ec496993777a6c428d8bfb811 ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "Notes.aux" 1591376027 4158 97f7b3fde51fcf00d984579f94d69470 "pdflatex"
-  "Notes.out" 1591376027 1767 3638756bffc982b5fb5be4c84295e65d "pdflatex"
-  "Notes.tex" 1591376018 70254 d11a3e0197577b90a955ad5f8cd2484e ""
-  "Notes.toc" 1591376027 2336 adc663c9a768345ae84ee4c820efc0d6 "pdflatex"
+  "Notes.aux" 1591399222 4417 5664c6995623ab8e9dcc60475e115f90 "pdflatex"
+  "Notes.out" 1591399222 1910 b33b265a52a1694fecd69a82ace110c1 "pdflatex"
+  "Notes.tex" 1591399210 71424 d7c89e2694276fd2a30fad505ff2611c ""
+  "Notes.toc" 1591399222 2515 e6e375d01b975d843fb5264d5f76f8dc "pdflatex"
   "assets/2-3ToRBTree.png" 1590330250 115552 e3001850a9dc014e16f7e8b807282539 ""
   "assets/2-3Tree.png" 1590276514 166095 f5dc548a12adacadcec1c45b47ff0bf5 ""
   "assets/2-3TreeAdoptAndMerge.png" 1591281597 175350 44e8a0705cf014ce5d4780d43f2f1611 ""
@@ -124,6 +124,7 @@
   "assets/MemoryAllocation.png" 1591042509 63035 e7e9dde2777f2618791c8695ee4b1f54 ""
   "assets/MemoryDeallocation.png" 1591043507 91216 e0f4d3ef9724f7ca5e92494abef8cd21 ""
   "assets/NearestNeighborExample.png" 1591039145 41311 308ba73e254cfbbac4d15350aa135b19 ""
+  "assets/NearestNeighborQuery.png" 1591398976 195622 e306b7b8d04f6049463eb76ffcca9da6 ""
   "assets/PartitionTree.png" 1591370911 58358 e7f9c32e84163671a933b16d388999e9 ""
   "assets/PointKDTree.png" 1590954095 71170 dc4d7e230903399d45defa8b9062a06b ""
   "assets/PointQuadtree.png" 1590946703 185170 bae38d6cdba39d135bcfa7791e36a483 ""
@@ -141,8 +142,8 @@
   "assets/TreapDeletion.png" 1590355218 256412 d7c1f087683dd7dc1345480e397c9366 ""
   "assets/TreapInsertion.png" 1590355033 254953 0a46529754cec8fb501dfbf8b37e9bc1 ""
   (generated)
-  "Notes.log"
-  "Notes.toc"
-  "Notes.out"
-  "Notes.aux"
   "Notes.pdf"
+  "Notes.aux"
+  "Notes.toc"
+  "Notes.log"
+  "Notes.out"
