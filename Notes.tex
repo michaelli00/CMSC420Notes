@@ -1154,20 +1154,36 @@
   Issues with memory allocation:
   \begin{itemize}[noitemsep]
     \item Explicit deallocation (languages like C) are a burden for programmers. Blocks of memory may be leaked (inaccessible and has not be deallocated). Another issue of aliasing where two pointers refer to the same block of memory leading to the issue of when one pointer is released, the other still references that chunk of memory
-    \item Implicit deallocation (Languages like Java) the system determines which objects are no longer accessible using garbage collection but put a burden on the memory allocation system
+    \item Implicit deallocation (Languages like Java) the system determines which objects are no longer accessible using garbage collection but put a burden on the memory allocation system \\
   \end{itemize}
-  Explicit Allocation/Deallocation: one case where explicit deallocation is easy to handle: when all objects being allocated are of the same size (array). Very easy to allocate a contiguous space in heap and blocks are linked together. However for objects of varying sizes, we can run into an issue of external fragmentation, essentially wasting space\\ 
+  \textbf{Explicit Allocation/Deallocation: }one case where explicit deallocation is easy to handle: when all objects being allocated are of the same size (array). Very easy to allocate a contiguous space in heap and blocks are linked together. However for objects of varying sizes, we can run into an issue of external fragmentation, essentially wasting space\\ 
   Explicit allocation works in that when allocating a block, we search through the list of available blocks of memory that is large enough. There are two strategies to this:
   \begin{itemize}
     \item First-fit: search available blocks sequentially until find a large enough space
     \item Best-fit: search all available blocks and insert into smallest block large enough
   \end{itemize}
   Best-fit usually performs worse than first-fit (first-fit is faster to execute and best-fit tends to produce a large amount of fragmentation by selecting blocks taht are barely larger than the request size, leaving tiny residual blocks). One possible solution to reduce fragmentation is just make the requested block take up all the available space, keeping the list of available blocks free of tiny fragments and speeding up search time. However this creates internal fragmentation.\\
-  When deallocating a block, we should merge available space to create large blocks of free space (this is called merging) but there's an issue of figuring out how to efficiently merge.\\ \\
-  For each allocated blocks we record its size, inUse, and prevInUse \\
-  For each available block we store these blocks in a doubly-linked circular list (avail) and has size, inUse, prevInUse, prev , next, and size2. \\ \\
-  Allocation: to allocate a block, search through linked list of available blocks until find one of sufficient size. If the size pretty much fits, remove the block from the list of available blocks, updating linkage and prevInUse as necessary. If desired allocation is much smaller than the block chosen, split the block into two smaller blocks and relink as necessary.\\
-  \includegraphics[width=\textwidth]{MemoryAllocation}
+  When deallocating a block, we should merge available space to create large blocks of free space but there's an issue of figuring out how to efficiently merge.\\ \\
+  \textbf{Basic Structure:} \\
+  For each allocated blocks we record its 
+  \begin{itemize}[noitemsep]
+    \item size: size of block of storage (including space for following fields)
+      \item inUse: true to indicate block is in use
+      \item prevInUse: true if previous block is in use
+  \end{itemize}
+  For each available block we store these blocks in a doubly-linked circular list (avail) and has 
+  \begin{itemize}[noitemsep]
+    \item size: size of block of storage (including space of following fields)
+      \item inUse: false to indicate not in use
+      \item prevInUse: true if prev block is in use
+      \item prev: pointer to prev block of storage
+      \item next: pointer to next block of available space
+      \item size2: contains same value as size. This field is stored in the last word of the block and can be accessed by *(p + p.size - 1)
+  \end{itemize}
+  \textbf{Allocation: }to allocate a block, search through linked list of available blocks until find one of sufficient size. If the size pretty much fits, remove the block from the list of available blocks, updating linkage and prevInUse as necessary. If desired allocation is much smaller than the block chosen, split the block into two smaller blocks and relink as necessary.
+  \begin{center}
+  \includegraphics[scale=0.3]{MemoryAllocation}
+  \end{center}
   \newpage
   \begin{lstlisting}
     (void *) alloc(int b) {
@@ -1189,13 +1205,14 @@
       return q + 1;   //offset link to avoid header
     }
   \end{lstlisting}
-  \newpage
-  Deallocation: to deallocate we check if the next block or preceding blocks are avaliable. For the next block we can find it's first word and check its inUse field. For the preceding block we just use the prevInUse field. \\
-  If the prev block isn't in use, we use the size value stored in the last word to find the header values appropriately. If either of these blocks is available, merge the two blocks and update header value appropriately. If both are available, we need to delete one of these blocks from available space list. If both are in-use, we link current block to list of available blocks.\\
-  There are four cases to consider for deallocation
+  \textbf{Deallocation: }to deallocate we check if the next block or preceding blocks are avaliable. For the next block we can find it's first word and check its inUse field. For the preceding block we just use the prevInUse field. \\
+  If the prev block isn't in use, we use the size value stored in the last word (size2) to find the header values appropriately. If either of these blocks is available, merge the two blocks and update header value appropriately. If both are available, we need to delete one of these blocks from available space list. If both are in-use, we link current block to list of available blocks.\\
+  Cases to consider for deallocation
   \begin{itemize}[noitemsep]
-    \item If the following block q is available, merge with p. Update p's size and move q's record in the available space list to p using move(p,q), copying q's previous and next fields to p and appropriately update the entries in the available space list that point to q. Otherwise add p to available space list
+    \item If the following block q is available, merge with p. Update p's size and move q's record in the available space list to p using move(p,q), copying q's previous and next fields to p and appropriately update the entries in the available space list that point to q. 
+    \item Otherwise add p to available space list
     \item If preceding block isn't in use, merge this block with p and unlink p from the available space list
+    \item If both predecessor and successor are available, delete one of these blocks from available space list and join a three together
   \end{itemize}
   \begin{lstlisting}
     void dealloc(void* p) {
@@ -1206,7 +1223,7 @@
         avail.move(q, p);
       } else avail.insert(p)
 
-      p.inUsee = 0;
+      p.inUse = 0;
       *(p + p.size = 1) = p.size;
 
       if (!p.prevInUse) {
@@ -1218,31 +1235,39 @@
       }
     }
   \end{lstlisting}
-  \includegraphics[width=\textwidth]{MemoryDeallocation}
-  Analysis: typically methods achieve utilization of around 2/3 storage before failing to satisfy a request so in general allocate a heap of at last 10 times size of largest block to be allocated\\ \\
-  Buddy System: Long sequences of allocations and deallocations of objects of varius sizes tends to result in highly fragmented space. We can minimize this by limiting the possible sizes of blocks and their positions using well-structured allocation. Because block sizes are limited, internal fragmentation becomes an issue. \\
+  \begin{center}
+  \includegraphics[scale=0.4]{MemoryDeallocation}
+  \end{center}
+  \textbf{Analysis: }typically methods achieve utilization of around 2/3 storage before failing to satisfy a request so in general allocate a heap of at last 10 times size of largest block to be allocated. Hard to give a theoretical analysis without knowledge of future allocations/deallocations so it's very possible to have a situation that is bad for first-fit and best-fit\\ \\
+  \textbf{Buddy System: }Long sequences of allocations and deallocations of objects of varius sizes tends to result in highly fragmented space. We can minimize this by limiting the possible sizes of blocks and their positions using well-structured allocation. Because block sizes are limited, internal fragmentation becomes an issue. \\
   Start with a block of memory whose size is a power of 2 and then hierarchically subdivide each block into blocks of equal sizes.
   \begin{itemize}[noitemsep]
     \item Sizes of all blocks are powers of 2. A request is artificially rounded up to the next power of 2
     \item Blocks of size $2^{k}$ start at memory addresses that are multiples of $2^{k}$
   \end{itemize}
-  \includegraphics[width=\textwidth]{BuddySystem}
-  For every block, there is exactly 1 other block with which this block can be merged (called the buddy)
+  \begin{center}
+    \includegraphics[scale=0.3]{BuddySystem}
+    \includegraphics[scale=0.7]{BuddySystemExample}
+  \end{center}
+  Above requirements limits how blocks can be merged (example above blocks 5 and 6 cannot be merged since they do not start on a power of 2). For every block, there is exactly 1 other block (of size $2^{k}$) with which this block can be merged (called the buddy)
   \begin{center}
     \[
       buddy_{k}(x) = \left\{
         \begin{array}{ll}
-          x + 2^{k} & \quad if 2^{k+1} divides x \\
-          x - 2^{k} & \quad Otherwise
+          x + 2^{k} & \quad \text{if } 2^{k+1} \text{ divides x} \\
+          x - 2^{k} & \quad \text{Otherwise}
         \end{array}
     \right.
   \]
   \end{center}
-  Maintain an array of linked lists, one for the available block list for each size group\\
-  Allocation will work in that we will allocate a block of size $2^{k}$. If size doesn't fit then we use the smallest available block of the largest size, remove it from the available space list, and recursively split it into subblocks until we get the desired size.\\
-  \includegraphics[width=\textwidth]{BuddySystemInsertion}
-  Deallocation: we first mark this block as being available then we check to see if its buddy is available and merge if so. Recursively continue until we find that the buddy is allocated\\
-  \includegraphics[width=\textwidth]{BuddySystemDeletion}
-  Can use other number systems for buddy system (e.g. Fibonacci numbers)
+  Maintain an array of linked lists, one for the available block list for each size group. avail[k] is the header pointer to a doubly linked list\\ \\
+  \textbf{Allocation: }allocate a block of size $2^{k}$. If there isn't a block of this exact size then we use the smallest available block of the largest size $2^{j}$ and recursively split this block until we get one of size $2^{k}$.
+  \begin{center}
+  \includegraphics[scale=0.4]{BuddySystemInsertion}
+  \end{center}
+  \textbf{Deallocation: }we first mark this block as being available then we check to see if its buddy is available and merge if so. Recursively continue until we find that the buddy is allocated\\
+  \begin{center}
+  \includegraphics[scale=0.4]{BuddySystemDeletion}
+  \end{center}
+  \textbf{Other Buddy Systems: }Can use other number systems for buddy system (e.g. Fibonacci numbers)
 \end{document}
-

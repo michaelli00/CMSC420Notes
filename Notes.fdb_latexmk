@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1591399211 "Notes.tex" "Notes.pdf" "Notes" 1591399222
+["pdflatex"] 1591409257 "Notes.tex" "Notes.pdf" "Notes" 1591409267
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -81,10 +81,10 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1557342064 3277517 23507ed665b4dd9046f0f2a94bbef2be ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1557342086 4259635 562fc36ec496993777a6c428d8bfb811 ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "Notes.aux" 1591399222 4417 5664c6995623ab8e9dcc60475e115f90 "pdflatex"
-  "Notes.out" 1591399222 1910 b33b265a52a1694fecd69a82ace110c1 "pdflatex"
-  "Notes.tex" 1591399210 71424 d7c89e2694276fd2a30fad505ff2611c ""
-  "Notes.toc" 1591399222 2515 e6e375d01b975d843fb5264d5f76f8dc "pdflatex"
+  "Notes.aux" 1591409267 4417 5664c6995623ab8e9dcc60475e115f90 "pdflatex"
+  "Notes.out" 1591409267 1910 b33b265a52a1694fecd69a82ace110c1 "pdflatex"
+  "Notes.tex" 1591409256 72826 7c4594b873dd3e3cea08abca1eb993db ""
+  "Notes.toc" 1591409267 2515 e6e375d01b975d843fb5264d5f76f8dc "pdflatex"
   "assets/2-3ToRBTree.png" 1590330250 115552 e3001850a9dc014e16f7e8b807282539 ""
   "assets/2-3Tree.png" 1590276514 166095 f5dc548a12adacadcec1c45b47ff0bf5 ""
   "assets/2-3TreeAdoptAndMerge.png" 1591281597 175350 44e8a0705cf014ce5d4780d43f2f1611 ""
@@ -102,6 +102,7 @@
   "assets/BtreeNodeMerge.png" 1590447321 149557 371422c2ddf18356f4f75ee553480762 ""
   "assets/BuddySystem.png" 1591044151 32311 750494f8d73cf3075ffec16df0487788 ""
   "assets/BuddySystemDeletion.png" 1591045359 69210 f16c4bd9d8d7f37d1206bf4130eac150 ""
+  "assets/BuddySystemExample.png" 1591407959 42069 49a896b5b38a6176fa4165c19a2211ae ""
   "assets/BuddySystemInsertion.png" 1591045166 67975 3114b7e0980fc56acd408b9310cc4beb ""
   "assets/DeletionAATree.png" 1590333591 387413 d8c95e7230350e33830d1d4cf80b4f98 ""
   "assets/ExtendedBST.png" 1590896189 203782 2cce1d5e2b6b16232d763b54d81ea483 ""
@@ -142,8 +143,8 @@
   "assets/TreapDeletion.png" 1590355218 256412 d7c1f087683dd7dc1345480e397c9366 ""
   "assets/TreapInsertion.png" 1590355033 254953 0a46529754cec8fb501dfbf8b37e9bc1 ""
   (generated)
+  "Notes.out"
   "Notes.pdf"
   "Notes.aux"
   "Notes.toc"
   "Notes.log"
-  "Notes.out"
