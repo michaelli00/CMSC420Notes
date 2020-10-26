@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1591409559 "Notes.tex" "Notes.pdf" "Notes" 1591409569
+["pdflatex"] 1603679298 "Notes.tex" "Notes.pdf" "Notes" 1603725594
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -82,10 +82,10 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1557342064 3277517 23507ed665b4dd9046f0f2a94bbef2be ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1557342086 4259635 562fc36ec496993777a6c428d8bfb811 ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "Notes.aux" 1591409568 4417 5664c6995623ab8e9dcc60475e115f90 "pdflatex"
-  "Notes.out" 1591409568 1910 b33b265a52a1694fecd69a82ace110c1 "pdflatex"
-  "Notes.tex" 1591409544 72848 5dbebf3a2fc6aab9789db3b0f4c0b31a ""
-  "Notes.toc" 1591409568 2515 e6e375d01b975d843fb5264d5f76f8dc "pdflatex"
+  "Notes.aux" 1603679309 4444 f57641a57c4290ed68d034c6acaf46f6 "pdflatex"
+  "Notes.out" 1603679309 1937 ad93aa45b087b3cea106111d90c42e59 "pdflatex"
+  "Notes.tex" 1603676727 78187 5a60baa5084559e7aec8a5b0630fa9b9 ""
+  "Notes.toc" 1603679309 2542 15c9d6ebe81729e264d46d9837cadb47 "pdflatex"
   "assets/2-3ToRBTree.png" 1590330250 115552 e3001850a9dc014e16f7e8b807282539 ""
   "assets/2-3Tree.png" 1590276514 166095 f5dc548a12adacadcec1c45b47ff0bf5 ""
   "assets/2-3TreeAdoptAndMerge.png" 1591281597 175350 44e8a0705cf014ce5d4780d43f2f1611 ""
@@ -143,9 +143,10 @@
   "assets/SplayTreeZig.png" 1590426937 237236 750f4790916fbd59eb8bfb21e2358c43 ""
   "assets/TreapDeletion.png" 1590355218 256412 d7c1f087683dd7dc1345480e397c9366 ""
   "assets/TreapInsertion.png" 1590355033 254953 0a46529754cec8fb501dfbf8b37e9bc1 ""
+  "assets/TreapRep.png" 1602646261 96548 a4a732745801cd96f27b688e5a4872fa ""
   (generated)
   "Notes.log"
   "Notes.out"
-  "Notes.pdf"
-  "Notes.toc"
   "Notes.aux"
+  "Notes.toc"
+  "Notes.pdf"

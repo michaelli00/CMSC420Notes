@@ -59,15 +59,15 @@
     insert(i, x) // insert x prior to element a_{i} (shifts indices after)
     delete(i) // deletes ith element (shift indices after)
   \end{lstlisting}
-  Sequential Allocation (Array): when array is full, increase  its size but a constant factor (e.g. 2). Amortized array operations still O(1) \\ \\
-  Linked Allocation (Linked List) \\ \\
+  \textbf{Sequential Allocation} (Array): when array is full, increase its size by a constant factor (e.g. 2). Amortized array operations still O(1) \\
+  \textbf{Linked Allocation} (Linked List) \\ \\
   Arrays and LinkedLists can be used to create:
-  \begin{itemize}[noitemsep]
-  \item Stack(push, pop): on on end of the list
-  \item Queue(enqueue, dequeue): insert at tail (end) and remove from head (start)
-  \item Deque(combo stack and queue): can isnert and remove from either ends of list
-  \item Multilist: multiple lists combined into one aggregate structure (e.g. ArrayList)
-  \item Sparse Matrix: create 2n linked lists for each row and col
+  \begin{itemize}[noitemsep,topsep=0pt]
+    \item \textbf{Stack(push, pop)}: on on end of the list
+    \item \textbf{Queue(enqueue, dequeue)}: insert at tail (end) and remove from head (start)
+    \item \textbf{Deque(combo stack and queue)}: can insert and remove from either ends of list
+    \item \textbf{Multilist}: multiple lists combined into one aggregate structure (e.g. ArrayList)
+    \item \textbf{Sparse Matrix}: create a multilist of 2n linked lists for each row and col
     \setlist{nolistsep}
     \begin{itemize}[noitemsep]
       \item Each entry stores a row index, col index, value, next row ptr, and next col ptr
@@ -76,30 +76,33 @@
   \begin{center}
     \includegraphics[scale=0.3]{Fig_2}
   \end{center}
-  \subsection{Proof Amortized Cost}
+  \subsection{Proof Amortized Cost for Sequential Allocation}
   \textbf{Theorem:} When doubling array size for reallocation, amortized cost of list operation is $O(1)$.\\ \\
-  \textbf{Proof:} Assume we are using a stack (can be proven for other ADT). Let $n$ be the current size of the array. Each time we push an element, we store an additional 4 tokens into a bank. Once the array is full, we reallocate an array of size $2n$ which requires intializing the array and copying elements (this will take $2n$). Last time we reallocated was when we transitioned from an array of size $n/2$ to $n$ so we must have performed at least $n - n/2 = n/2$ insertions. Now we have $4(n/2) = 2n$ from the extra tokens we stored. \\
+  \textbf{Proof:} Assume we are using a stack (can be proven for other ADT). Say we have $n+1 elements$ and Take a specific run between reallocations (up until $2n+1$ elements). \\
+  Each time we push an element, we pay 1 token for push and store an additional 4 tokens into a bank. Once the array is full, we reallocate an array of size $2n$ which requires intializing the array and copying elements (this will take $2*2n=4n$ operations). \\
+  Since we payed 4 tokens over n insert operations during this run, we have $4n$ tokens which pay for the reallocation cost. \\ \\
   If we had instead added an additional $c$ spaces when we reallocated, there would be an issue when the table size becomes too large since reallocation would take a greater magnitude than the savings we collect.\\
   If we had instead raised the size of the array by a power, this works but we end up wasting a lot of space.
   \newpage
   \noindent\section{Trees}
-  Free Tree: connected, undirected graph with no cycles (like MST)\\ \\
-  Root Tree: each non-leaf node has $\geq$ 1 children and a single parent (except root)
+  Trees are represented as graphs $G = (V, E)$ where $V$ is a set of vertices and $E$ is a set of edges\\
+  \textbf{Free Tree}: connected, undirected graph with no cycles (like MST)\\
+  \textbf{Root Tree}: each non-leaf node has $\geq$ 1 children and a single parent (except root)
   \setlist{nolistsep}
   \begin{itemize}[noitemsep]
-  \item Aborescence = out-tree \quad Anti-arborescence = in-tree 
-  \item Depth = max \# of edges of path from root to a node \\
+    \item Aborescence = out-tree \quad Anti-arborescence = in-tree 
+    \item Depth = max \# of edges of path from root to a node \\
   \end{itemize}
-  \subsection{Tree Representation}
-  Binary representation of a rooted tree: nodes have a pointer to first child and another pointer to next sibling
+  \subsection{Tree Representations}
+  \textbf{Binary representation}: nodes have a pointer to first child and another pointer to next sibling
   \begin{center}
     \includegraphics[scale=0.3]{Fig_3}
   \end{center}
-  Binary Tree: rooted, ordered tree where each non-leaf node has 2 possible children (left, right)
+  \textbf{Binary Tree}: rooted, ordered tree where each non-leaf node has 2 possible children (left, right)
   \setlist{nolistsep}
   \begin{itemize}[noitemsep]
-  \item Full Tree: All nodes either have 0 children or 2 children
-  \item Can make any binary tree a full binary tree by extending tree by adding external nodes to replace all empty subtrees
+    \item \textbf{Full Tree}: All nodes either have 0 children or 2 children
+    \item Can make any binary tree a full binary tree by extending tree by adding external nodes to replace all empty subtrees
   \end{itemize}
   \begin{center}
   \includegraphics[scale=0.4]{Fig_4}
@@ -112,16 +115,16 @@
       ...
     }
   \end{lstlisting}
-  In-order traversal: left, root, right \\
-  Pre-order traversal: root, left, right \\ 
-  Post-order traversal: left, right, root\\
+  \textbf{In-order traversal}: left, root, right \\
+  \textbf{Pre-order traversal}: root, left, right \\ 
+  \textbf{Post-order traversal}: left, right, root\\
   \newpage
   \subsection{Extended Binary Trees}
-  If there are $n$ internal nodes, there are $n + 1$ external nodes. Quasi proof by noticing that we will essentially replace every leaf with 1 internal and 2 external nodes.\\  \\
-  \textbf{Theorem: }If there are n internal nodes in an extended tree, there are n+1 external nodes\\ \\
-  \textbf{Proof: } 
+  If there are $n$ internal nodes, there are $n + 1$ external nodes. Proof by noticing that we will essentially replace every leaf with 1 internal and 2 external nodes whenever we try to add a new internal node to extended tree.\\  \\
+  \textbf{Theorem: }If there are n internal nodes in an extended tree, there are n+1 external nodes\\
+  \textbf{Proof by Induction: } 
   \begin{itemize}[noitemsep]
-  \item Proof by induction: Extended tree binary tree with n internal nodes has n+1 external nodes has 2n+1 total nodes
+  \item Extended tree binary tree with n internal nodes has n+1 external nodes has 2n+1 total nodes
   \item Let x(n) = number of external nodes given n internal nodes and prove x(n) = n + 1
   \item Base Case x(0) = 1 a tree with no internal nodes has 1 external node
   \item IH: Assume x(i) = i + 1 for all i $\leq$ n - 1
@@ -257,7 +260,7 @@
   \section{AVL Trees}
   \textbf{AVL Balance Condition: }For every node in tree, absolute difference between heights of left and right subtrees is at most 1. A node's balance factor is determined by
   \begin{center}
-    balance(v) = height(v.right) - height(v.left)
+    balance(v) = height(v.right) - height(v.left) with height(null) = -1
   \end{center}
   Worst case height can be shown to be O(logn) using Fibonacci sequence
   \begin{itemize}[noitemsep]
@@ -295,9 +298,10 @@
   \end{center}
   Insertion works similar to BST except we update the heights of subtrees and apply rotations to maintain height \\
   When insertion occurs balance factors of ancestors is altered by $\pm$1\\
+  After insertion, the height of the modified subtree is the same as it was before the insertion which implies we don't need anymore rotations \\
   If a node has a balance factor that violates Balance Property:
   \begin{itemize}[noitemsep]
-  \item Left-Left substree too deep then rotate right on unbalanced node
+  \item Left-Left subtree too deep then rotate right on unbalanced node
   \item Right-Right subtree too deep then rotate left on unbalanced node
   \item Left-Right subtree too deep then rotate left-right (left child of unbalanced node then unbalanced node)
   \item Right-Left subtree too deep then rotate right-left (right child of unbalanced node then unbalanced node)
@@ -337,14 +341,14 @@
     AvlNode rebalance(AvlNode p) {
       if (p == null) return p;
       if (balanceFactor(p) < -1) {
-        if (height(p.left.left) > height(p.left.right)) {//left-left heavy
+        if (height(p.left.left) >= height(p.left.right)) {//left-left heavy
           p = rotateRight(p);
         } else {                                          //left-right heavy
           p = rotateLeftRight(p);
         }
       }
       else if (balanceFactor(p) > 1) {
-        if(height(p.right.right) > height(p.right.left)) {//right-right heavy
+        if(height(p.right.right) >= height(p.right.left)) {//right-right heavy
           p = rotateLeft(p);
         } else {                                            //right-left heavy
           p = rotateRightLeft(p);
@@ -362,22 +366,26 @@
   \begin{center}
   \includegraphics[scale=0.4]{AVLDoubleRotationDeletion}
   \end{center}
-  Note that node d dropped one level so we need to call balance check on c. In this case deletion can end up calling a cascade of O(logn) rebalancing operations
+  Note that node d dropped one level so we need to call balance check on c. In this case deletion can end up calling a cascade of O(logn) rebalancing operations \\ \\
+  \textbf{Lazy Delete}: Mark each node as dead or alive. If node is deleted, it is dead. If a node is added to a position where a dead node used to be, flip the node to alive and replace fields.
+  \begin{itemize}[noitemsep, topsep=0pt]
+    \item Issue of having too many dead nodes (can perform garbage collection if too many dead nodes)
+  \end{itemize}
   \newpage 
   \section{2-3 Trees, Red-Black Trees, AA Trees}
   \subsection{2-3 Trees}
-  Nodes can either be 2-node (normal binary tree) or 3-node (2 keys b,d and 3 branches A, C, E where A $<$ b $<$ X $<$ d $<$ E)
+  Nodes can either be 2-node (normal binary tree) or 3-node (2 keys b,d and 3 branches A, C, E where A $<$ b $<$ C $<$ d $<$ E)
   Important thing to note is that all leaves are on the same level
   \begin{center}
   \includegraphics[scale=0.2]{2-3Tree}
   \end{center}
   Recursively defined as:
   \begin{itemize}[noitemsep]
-  \item empty (null)
-  \item root is 2-node and has two 2-3 subtrees of equal height
-  \item root is 3-node and has three 2-3 subtrees of equal height
+  \item empty (null) with h = -1
+  \item root is 2-node and has two 2-3 subtrees of equal height $h-1$
+  \item root is 3-node and has three 2-3 subtrees of equal height $h-1$
   \end{itemize}
-  Sparsest 2-3 tree is a complete binary tree \\ \\
+  Sparsest 2-3 tree is a complete binary tree and therefore has a height of $O(logn)$\\ \\
   \textbf{Find: }recursive descent but when 3-node is reached, compare x with both keys to find which branch to go to\\ \\
   \textbf{Insertion: }search for key and and insert like in a normal tree.
   \begin{itemize}[noitemsep]
@@ -411,7 +419,7 @@
   \textbf{Theorem: }Every 2-3 tree corresponds to a red-black tree but converse is not true
   \begin{itemize}[noitemsep]
   \item Issue with RB tree doesn't distinguish between L and R children so 3-node can be encoded in 2 different ways
-  \item Also can't convert a node with 2 red children to 2-3 tree which ends up being a 4-node
+  \item Also can't convert a node with 2 red children to 2-3 tree which ends up being a 4-node (RB trees have a 1-1 mapping with 2-3-4 trees)
   \end{itemize}
   \begin{center}
   \includegraphics[scale=0.15]{2-3ToRBTree}
@@ -436,7 +444,7 @@
   Insertion and Deletion require skew(p) and split(p)
   \begin{itemize}[noitemsep]
     \item \textbf{skew(p)} if p has a red left child, rotate right so red child is on right side
-    \item \textbf{split(p)} if p has a red right-right chain, do a left rotation \& promote first red child to next level
+    \item \textbf{split(p)} if p has a red right-right chain, do a left rotation \& promote first red child to next level (this promoted node becomes red node)
   \end{itemize}
   Important thing to note is that p can either be black or red. If it is red we may need to recurse up to maintain AA tree invariant
   \begin{lstlisting}
@@ -541,6 +549,10 @@
   \section{Treaps and Skip Lists}
   \subsection{Treaps}
   Intuition is that if keys are inserted into BST in random order, then height will be $\approx$ O(log(n)). We can model this random order by using random priority numbers\\ \\
+  \textbf{Geomtric Interpretation}: create a rectangles using priority number as horizontal borders and key values as vertical borders.
+  \begin{center}
+  \includegraphics[scale=0.3]{TreapRep}
+  \end{center}
   \textbf{Insertion: }Insert node based on key value then assign it a random priority (p.priority) and then rotate the tree to balance it based on p.priority
   \begin{center}
   \includegraphics[scale=0.2]{TreapInsertion}
@@ -549,36 +561,124 @@
   \begin{itemize}[noitemsep]
   \item node is leaf just remove it
   \item node has 1 child then replace node with child
-  \item node has 2 children then set its priority to $\infty$ and apply rotations to sift down to leaf and remove
+  \item node has 2 children then set its priority to $\infty$ and apply rotations to sift down to leaf and remove or can just do normal unbalanced binary tree delete
   \end{itemize}
   \begin{center}
   \includegraphics[scale=0.2]{TreapDeletion}
   \end{center}
+  \textbf{Implementation}
+  \begin{lstlisting}
+    private class TreapNode {
+      Key key // key
+      Value value // value
+      int priority // random priority (set when node is created)
+      TreapNode left // left child
+      TreapNode right // right child
+    }
+
+    // utility functions
+    int getPriority(TreapNode p) { return (p == null ? MAX_PRIORITY : p.priority) } //null nodes have priority of infinity
+
+    TreapNode lowestPriority(TreapNode p) { // lowest priority of p, p.left, p.right
+      TreapNode q = p
+      if (getPriority(p.left) < getPriority(q)) q = p.left
+      if (getPriority(p.right) < getPriority(q)) q = p.right
+      return q
+    }
+
+    TreapNode restructure(TreapNode p) { // restore priority at p
+      if (p == null) return p // nothing to do
+      TreapNode q = lowestPriority(p) // get child to rotate
+      if (q == p.left) p = rotateRight(p) // rotate as needed
+      else if (q == p.right) p = rotateLeft(p)
+      return p // return updated subtree
+    }
+
+    TreapNode insert(Key x, Value v, TreapNode p) {
+      if (p == null) // fell out of the tree?
+      p = new TreapNode(x, v, null, null) // ... create a new leaf node here
+      else if (x < p.key) // x is smaller?
+      p.left = insert(x, v, p.left) // ...insert left
+      else if (x > p.key) // x is larger?
+      p.right = insert(x, v, p.right) // ...insert right
+      else
+      Error - Duplicate key!
+      return restructure(p) // restructure (if needed)
+    }
+
+    TreapNode delete(Key x, TreapNode p) {
+      if (p == null) Error - Nonexistant key! // key not found
+      else {
+        if (x < p.key) p.left = delete(x, p.left) // delete from left
+        else if (x > p.key) p.right = delete(x, p.right) // delete from right
+                                                         // found it
+        else if (p.left == null || p.right == null) { // either child empty?
+          if (p.left == null) return p.right // return the other child
+          else return p.left
+        } else { // both children present
+          TreapNode r = findReplacement(p.right) // find replacement node
+          copy contents from r to p
+          p.right = delete(r.key, p.right) // delete the replacement
+        }
+      }
+      return restructure(p) // restructure (if needed)
+    }
+  \end{lstlisting}
   \subsection{Skip Lists}
   Intution is to skip multiple items at a time to speed up searching for linked list\\
-  Skip Lists made up of multiple levels that are built from
+  Ideal skip lists made up of multiple levels that are built from
   \begin{itemize}[noitemsep]
   \item Taking every other node in the linked list and extending it up to a new linked list with 1/2 as many nodes
   \item Repeat this extension with 1/2 as many terms until no more terms 
   \item Head and tail nodes are always lifted and tail has the key value $\infty$
   \item Height will be $\ceil[\big]{lg(n)}$ 
   \end{itemize}
+  Issue with ideal skip list being too pure since adding a node in the middle of the list will trigger resizing everything\\ \\
+  \textbf{Randomized Skip List:} For each node flip a coin. If it lands head raise it one level and flip another coin. If it's tails leave it where it is\\ \\
+  \textbf{Implementation: }
+  \begin{lstlisting}
+  class SkipNode {
+    Key key
+    Value value
+    ShipNode[] next
+
+    SkipNode(Key x, Value v, int size) {
+      key = x;
+      value = v;
+      next = new SkipNode[size];
+    }
+  }
+  \end{lstlisting}
   \textbf{Search: }start at highest level of head then scan linearly at level i until we are about to jump to a key value $>$ x then step down one level
+  \begin{lstlisting}
+  Value find(Key x) {
+    int i = topLevel;
+    SkipNode p = head;
+    while(i >= 0) {
+      if (p.next[i].key <= x) p = p.next;
+      else i--;
+    }
+    return p.key == x ? p.value: null;
+  }
+  \end{lstlisting}
   \begin{center}
   \includegraphics[scale=0.2]{SkipListSearch}
   \end{center}
   Issue with this deterministic skip list is that when we insert or remove a node, we need to change the heights of all subsequent nodes\\
   We can randomize the number of nodes per level by flipping a coin and only stopping at a level if tails occurs\\
   Now level k is expected to have about $\frac{n}{2^{k}}$ nodes meaning that the number of nodes at level $\ceil[\big]{lg(n)}$ is constant\\ \\
+  \textbf{Height Analysis: } expected number of levels is $O(logn)$\\
+  Probability that one of n elements is at height $l$: $\frac{n}{2^{l}}$ \\
+  Now let $l = clgn \rightarrow \frac{n}{2^{l}} = \frac{n}{n^{c}} = n^{1-c}$ so likelihood that $l$ exceeds $clgn$ is very slim\\
   \textbf{Space Analysis: }worst case every node has height log(n) so O(nlogn) total. Best each node has height 1 so O(n) total\\
   \textbf{Expected Case Space: }all n nodes contribute to level 0, n/2 contribute to level 1, n/4 to level 2, etc. so\
   \begin{center}
-  $\sum_{i=0}^{h-1}\frac{n}{2^{i}} = n(2 - \frac{1}{2^{h}}) \leq 2n = O(n)$
+  $\sum_{i=0}^{\infty}\frac{n}{2^{i}} = 2n = O(n)$
   \end{center}
   \textbf{Search Expected Runtime: }for $0 \leq i \leq O(logn)$, let $E(i)$ represent the expected number of nodes visited in the skip list at the top i levels of the skip list\\
   Look at the path going backwards so it will either go up or stay on the current level and go left \\
-  Whenever we arrive at some node of level i, the probability that it contributes to the next higher level is 1/2 and 1/2 to stay on same level. Counting the current node we just visited (+1) we have\\ \\
-  $E(i) = 1 + \frac{1}{2}E(i-1) + \frac{1}{2}E(i) \rightarrow E(i) = 2 + E(i-1) = 2i$ by recurrence analysis and since i $\leq$ O(logn) then search is O(logn)\\ \\
+  Whenever we arrive at some node of level i, the probability that it contributes to the next higher level is p and (1-p) to stay on same level. Counting the current node we just visited (+1) we have\\ \\
+  $E(i) = 1 + p \dot E(i-1) + (1-p) \dot E(i) \rightarrow E(i) = \frac{1}{p} + E(i-1) = \frac{i}{p}$ by recurrence analysis and since i $\leq$ O(logn) then search is O(logn)\\ \\
   \textbf{Insertion: }search for x to find its immediate predecessors at each level then create node x and flip a coin until tails. Letting k denote the number of tosses made, height = min of k + 1 and height of list then link the k+1 lowest predecssors \\ \\
   \textbf{Deletion: }find the node and keep track of all predecessors at various level of list then unlink the target node at each level (like in standard linked list removal) \\ \\
   \textbf{Implementation Notes: }skip-list nodes have variable size, containing the key-value pair, variable-sized array of next pointers (p.next[i] points to the next node at level i). Also has 2 sentinel nodes (head and tail where tail.key is $\infty$ to stop search)\\
@@ -638,7 +738,7 @@
   \end{itemize}
   \textbf{Height Analysis: }as B-Trees grow wider, the height decreases\\
   \textbf{Theorem: }B-Tree of order m with n keys has height of at most $(lgn)/\gamma$ where $\gamma$ = lg(m/2)\\
-  \textbf{Proof: }assume m is even and let N(h) = number of nodes in skinniest possible order-m B tree of height h\\
+  \textbf{Proof 1: }assume m is even and let N(h) = number of nodes in skinniest possible order-m B tree of height h\\
   \indent Root has $\geq$ 2 children that have $\geq$ m/2 children \\
   \indent \indent therefore 2 nodes at depth 1\\
   \indent \indent $2(m/2)$ nodes at depth 2\\
@@ -649,6 +749,9 @@
   \indent $N(h) = \frac{2(c^{h}-1)}{(c-1)} \approx \frac{2c^{h}}{c} = 2c^{h-1} = 2(\frac{m}{2})^{h-1}$\\
   \indent Each node has $\geq \frac{m}{2}-1$ keys $\approx \frac{m}{2}$\\
   \indent $n \geq N(h) \geq 2(\frac{m}{2})^{h} \rightarrow h \leq \frac{lgn}{lg\frac{m}{2}}$\\ \\
+  \textbf{Proof 2: }\\
+    \indent let $N(h)$ denote smallest number of keys in the leaves of the tree \\
+    \indent root has at least 2 keys and all other nodes have $d$ keys so last row of keys has $N(h) \geq 2d^{h} \geq d^{h}$ keys yielding $\frac{lg(N(h))}{lgd} \geq h$
   \textbf{Node Structure: }since B-Tree nodes can hold a variable number of items, every node is allocated max possible size but not all of the space allocated may be used
   \begin{lstlisting}
     final int M = m;    \\order of B-tree
@@ -666,7 +769,7 @@
   \item Then recurse into subtree $T_{i}$\\
   \end{itemize}
   Insertion and Deletion require some restructuring methods (rotation, splitting, and merging)\\
-  \textbf{Rotation (Adoption): }Node can have between $\ceil[\Big]{m/2}$ and $m$ children, and one less keys. Insertion and deletion might make a node have too many or too few nodes so we fix this imbalance by moving a child into or from one of its siblings and rotate a key from parent, assuming can give a child\\
+  \textbf{Rotation (Adoption): }Node can have between $\ceil[\Big]{m/2}$ and $m$ children, and one less keys. Insertion and deletion might make a node have too many or too few nodes so we fix this imbalance by moving a child into or from one of its siblings and rotate a key from parent, assuming it can give a child\\
   \begin{center}
   \includegraphics[scale=0.10]{BTreeRotations}
   \end{center}
@@ -869,7 +972,8 @@
   \newpage
   \subsection{Scapegoat Tree}
   Do not rely on rotations. Instead rebuild subtrees with poor balance. Nodes only contain key, value, left, and right and height will always be O(logn)\\
-  Scapegoat Tree also store 2 values: n (number of keys in the tree) and m (upper bound size of tree)
+  Scapegoat Tree also store 2 values: n (number of keys in the tree) and m (upper bound size of tree)\\
+  max height is $log_{3/2}m \leq log_{3/2}(2n)$
   \begin{itemize}[noitemsep]
     \item Whenever we insert a key, we increment both n and m
     \item Whenever we delete a key, we only decrement n and do not change m
@@ -916,6 +1020,10 @@
 \begin{center}
   height(u) = (u == null ? 0 : 1 + max(height(u.left), height(u.right)))
   \end{center}
+  \textbf{Amortized Analysis} \\
+  \textbf{Find:} $O(log(n))$ because tree height is $O(log(n))$ \\
+  \textbf{Delete:} Token analysis can prove that $O(n)$ cost of rebuilding entire tree can be amortized against non expensive deletes\\
+  \textbf{Insert:} Token analysis can prove that $O(k)$ cost of rebuilding tree can be amortized against non expensive inserts
   \newpage
   \section{Geometric Data Structures}
   Goal is to store large datasets of geometric objects(points, lines, shapes) in order to answer queries on them. These queries don't focus on exact matches and instead focus on "close to", "contained with", or "overlapping with"\\ \\
